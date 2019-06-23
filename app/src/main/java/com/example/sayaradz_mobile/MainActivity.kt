@@ -22,12 +22,12 @@ class MainActivity : AppCompatActivity() {
                 textMessage.setText(R.string.title_ads)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_transactions -> {
-                textMessage.setText(R.string.title_transactions)
-                return@OnNavigationItemSelectedListener true
-            }
             R.id.navigation_notifications -> {
                 textMessage.setText(R.string.title_notifications)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_profile -> {
+                textMessage.setText(R.string.title_profile)
                 return@OnNavigationItemSelectedListener true
             }
         }

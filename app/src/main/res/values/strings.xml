@@ -3,6 +3,6 @@
     <string name="title_home">Home</string>
     <string name="title_garage">Garage</string>
     <string name="title_ads">Ads</string>
-    <string name="title_transactions">Transactions</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_notifications">Inbox</string>
 </resources>
