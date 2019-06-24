@@ -2,9 +2,5 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
     <item android:drawable="@color/colorPrimary" />
 
-    <item>
-        <bitmap android:src="@drawable/ic_sayaradz_logo"
-                android:gravity="center"  />
-
-    </item>
+    <item android:drawable="@drawable/ic_sayaradz_logo" android:gravity="center"/>
 </layer-list>
