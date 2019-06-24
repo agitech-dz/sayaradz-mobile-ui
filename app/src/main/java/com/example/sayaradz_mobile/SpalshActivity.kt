@@ -10,7 +10,7 @@ class SpalshActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         val intent = Intent(this, MainActivity::class.java)
-        Thread.sleep(1000)
+        Thread.sleep(2000)
         startActivity(intent)
         finish()
     }
