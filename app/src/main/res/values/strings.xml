@@ -5,4 +5,9 @@
     <string name="title_ads">Ads</string>
     <string name="title_profile">Profile</string>
     <string name="title_notifications">Inbox</string>
+    <string name="se_connecter_avec">Se connecter avec</string>
+    <string name="logo">Logo</string>
+    <string name="google_login_button">Google Login Button</string>
+    <string name="facebook_login_button">Facebook Login Button</string>
+    <string name="guest_login_button">Guest Login Button</string>
 </resources>
