@@ -1,5 +1,6 @@
 package com.example.sayaradz_mobile
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
@@ -15,35 +16,36 @@ class MainActivity : AppCompatActivity() {
     private val inboxFragment = InboxFragment.instance
     private val profileFragment = ProfileFragment.instance
     private var active:Fragment = homeFragment
+    @SuppressLint("RestrictedApi")
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
 
-                fm.beginTransaction().hide(active).show(homeFragment).commit()
+                fm.beginTransaction().hide(active).setCustomAnimations(R.anim.slide_left,R.anim.slide_right).show(homeFragment).commit()
                 active = homeFragment
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_garage -> {
 
-                fm.beginTransaction().hide(active).show(garageFragment).commit()
+                fm.beginTransaction().hide(active).setCustomAnimations(R.anim.slide_left,R.anim.slide_right).show(garageFragment).commit()
                 active = garageFragment
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_ads -> {
 
-                fm.beginTransaction().hide(active).show(adsFragment).commit()
+                fm.beginTransaction().hide(active).setCustomAnimations(R.anim.slide_left,R.anim.slide_right).show(adsFragment).commit()
                 active = adsFragment
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
 
-                fm.beginTransaction().hide(active).show(inboxFragment).commit()
+                fm.beginTransaction().hide(active).setCustomAnimations(R.anim.slide_left,R.anim.slide_right).show(inboxFragment).commit()
                 active = inboxFragment
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_profile -> {
 
-                fm.beginTransaction().hide(active).show(profileFragment).commit()
+                fm.beginTransaction().hide(active).setCustomAnimations(R.anim.slide_left,R.anim.slide_right).show(profileFragment).commit()
                 active = profileFragment
                 return@OnNavigationItemSelectedListener true
             }
@@ -57,6 +59,8 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+
+        supportActionBar?.hide()
 
         fm.beginTransaction().add(R.id.fragment_layout, garageFragment, "Garage").hide(garageFragment).commit()
         fm.beginTransaction().add(R.id.fragment_layout, adsFragment, "Ads").hide(adsFragment).commit()
