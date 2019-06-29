@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sayara DZ</string>
+    <string name="facebook_login_button">Facebook Login Button</string>
+    <string name="google_login_button">Google Login Button</string>
+    <string name="guest_login_button">Guest Login Button</string>
+    <string name="logo">Logo</string>
+    <string name="slogan">Find your new car faster and easier</string>
+    <string name="title_ads">Ads</string>
+    <string name="title_garage">Garage</string>
+    <string name="title_home">Home</string>
+    <string name="title_notifications">Inbox</string>
+    <string name="title_profile">Profile</string>
+</resources>

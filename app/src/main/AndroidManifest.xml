@@ -9,6 +9,8 @@
             android:roundIcon="@mipmap/ic_sayaradz_logo_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".TechInfoActivity">
+        </activity>
         <activity android:name=".LoginActivity">
         </activity>
         <activity

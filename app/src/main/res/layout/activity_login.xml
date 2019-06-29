@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".LoginActivity" android:id="@+id/loginLayout">
+        tools:context=".LoginActivity" android:id="@+id/loginLayout" android:background="@color/lightGrey">
 
     <ImageView
             android:layout_width="wrap_content"
@@ -14,35 +14,45 @@
             app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintVertical_bias="0.2"
+            android:layout_marginStart="8dp" app:layout_constraintVertical_bias="0.15"
             android:contentDescription="@string/logo"/>
     <TextView
-            android:text="@string/se_connecter_avec"
-            android:layout_width="wrap_content"
+            android:text="@string/slogan"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/loginText"
-            app:layout_constraintTop_toBottomOf="@+id/logo" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:layout_marginTop="64dp" android:textSize="@dimen/login_text_size"
-            android:textColor="@color/logoBlue" android:textStyle="bold"/>
+            android:id="@+id/slogan"
+            app:layout_constraintTop_toBottomOf="@+id/logo"
+            app:layout_constraintStart_toStartOf="@+id/leftgl"
+            android:layout_marginTop="32dp" android:textSize="@dimen/login_text_size"
+            android:textColor="@color/logoBlue" android:gravity="center"
+            app:layout_constraintEnd_toStartOf="@+id/rightgl"/>
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/login_google" android:id="@+id/loginGoogle"
-            app:layout_constraintTop_toBottomOf="@+id/loginText" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/slogan" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" android:layout_marginTop="64dp"
             android:contentDescription="@string/google_login_button"/>
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/login_facebook"
-            android:id="@+id/loginFacebook" android:layout_marginTop="8dp"
+            android:id="@+id/loginFacebook" android:layout_marginTop="24dp"
             app:layout_constraintTop_toBottomOf="@+id/loginGoogle" app:layout_constraintEnd_toEndOf="@+id/loginGoogle"
-            app:layout_constraintStart_toStartOf="@+id/loginGoogle" android:contentDescription="@string/facebook_login_button"/>
+            app:layout_constraintStart_toStartOf="@+id/loginGoogle"
+            android:contentDescription="@string/facebook_login_button"/>
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/guest_button" android:id="@+id/loginGuest"
             android:layout_marginBottom="64dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:contentDescription="@string/guest_login_button"/>
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="@+id/loginFacebook"
+            app:layout_constraintStart_toStartOf="@+id/loginFacebook"
+            android:contentDescription="@string/guest_login_button"/>
+    <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                          android:id="@+id/leftgl"
+                                          android:orientation="vertical"
+                                          app:layout_constraintGuide_percent="0.15"/>
+    <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                          android:id="@+id/rightgl"
+                                          android:orientation="vertical"
+                                          app:layout_constraintGuide_percent="0.85"/>
 </android.support.constraint.ConstraintLayout>
