@@ -12,6 +12,10 @@
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
 
+    <style name="card">
+        <item name="android:shadowColor">@color/black</item>
+    </style>
+
 
 
 </resources>
