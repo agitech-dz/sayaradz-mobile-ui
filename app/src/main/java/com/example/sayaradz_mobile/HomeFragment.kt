@@ -23,12 +23,12 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        carList.add(Car("BMW 520d","5.000.000da",""))
-        carList.add(Car("BMW 320d","3.000.000da",""))
-        carList.add(Car("BMW 320d","3.000.000da",""))
-        carList.add(Car("BMW 320d","3.000.000da",""))
-        carList.add(Car("BMW 320d","3.000.000da",""))
-        carList.add(Car("BMW 320d","3.000.000da",""))
+        carList.add(Car("BMW 520d","5.000.000",""))
+        carList.add(Car("BMW 320d","3.000.000",""))
+        carList.add(Car("BMW 320d","3.000.000",""))
+        carList.add(Car("BMW 320d","3.000.000",""))
+        carList.add(Car("BMW 320d","3.000.000",""))
+        carList.add(Car("BMW 320d","3.000.000",""))
         brandList.add(Brand("BMW"))
         brandList.add(Brand("Mercedes"))
         brandList.add(Brand("Audi"))
