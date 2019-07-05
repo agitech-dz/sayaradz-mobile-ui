@@ -78,7 +78,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/textView2" app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginTop="39dp"/>
                 <TextView
-                        android:text="DZD"
+                        android:text=" DZD"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView12" android:textColor="#E91E63"
