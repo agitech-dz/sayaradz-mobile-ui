@@ -1,8 +1,9 @@
-package com.example.sayaradz_mobile
+package com.example.sayaradz_mobile.Activities
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.sayaradz_mobile.R
 
 class SpalshActivity : AppCompatActivity() {
 

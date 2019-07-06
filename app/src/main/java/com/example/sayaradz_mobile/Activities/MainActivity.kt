@@ -1,11 +1,16 @@
-package com.example.sayaradz_mobile
+package com.example.sayaradz_mobile.Activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.widget.TextView
+import com.example.sayaradz_mobile.Fragments.AdsFragment
+import com.example.sayaradz_mobile.Fragments.GarageFragment
+import com.example.sayaradz_mobile.Fragments.HomeFragment
+import com.example.sayaradz_mobile.Fragments.InboxFragment
+import com.example.sayaradz_mobile.Fragments.ProfileFragment
+import com.example.sayaradz_mobile.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,31 +26,46 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.navigation_home -> {
 
-                fm.beginTransaction().hide(active).setCustomAnimations(R.anim.slide_left,R.anim.slide_right).show(homeFragment).commit()
+                fm.beginTransaction().hide(active).setCustomAnimations(
+                    R.anim.slide_left,
+                    R.anim.slide_right
+                ).show(homeFragment).commit()
                 active = homeFragment
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_garage -> {
 
-                fm.beginTransaction().hide(active).setCustomAnimations(R.anim.slide_left,R.anim.slide_right).show(garageFragment).commit()
+                fm.beginTransaction().hide(active).setCustomAnimations(
+                    R.anim.slide_left,
+                    R.anim.slide_right
+                ).show(garageFragment).commit()
                 active = garageFragment
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_ads -> {
 
-                fm.beginTransaction().hide(active).setCustomAnimations(R.anim.slide_left,R.anim.slide_right).show(adsFragment).commit()
+                fm.beginTransaction().hide(active).setCustomAnimations(
+                    R.anim.slide_left,
+                    R.anim.slide_right
+                ).show(adsFragment).commit()
                 active = adsFragment
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
 
-                fm.beginTransaction().hide(active).setCustomAnimations(R.anim.slide_left,R.anim.slide_right).show(inboxFragment).commit()
+                fm.beginTransaction().hide(active).setCustomAnimations(
+                    R.anim.slide_left,
+                    R.anim.slide_right
+                ).show(inboxFragment).commit()
                 active = inboxFragment
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_profile -> {
 
-                fm.beginTransaction().hide(active).setCustomAnimations(R.anim.slide_left,R.anim.slide_right).show(profileFragment).commit()
+                fm.beginTransaction().hide(active).setCustomAnimations(
+                    R.anim.slide_left,
+                    R.anim.slide_right
+                ).show(profileFragment).commit()
                 active = profileFragment
                 return@OnNavigationItemSelectedListener true
             }
