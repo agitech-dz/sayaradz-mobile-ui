@@ -25,48 +25,62 @@ class MainActivity : AppCompatActivity() {
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
+                if (active != homeFragment){
+                    fm.beginTransaction().hide(active).setCustomAnimations(
+                        R.anim.slide_left,
+                        R.anim.slide_right
+                    ).show(homeFragment).commit()
+                    active = homeFragment
+                }
 
-                fm.beginTransaction().hide(active).setCustomAnimations(
-                    R.anim.slide_left,
-                    R.anim.slide_right
-                ).show(homeFragment).commit()
-                active = homeFragment
+
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_garage -> {
 
-                fm.beginTransaction().hide(active).setCustomAnimations(
-                    R.anim.slide_left,
-                    R.anim.slide_right
-                ).show(garageFragment).commit()
-                active = garageFragment
+                if (active != garageFragment){
+                    fm.beginTransaction().hide(active).setCustomAnimations(
+                        R.anim.slide_left,
+                        R.anim.slide_right
+                    ).show(garageFragment).commit()
+                    active = garageFragment
+                }
+
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_ads -> {
 
-                fm.beginTransaction().hide(active).setCustomAnimations(
-                    R.anim.slide_left,
-                    R.anim.slide_right
-                ).show(adsFragment).commit()
-                active = adsFragment
+                if(active != adsFragment){
+                    fm.beginTransaction().hide(active).setCustomAnimations(
+                        R.anim.slide_left,
+                        R.anim.slide_right
+                    ).show(adsFragment).commit()
+                    active = adsFragment
+                }
+
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
 
-                fm.beginTransaction().hide(active).setCustomAnimations(
-                    R.anim.slide_left,
-                    R.anim.slide_right
-                ).show(inboxFragment).commit()
-                active = inboxFragment
+                if( active != inboxFragment){
+                    fm.beginTransaction().hide(active).setCustomAnimations(
+                        R.anim.slide_left,
+                        R.anim.slide_right
+                    ).show(inboxFragment).commit()
+                    active = inboxFragment
+                }
+
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_profile -> {
+                if (active != profileFragment){
+                    fm.beginTransaction().hide(active).setCustomAnimations(
+                        R.anim.slide_left,
+                        R.anim.slide_right
+                    ).show(profileFragment).commit()
+                    active = profileFragment
+                }
 
-                fm.beginTransaction().hide(active).setCustomAnimations(
-                    R.anim.slide_left,
-                    R.anim.slide_right
-                ).show(profileFragment).commit()
-                active = profileFragment
                 return@OnNavigationItemSelectedListener true
             }
         }
