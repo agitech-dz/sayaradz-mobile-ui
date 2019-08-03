@@ -26,6 +26,14 @@
                     android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginBottom="20dp" app:layout_constraintBottom_toBottomOf="parent"
                     android:textStyle="bold"/>
+            <SearchView
+                    android:layout_width="wrap_content"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="16dp"
+                    android:searchIcon="@drawable/ic_search_white"
+                    android:theme="@style/SearchTheme"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="8dp" android:backgroundTintMode="screen"/>
         </android.support.constraint.ConstraintLayout>
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>
