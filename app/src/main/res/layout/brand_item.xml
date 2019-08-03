@@ -28,7 +28,7 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/brandName"
+                    android:id="@+id/carName"
                     android:gravity="center"
                     android:text="BMW"
                     android:textColor="#000"

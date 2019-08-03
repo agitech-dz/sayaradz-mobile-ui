@@ -25,7 +25,7 @@ class BrandAdapter(var itemList:List<Brand>): RecyclerView.Adapter<BrandAdapter.
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val brandName = itemView.findViewById<TextView>(R.id.brandName)
+        val brandName = itemView.findViewById<TextView>(R.id.carName)
 
     }
 

@@ -8,9 +8,10 @@ import android.widget.TextView
 import com.example.sayaradz_mobile.Model.Car
 import com.example.sayaradz_mobile.R
 
-class CarAdapter(var itemList:List<Car>): RecyclerView.Adapter<CarAdapter.ViewHolder>(){
+
+class UsedCarAdapter(var itemList:List<Car>): RecyclerView.Adapter<UsedCarAdapter.ViewHolder>(){
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        val v = LayoutInflater.from(p0?.context).inflate(R.layout.car_item, p0, false)
+        val v = LayoutInflater.from(p0?.context).inflate(R.layout.car_list_item, p0, false)
 
         return ViewHolder(v)
     }
