@@ -9,10 +9,13 @@ import android.view.ViewGroup
 import com.example.sayaradz_mobile.R
 
 import androidx.databinding.DataBindingUtil
+import com.example.sayaradz_mobile.databinding.FragmentAdDetailsBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 import com.ouattararomuald.slider.ImageSlider
 import com.ouattararomuald.slider.SliderAdapter
 import com.ouattararomuald.slider.loaders.picasso.PicassoImageLoaderFactory
+import kotlinx.android.synthetic.main.fragment_ad_details.*
 
 
 class AdDetailsFragment : Fragment() {
@@ -26,24 +29,31 @@ class AdDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_ad_details, container, false)
+        val binding: FragmentAdDetailsBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_ad_details,
+            container,
+            false)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val imageUrls = arrayListOf(
             "https://imgd.aeplcdn.com/424x424/cw/ec/26916/Audi-Q3-Front-view-92293.jpg?v=201711021421&q=85",
             "https://imgd.aeplcdn.com/424x424/cw/ec/26916/Audi-Q3-Front-view-92293.jpg?v=201711021421&q=85",
             "https://imgd.aeplcdn.com/424x424/cw/ec/26916/Audi-Q3-Front-view-92293.jpg?v=201711021421&q=85"
         )
         //var adId = com.example.sayaradz_mobile.Fragments.AdDetailsFragmentArgs.fromBundle(arguments!!).adId
+        activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.visibility = View.GONE
 
-        val imageSlider = container?.findViewById<ImageSlider>(R.id.image_slider)
 
-        imageSlider?.adapter = SliderAdapter(
-            container!!.context,
+        image_slider?.adapter = SliderAdapter(
+            view!!.context,
             PicassoImageLoaderFactory(),
             imageUrls = imageUrls
-            )
-
-        return view
+        )
     }
 
 }
