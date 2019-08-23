@@ -2,17 +2,27 @@ package com.example.sayaradz_mobile.Activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+
 import com.example.sayaradz_mobile.Fragments.AdsFragment
 import com.example.sayaradz_mobile.Fragments.GarageFragment
 import com.example.sayaradz_mobile.Fragments.HomeFragment
 import com.example.sayaradz_mobile.Fragments.InboxFragment
 import com.example.sayaradz_mobile.Fragments.ProfileFragment
 import com.example.sayaradz_mobile.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.sayaradz_mobile.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
+
 
     private val fm = supportFragmentManager
     private val homeFragment = HomeFragment.instance
@@ -90,6 +100,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+       // val host = NavHostFragment.create(R.navigation.nav_graph)
+        //supportFragmentManager.beginTransaction().replace(R.id.fragment_layout, host).setPrimaryNavigationFragment(host).commit()
+
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
@@ -101,5 +114,9 @@ class MainActivity : AppCompatActivity() {
         fm.beginTransaction().add(R.id.fragment_layout, inboxFragment, "Inbox").hide(inboxFragment).commit()
         fm.beginTransaction().add(R.id.fragment_layout, profileFragment, "Profile").hide(profileFragment).commit()
         fm.beginTransaction().add(R.id.fragment_layout,homeFragment, "Home").commit()
+
+
     }
+
+
 }

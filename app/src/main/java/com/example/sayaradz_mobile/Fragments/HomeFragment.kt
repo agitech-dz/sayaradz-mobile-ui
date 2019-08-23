@@ -1,9 +1,9 @@
 package com.example.sayaradz_mobile.Fragments
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,10 +44,14 @@ class HomeFragment : Fragment() {
         val recyclerView2 = view.findViewById<RecyclerView>(R.id.recyclerView2)
         val recyclerView3 = view.findViewById<RecyclerView>(R.id.recyclerView3)
         val recyclerView4 = view.findViewById<RecyclerView>(R.id.recyclerView4)
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
-        recyclerView2.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
-        recyclerView3.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
-        recyclerView4.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+        recyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+        recyclerView2.layoutManager =
+            LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+        recyclerView3.layoutManager =
+            LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+        recyclerView4.layoutManager =
+            LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
         val rvAdapter = CarAdapter(carList)
         val brandAdapter = BrandAdapter(brandList)
         recyclerView.adapter = rvAdapter
