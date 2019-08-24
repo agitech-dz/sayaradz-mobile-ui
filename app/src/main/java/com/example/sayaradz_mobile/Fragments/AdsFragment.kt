@@ -3,6 +3,7 @@ package com.example.sayaradz_mobile.Fragments
 import android.content.Context
 import android.os.Bundle
 import android.view.*
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +14,10 @@ import com.example.sayaradz_mobile.Model.Ad
 import com.example.sayaradz_mobile.R
 import com.example.sayaradz_mobile.databinding.FragmentAdsBinding
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import com.example.sayaradz_mobile.viewmodel.AdsListViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 
 class AdsFragment : Fragment() {
 
@@ -21,39 +25,49 @@ class AdsFragment : Fragment() {
         val instance = AdsFragment()
     }
 
+    private lateinit var binding: FragmentAdsBinding
+    private lateinit var viewModel: AdsListViewModel
+    private var errorSnackbar: Snackbar? = null
+
     private var adsList = ArrayList<Ad>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding: FragmentAdsBinding =
+        binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_ads, container, false)
                 // val view = inflater.inflate(R.layout.fragment_ads, container, false)
-        adsList.add(Ad("Tesla", "Tesla", "Model 3", "Long Range", "description", "Diesel", "2018", "Alger", "Automatique", "12-12-2019 12:58", "1", "Hanene", "BBA", "5", "120000", "123000 $", "https://www.automobile-propre.com/wp-content/uploads/2017/07/Model-3-Mountain-Pearl-620x349.png", "https://evcompare.io/upload/resize_cache/iblock/308/1200_800_2/308dc4582c277708cab15468fc5d6c36.jpg", "https://cleantechnica.com/files/2018/10/tesla-model-3-and-sister-in-law.png"))
-        adsList.add(Ad("Tesla", "Tesla","Model 3", "Long Range", "description", "Diesel", "2018", "Alger", "Automatique", "12-12-2019 12:58", "1", "Hanene", "BBA", "5", "120000", "123000 $", "https://www.automobile-propre.com/wp-content/uploads/2017/07/Model-3-Mountain-Pearl-620x349.png", "https://evcompare.io/upload/resize_cache/iblock/308/1200_800_2/308dc4582c277708cab15468fc5d6c36.jpg", "https://cleantechnica.com/files/2018/10/tesla-model-3-and-sister-in-law.png"))
-        adsList.add(Ad("Tesla", "Tesla","Model 3", "Long Range", "description", "Diesel", "2018", "Alger", "Automatique", "12-12-2019 12:58", "1", "Hanene", "BBA", "5", "120000", "123000 $", "https://www.automobile-propre.com/wp-content/uploads/2017/07/Model-3-Mountain-Pearl-620x349.png", "https://evcompare.io/upload/resize_cache/iblock/308/1200_800_2/308dc4582c277708cab15468fc5d6c36.jpg", "https://cleantechnica.com/files/2018/10/tesla-model-3-and-sister-in-law.png"))
-        adsList.add(Ad("Tesla", "Tesla","Model 3", "Long Range", "description", "Diesel", "2018", "Alger", "Automatique", "12-12-2019 12:58", "1", "Hanene", "BBA", "5", "120000", "123000 $", "https://www.automobile-propre.com/wp-content/uploads/2017/07/Model-3-Mountain-Pearl-620x349.png", "https://evcompare.io/upload/resize_cache/iblock/308/1200_800_2/308dc4582c277708cab15468fc5d6c36.jpg", "https://cleantechnica.com/files/2018/10/tesla-model-3-and-sister-in-law.png"))
-        adsList.add(Ad("Tesla", "Tesla","Model 3", "Long Range", "description", "Diesel", "2018", "Alger", "Automatique", "12-12-2019 12:58", "1", "Hanene", "BBA", "5", "120000", "123000 $", "https://www.automobile-propre.com/wp-content/uploads/2017/07/Model-3-Mountain-Pearl-620x349.png", "https://evcompare.io/upload/resize_cache/iblock/308/1200_800_2/308dc4582c277708cab15468fc5d6c36.jpg", "https://cleantechnica.com/files/2018/10/tesla-model-3-and-sister-in-law.png"))
-        adsList.add(Ad("Tesla", "Tesla","Model 3", "Long Range", "description", "Diesel", "2018", "Alger", "Automatique", "12-12-2019 12:58", "1", "Hanene", "BBA", "5", "120000", "123000 $", "https://www.automobile-propre.com/wp-content/uploads/2017/07/Model-3-Mountain-Pearl-620x349.png", "https://evcompare.io/upload/resize_cache/iblock/308/1200_800_2/308dc4582c277708cab15468fc5d6c36.jpg", "https://cleantechnica.com/files/2018/10/tesla-model-3-and-sister-in-law.png"))
-        adsList.add(Ad("Tesla", "Tesla","Model 3", "Long Range", "description", "Diesel", "2018", "Alger", "Automatique", "12-12-2019 12:58", "1", "Hanene", "BBA", "5", "120000", "123000 $", "https://www.automobile-propre.com/wp-content/uploads/2017/07/Model-3-Mountain-Pearl-620x349.png", "https://evcompare.io/upload/resize_cache/iblock/308/1200_800_2/308dc4582c277708cab15468fc5d6c36.jpg", "https://cleantechnica.com/files/2018/10/tesla-model-3-and-sister-in-law.png"))
-        adsList.add(Ad("Tesla", "Tesla","Model 3", "Long Range", "description", "Diesel", "2018", "Alger", "Automatique", "12-12-2019 12:58", "1", "Hanene", "BBA", "5", "120000", "123000 $", "https://www.automobile-propre.com/wp-content/uploads/2017/07/Model-3-Mountain-Pearl-620x349.png", "https://evcompare.io/upload/resize_cache/iblock/308/1200_800_2/308dc4582c277708cab15468fc5d6c36.jpg", "https://cleantechnica.com/files/2018/10/tesla-model-3-and-sister-in-law.png"))
-        adsList.add(Ad("Tesla", "Tesla","Model 3", "Long Range", "description", "Diesel", "2018", "Alger", "Automatique", "12-12-2019 12:58", "1", "Hanene", "BBA", "5", "120000", "123000 $", "https://www.automobile-propre.com/wp-content/uploads/2017/07/Model-3-Mountain-Pearl-620x349.png", "https://evcompare.io/upload/resize_cache/iblock/308/1200_800_2/308dc4582c277708cab15468fc5d6c36.jpg", "https://cleantechnica.com/files/2018/10/tesla-model-3-and-sister-in-law.png"))
-        setUpAdsRecycleView(binding.root, adsList)
+        viewModel = ViewModelProviders.of(this).get(AdsListViewModel::class.java)
+        viewModel.errorMessage.observe(this, Observer {
+                errorMessage -> if(errorMessage != null) showError(errorMessage) else hideError()
+        })
+        binding.viewModel = viewModel
 
-        /*val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+        //val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
+        binding.recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        //recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        val rvAdapter = UsedCarAdapter(adsList, context!!)
+      /*  val rvAdapter = UsedCarAdapter(adsList, context!!)
         recyclerView.adapter = rvAdapter*/
 
         return binding.root
     }
 
+    private fun showError(@StringRes errorMessage:Int){
+        errorSnackbar = Snackbar.make(binding.root, errorMessage, Snackbar.LENGTH_INDEFINITE)
+        errorSnackbar?.setAction("Retry", viewModel.errorClickListener)
+        errorSnackbar?.show()
+    }
+
+    private fun hideError(){
+        errorSnackbar?.dismiss()
+    }
+
     //RecycleView--------------------------------------------
-    private fun setUpAdsRecycleView(rootView: View, list: MutableList<Ad>) {
+  /*  private fun setUpAdsRecycleView(rootView: View, list: MutableList<Ad>) {
         var recyclerView = rootView.findViewById<RecyclerView>(R.id.recyclerView)
 
         //realtime list change
@@ -75,7 +89,7 @@ class AdsFragment : Fragment() {
         }
         recyclerView.setHasFixedSize(true)
         activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.visibility = View.VISIBLE
-    }
+    }*/
 
 
 

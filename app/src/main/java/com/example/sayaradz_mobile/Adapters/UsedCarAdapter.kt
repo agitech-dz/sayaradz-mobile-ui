@@ -11,12 +11,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.sayaradz_mobile.Fragments.AdsFragmentDirections
-import com.example.sayaradz_mobile.Model.Ad
+import com.example.sayaradz_mobile.data.Ad
 import com.example.sayaradz_mobile.R
 
 class UsedCarAdapter(var itemList:List<Ad>, val context: Context): RecyclerView.Adapter<UsedCarAdapter.ViewHolder>(){
 
     var itemChanged = MutableLiveData<Boolean>()
+    private lateinit var adsList:List<Ad>
 
     init {
         itemChanged.value = false
@@ -33,9 +34,9 @@ class UsedCarAdapter(var itemList:List<Ad>, val context: Context): RecyclerView.
     }
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        p0.adBrand.text = itemList.get(p1).brand
+        p0.adBrand.text = itemList.get(p1).manufacturer_name
         p0.adModelAndVersion.text = itemList.get(p1).model + " " + itemList.get(p1).version
-        p0.adLocation.text = itemList[p1].wilaya
+        p0.adLocation.text ="BBA"
         p0.adMinPrice.text = itemList[p1].minPrice
         p0.adYearAndDistance.text = itemList[p1].year + " | " + itemList[p1].distance + "km"
         Glide.with(context).load(itemList.get(p1).photo1).into(p0.adImage)
@@ -60,5 +61,11 @@ class UsedCarAdapter(var itemList:List<Ad>, val context: Context): RecyclerView.
         }
 
     }
+
+    fun updateAdsList(postList:List<Ad>){
+        this.adsList = postList
+        notifyDataSetChanged()
+    }
+
 
 }
