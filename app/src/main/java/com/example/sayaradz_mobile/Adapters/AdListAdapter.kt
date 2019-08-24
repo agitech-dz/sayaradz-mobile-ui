@@ -1,6 +1,7 @@
 package com.example.sayaradz_mobile.Adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,8 @@ class AdListAdapter : RecyclerView.Adapter<AdListAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: AdListAdapter.ViewHolder, position: Int) {
         holder.bind(adsList[position])
-        handleClick(holder.container, adsList[position].id)
+        Log.e("ads list", adsList.toString())
+        handleClick(holder.container, adsList[position])
        // Glide.with(context).load(adsList[position].photo1).into(holder.adImage)
     }
 
@@ -52,12 +54,30 @@ class AdListAdapter : RecyclerView.Adapter<AdListAdapter.ViewHolder>() {
 
 
     }
-    private fun handleClick(view: View, adId: String) {
-        val action = AdsFragmentDirections.actionAdsFragmentToAdDetailsFragment(adId)
+    private fun handleClick(view: View, ad: Ad) {
+        val action = AdsFragmentDirections
+            .actionAdsFragmentToAdDetailsFragment(
+                ad.id,
+                ad.manufacturer,
+                ad.manufacturer_name,
+                ad.model,
+                ad.version,
+                ad.version_name,
+                ad.year,
+                ad.minPrice,
+                ad.distance,
+                ad.date,
+                ad.description,
+                "",
+                "",
+                "",
+                ad.automobilist,
+                ad.automobilist_username,
+                ad.automobilist_address
+            )
         view.setOnClickListener { v: View ->
             v.findNavController().navigate(action)
         }
-
     }
 }
 

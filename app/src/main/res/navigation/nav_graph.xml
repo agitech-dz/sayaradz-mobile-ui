@@ -48,6 +48,23 @@
                   android:label="Ad"
                   tools:layout="@layout/fragment_ad_details">
                 <argument android:name="adId" app:argType="string"/>
+                <argument android:name="adManufacturer" app:argType="string"/>
+                <argument android:name="adManufacturerName" app:argType="string"/>
+                <argument android:name="adModel" app:argType="string"/>
+                <argument android:name="adVersion" app:argType="string"/>
+                <argument android:name="adVersionName" app:argType="string"/>
+                <argument android:name="adYear" app:argType="string"/>
+                <argument android:name="adMinPrice" app:argType="string"/>
+                <argument android:name="adDistance" app:argType="string"/>
+                <argument android:name="adDate" app:argType="string"/>
+                <argument android:name="adDescription" app:argType="string"/>
+                <argument android:name="adPhoto1" app:argType="string"/>
+                <argument android:name="adPhoto2" app:argType="string"/>
+                <argument android:name="adPhoto3" app:argType="string"/>
+                <argument android:name="adAutomobilist" app:argType="string"/>
+                <argument android:name="adAutomobilistUserName" app:argType="string"/>
+                <argument android:name="adAutomobilistAddress" app:argType="string"/>
+
         </fragment>
 
 

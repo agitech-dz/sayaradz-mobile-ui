@@ -1,15 +1,11 @@
 package com.example.sayaradz_mobile.Fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.*
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.GridLayoutManager
-import com.example.sayaradz_mobile.Adapters.UsedCarAdapter
 import com.example.sayaradz_mobile.Model.Ad
 import com.example.sayaradz_mobile.R
 import com.example.sayaradz_mobile.databinding.FragmentAdsBinding
@@ -52,7 +48,7 @@ class AdsFragment : Fragment() {
 
       /*  val rvAdapter = UsedCarAdapter(adsList, context!!)
         recyclerView.adapter = rvAdapter*/
-
+        activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.visibility = View.VISIBLE
         return binding.root
     }
 
@@ -88,7 +84,7 @@ class AdsFragment : Fragment() {
             else -> recyclerView.layoutManager = GridLayoutManager(context, 2)
         }
         recyclerView.setHasFixedSize(true)
-        activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.visibility = View.VISIBLE
+
     }*/
 
 

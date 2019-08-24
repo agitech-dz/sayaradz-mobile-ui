@@ -10,7 +10,7 @@ import javax.inject.Singleton
 interface ViewModelInjector {
     /**
      * Injects required dependencies into the specified AdsListViewModel.
-     * @param postListViewModel PostListViewModel in which to inject the dependencies
+     * @param adListViewModel PostListViewModel in which to inject the dependencies
      */
     fun inject(adsListViewModel: AdsListViewModel)
 
