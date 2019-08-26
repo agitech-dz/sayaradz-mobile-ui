@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.databinding.InverseBindingListener
 import com.example.sayaradz_mobile.data.Manufacturer
+import com.example.sayaradz_mobile.data.Model
 
 
 /**
@@ -18,15 +19,14 @@ object SpinnerExtensions {
     /**
      * set spinner entries
      */
-    fun Spinner.setSpinnerEntries(entries: List<Manufacturer>?) {
+    fun Spinner.setSpinnerEntries(entries: List<Any>?) {
         if (entries != null) {
-           // var manufacturersNames = ArrayList<String>()
-           // manufacturersNames.addAll(entries.map { it.name })
             val arrayAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, entries)
             arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             adapter = arrayAdapter
         }
     }
+
 
     /**
      * set spinner onItemSelectedListener listener
@@ -88,4 +88,5 @@ object SpinnerExtensions {
     interface ItemSelectedListener {
         fun onItemSelected(item: Any)
     }
+
 }

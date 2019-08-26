@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.sayaradz_mobile.BuildConfig
 import com.example.sayaradz_mobile.network.AdApi
 import com.example.sayaradz_mobile.network.ManufacturerApi
+import com.example.sayaradz_mobile.network.ModelApi
 import com.example.sayaradz_mobile.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -39,9 +40,9 @@ object NetworkModule {
     }
 
     /**
-     * Provides the Ad service implementation.
+     * Provides the Manufacturer service implementation.
      * @param retrofit the Retrofit object used to instantiate the service
-     * @return the Ad service implementation.
+     * @return the Manufacturer service implementation.
      */
     @Provides
     @Reusable
@@ -49,6 +50,19 @@ object NetworkModule {
     internal fun provideManufacturerApi(retrofit: Retrofit): ManufacturerApi {
         Log.e("retrofiut", "retrofit")
         return retrofit.create(ManufacturerApi::class.java)
+    }
+
+
+    /**
+     * Provides the Model service implementation.
+     * @param retrofit the Retrofit object used to instantiate the service
+     * @return the Model service implementation.
+     */
+    @Provides
+    @Reusable
+    @JvmStatic
+    internal fun provideModelApi(retrofit: Retrofit): ModelApi {
+        return retrofit.create(ModelApi::class.java)
     }
 
     /**

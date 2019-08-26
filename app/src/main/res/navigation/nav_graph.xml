@@ -70,14 +70,25 @@
                 <argument android:name="adAutomobilistAddress" app:argType="string"/>
 
         </fragment>
+        <fragment android:id="@+id/postAdModel"
+                  android:name="com.example.sayaradz_mobile.Fragments.PostAdModelFragment"
+                  android:label="Home"
+                  tools:layout="@layout/fragment_post_ad_model">
+                <argument android:name="manufacturerId" app:argType="string"/>
+
+        </fragment>
 
         <fragment android:id="@+id/postAdManufacturer"
                   android:name="com.example.sayaradz_mobile.Fragments.PostAdManufacturer"
                   android:label="Home"
                   tools:layout="@layout/fragment_post_ad_manufacturer">
-
+                <action android:id="@+id/action_postAdManufacturerFragment_to_postAdModelFragment"
+                        app:destination="@id/postAdModel" app:enterAnim="@anim/nav_default_pop_enter_anim"
+                        app:exitAnim="@anim/nav_default_pop_exit_anim"/>
 
         </fragment>
+
+
 
 
 </navigation>

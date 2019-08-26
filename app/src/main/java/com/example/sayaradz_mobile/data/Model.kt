@@ -1,10 +1,10 @@
 package com.example.sayaradz_mobile.data
 
-
-data class Manufacturer(
+data class Model(
     val id:String,
     var name:String,
-    var nationality:String
+    var manufacturer:String,
+    var manufacturer_name:String
 ){
     override fun toString(): String {
         return name

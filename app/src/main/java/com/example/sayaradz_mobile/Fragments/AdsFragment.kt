@@ -71,7 +71,6 @@ class AdsFragment : Fragment() {
         addAdAction.setOnClickListener {
             val action = AdsFragmentDirections.actionAdsFragmentToPostAdManufacturerFragment()
             it.findNavController().navigate(action)
-
         }
     }
 

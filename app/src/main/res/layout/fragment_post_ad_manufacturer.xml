@@ -49,8 +49,7 @@
                 android:layout_margin="32dp"
                 android:textSize="36sp"
                 style="@style/Widget.MaterialComponents.Light.ActionBar.Solid"
-                android:spinnerMode="dialog"
-                app:selectedValue="@{viewModel.selectedManufacturer}"/>
+                android:spinnerMode="dialog"/>
 
 
         <Button
