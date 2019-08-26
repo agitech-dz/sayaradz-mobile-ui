@@ -13,8 +13,10 @@ import com.example.sayaradz_mobile.base.BaseViewModel
 import com.example.sayaradz_mobile.data.Ad
 import com.example.sayaradz_mobile.data.Manufacturer
 import com.example.sayaradz_mobile.data.Model
+import com.example.sayaradz_mobile.data.Version
 import com.example.sayaradz_mobile.network.ManufacturerApi
 import com.example.sayaradz_mobile.network.ModelApi
+import com.example.sayaradz_mobile.network.VersionApi
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -30,9 +32,15 @@ class AdSpinnersViewModel: BaseViewModel(){
     @Inject
     lateinit var modelApi: ModelApi
 
+    @Inject
+    lateinit var versionApi: VersionApi
+
+
     val manufacturerEntries: ObservableField<List<Manufacturer>> = ObservableField()
 
     val modelEntries: ObservableField<List<Model>> = ObservableField()
+
+    val versionEntries: ObservableField<List<Version>> = ObservableField()
 
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
 
@@ -105,5 +113,37 @@ class AdSpinnersViewModel: BaseViewModel(){
         super.onCleared()
         subscription.dispose()
     }
+
+    fun loadVersions(model: String){
+        subscription = versionApi.getVersions(model)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { onRetrieveVersionsListStart() }
+            .doOnTerminate { onRetrieveVersionsListFinish() }
+            .subscribe(
+                // Add result
+                { result -> onRetrieveVersionsListSuccess(result) },
+                { error -> onRetrieveVersionsListError(error) }
+            )
+    }
+
+    private fun onRetrieveVersionsListStart(){
+        loadingVisibility.value = View.VISIBLE
+        errorMessage.value = null
+    }
+
+    private fun onRetrieveVersionsListFinish(){
+        loadingVisibility.value = View.GONE
+    }
+
+    private fun onRetrieveVersionsListSuccess(versionsList:List<Version>){
+        versionEntries.set(versionsList)
+    }
+
+    private fun onRetrieveVersionsListError(error: Throwable){
+        Log.e("throwable", error.localizedMessage)
+        errorMessage.value = R.string.general_info
+    }
+
 
 }

@@ -5,6 +5,7 @@ import com.example.sayaradz_mobile.BuildConfig
 import com.example.sayaradz_mobile.network.AdApi
 import com.example.sayaradz_mobile.network.ManufacturerApi
 import com.example.sayaradz_mobile.network.ModelApi
+import com.example.sayaradz_mobile.network.VersionApi
 import com.example.sayaradz_mobile.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -63,6 +64,18 @@ object NetworkModule {
     @JvmStatic
     internal fun provideModelApi(retrofit: Retrofit): ModelApi {
         return retrofit.create(ModelApi::class.java)
+    }
+
+    /**
+     * Provides the Version service implementation.
+     * @param retrofit the Retrofit object used to instantiate the service
+     * @return the Version service implementation.
+     */
+    @Provides
+    @Reusable
+    @JvmStatic
+    internal fun provideVersionApi(retrofit: Retrofit): VersionApi {
+        return retrofit.create(VersionApi::class.java)
     }
 
     /**

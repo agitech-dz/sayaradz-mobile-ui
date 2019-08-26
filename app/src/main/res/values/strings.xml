@@ -12,4 +12,9 @@
     <string name="loading_data_error">Ouups!, Try again!</string>
     <string name="post_ad_manufacturer">Indiquez la marque du véhicule</string>
     <string name="post_ad_model">Indiquez le modèle du véhicule</string>
+    <string name="post_ad_version">Indiquez la version du véhicule</string>
+    <string name="post_ad_extra_info">Donnez plus de détails concernant le véhicule</string>
+    <string name="post_ad_photos">Ajoutez des photos à votre annonce</string>
+    <string name="post_ad_description">Décrivez au mieux votre annonce</string>
+
 </resources>
