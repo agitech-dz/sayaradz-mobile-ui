@@ -11,11 +11,13 @@ import androidx.annotation.StringRes
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 
 import com.example.sayaradz_mobile.R
 import com.example.sayaradz_mobile.databinding.FragmentPostAdVersionBinding
 import com.example.sayaradz_mobile.viewmodel.AdSpinnersViewModel
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_post_ad_version.*
 
 
 class PostAdVersionFragment : Fragment() {
@@ -51,6 +53,17 @@ class PostAdVersionFragment : Fragment() {
 
     private fun hideError(){
         errorSnackbar?.dismiss()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        selectVersionAction.setOnClickListener {
+
+            val action = PostAdVersionFragmentDirections.actionPostAdVersionFragmentToPostAdExtraInformationsFragment()
+            it.findNavController().navigate(action)
+
+        }
+
     }
 
 }

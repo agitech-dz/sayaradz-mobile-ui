@@ -1,14 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
              tools:context=".Fragments.PostAdExtraInformationsFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment"/>
+            android:layout_height="match_parent">
 
-</FrameLayout>
+        <TextView
+                android:id="@+id/post_ad_exta_info"
+                android:layout_width="287dp"
+                android:layout_height="72dp"
+                android:text="@string/post_ad_extra_info"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/rubik_bold"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="52dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"/>
+        <EditText
+                android:layout_width="0dp"
+                android:layout_height="0dp" android:layout_marginEnd="411dp" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.tiper.MaterialSpinner
+                android:id="@+id/yearsSpinner"
+                android:layout_width="match_parent"
+                app:spinnerMode="dialog"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/post_ad_exta_info"
+                android:layout_marginTop="100dp"
+                android:layout_margin="32dp" android:hint="Année"/>"
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/adDistanceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Distance en Km"
+            android:layout_margin="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/yearsSpinner">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/adDistance"
+                    android:inputType="number"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.tiper.MaterialSpinner
+                android:id="@+id/energySpinner"
+                android:layout_width="match_parent"
+                app:spinnerMode="dialog"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/adDistanceLayout"
+                android:layout_margin="32dp"
+                android:hint="Energie"/>
+
+        <com.tiper.MaterialSpinner
+                android:id="@+id/nbPersonsSpinner"
+                android:layout_width="match_parent"
+                app:spinnerMode="dialog"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/energySpinner"
+                android:layout_margin="32dp"
+                android:hint="Nombre de Places"/>"
+        <Button
+                android:id="@+id/addExtraInfosAction"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/offer_button"
+                android:text="Suivant"
+                android:fontFamily="@font/rubik_bold"
+                android:textSize="12sp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.5" android:layout_marginStart="16dp"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

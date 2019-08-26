@@ -47,7 +47,7 @@
                     android:layout_marginTop="100dp"
                     android:layout_margin="32dp"
                     android:textSize="36sp"
-                    style="@style/Widget.MaterialComponents.Light.ActionBar.Solid"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
                     android:spinnerMode="dialog"
                     app:entries="@{viewModel.modelEntries}"/>
 
