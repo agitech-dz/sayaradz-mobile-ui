@@ -1,6 +1,7 @@
 package com.example.sayaradz_mobile.injection.component
 
 import com.example.sayaradz_mobile.injection.module.NetworkModule
+import com.example.sayaradz_mobile.viewmodel.AdSpinnersViewModel
 import com.example.sayaradz_mobile.viewmodel.AdsListViewModel
 import dagger.Component
 import javax.inject.Singleton
@@ -13,6 +14,8 @@ interface ViewModelInjector {
      * @param adListViewModel PostListViewModel in which to inject the dependencies
      */
     fun inject(adsListViewModel: AdsListViewModel)
+
+    fun inject(adSpinnersViewModel: AdSpinnersViewModel)
 
     @Component.Builder
     interface Builder {

@@ -41,6 +41,10 @@
                         app:destination="@id/adDetailsFragment" app:enterAnim="@anim/nav_default_pop_enter_anim"
                         app:exitAnim="@anim/nav_default_pop_exit_anim"/>
 
+                <action android:id="@+id/action_adsFragment_to_postAdManufacturerFragment"
+                        app:destination="@id/postAdManufacturer" app:enterAnim="@anim/nav_default_pop_enter_anim"
+                        app:exitAnim="@anim/nav_default_pop_exit_anim"/>
+
         </fragment>
 
         <fragment android:id="@+id/adDetailsFragment"
@@ -64,6 +68,14 @@
                 <argument android:name="adAutomobilist" app:argType="string"/>
                 <argument android:name="adAutomobilistUserName" app:argType="string"/>
                 <argument android:name="adAutomobilistAddress" app:argType="string"/>
+
+        </fragment>
+
+        <fragment android:id="@+id/postAdManufacturer"
+                  android:name="com.example.sayaradz_mobile.Fragments.PostAdManufacturer"
+                  android:label="Home"
+                  tools:layout="@layout/fragment_post_ad_manufacturer">
+
 
         </fragment>
 

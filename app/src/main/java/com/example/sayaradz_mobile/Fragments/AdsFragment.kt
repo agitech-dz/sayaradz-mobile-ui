@@ -11,9 +11,11 @@ import com.example.sayaradz_mobile.R
 import com.example.sayaradz_mobile.databinding.FragmentAdsBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import com.example.sayaradz_mobile.viewmodel.AdsListViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_ads.*
 
 class AdsFragment : Fragment() {
 
@@ -49,6 +51,8 @@ class AdsFragment : Fragment() {
       /*  val rvAdapter = UsedCarAdapter(adsList, context!!)
         recyclerView.adapter = rvAdapter*/
         activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.visibility = View.VISIBLE
+
+
         return binding.root
     }
 
@@ -60,6 +64,15 @@ class AdsFragment : Fragment() {
 
     private fun hideError(){
         errorSnackbar?.dismiss()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        addAdAction.setOnClickListener {
+            val action = AdsFragmentDirections.actionAdsFragmentToPostAdManufacturerFragment()
+            it.findNavController().navigate(action)
+
+        }
     }
 
     //RecycleView--------------------------------------------

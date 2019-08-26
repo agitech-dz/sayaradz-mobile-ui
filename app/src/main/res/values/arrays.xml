@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="brands_array">
+        <item>Ferari</item>
+        <item>BMW</item>
+        <item>Peugeot</item>
+        <item>Toyota</item>
+        <item>Audi</item>
+    </string-array>
+</resources>

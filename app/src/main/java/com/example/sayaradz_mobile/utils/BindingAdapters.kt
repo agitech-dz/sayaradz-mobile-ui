@@ -42,3 +42,7 @@ fun setMutableText(view: TextView, text: MutableLiveData<String>?) {
         text.observe(parentActivity, Observer { value -> view.text = value?:""})
     }
 }
+
+
+
+
