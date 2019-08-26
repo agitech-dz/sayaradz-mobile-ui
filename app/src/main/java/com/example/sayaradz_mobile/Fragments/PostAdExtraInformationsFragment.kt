@@ -65,7 +65,16 @@ class PostAdExtraInformationsFragment : Fragment() {
         val nbpersonsArrayAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, nbPersons)
         nbpersonsArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         nbPersonsSpinner.adapter = nbpersonsArrayAdapter
+
+        addExtraInfosAction.setOnClickListener {
+
+            val action = PostAdExtraInformationsFragmentDirections.actionPostAdExtraInfosFragmentToPostAdPhotosFragment()
+            it.findNavController().navigate(action)
+
+        }
+
     }
+
 
 
 

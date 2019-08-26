@@ -108,9 +108,16 @@
               android:name="com.example.sayaradz_mobile.Fragments.PostAdExtraInformationsFragment"
               android:label="Home"
               tools:layout="@layout/fragment_post_ad_extra_informations">
-
-
+            <action android:id="@+id/action_postAdExtraInfosFragment_to_postAdPhotosFragment"
+                    app:destination="@id/postAdPhotos" app:enterAnim="@anim/nav_default_pop_enter_anim"
+                    app:exitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
+
+        <fragment android:id="@+id/postAdPhotos"
+                  android:name="com.example.sayaradz_mobile.Fragments.PostAdPhotosFragment"
+                  android:label="Home"
+                  tools:layout="@layout/fragment_post_ad_photos">
+        </fragment>
 
 
 

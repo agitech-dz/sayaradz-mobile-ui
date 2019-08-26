@@ -16,5 +16,6 @@
     <string name="post_ad_extra_info">Donnez plus de détails concernant le véhicule</string>
     <string name="post_ad_photos">Ajoutez des photos à votre annonce</string>
     <string name="post_ad_description">Décrivez au mieux votre annonce</string>
+    <string name="post_ad_address">Décrivez au mieux votre annonce</string>
 
 </resources>

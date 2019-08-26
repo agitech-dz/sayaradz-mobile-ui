@@ -84,5 +84,6 @@ dependencies {
     implementation 'com.github.clans:fab:1.6.4'
     implementation 'com.github.chivorns:smartmaterialspinner:1.1.6'
 
+    implementation 'io.fotoapparat:fotoapparat:2.7.0'
 
 }
