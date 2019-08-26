@@ -117,6 +117,16 @@
                   android:name="com.example.sayaradz_mobile.Fragments.PostAdPhotosFragment"
                   android:label="Home"
                   tools:layout="@layout/fragment_post_ad_photos">
+                <action android:id="@+id/action_postAdPhotos_to_postAdDescriptionFragment"
+                        app:destination="@id/postAdDescritpion"
+                        app:enterAnim="@anim/nav_default_pop_enter_anim"
+                        app:exitAnim="@anim/nav_default_pop_exit_anim"/>
+        </fragment>
+
+        <fragment android:id="@+id/postAdDescritpion"
+                  android:name="com.example.sayaradz_mobile.Fragments.PostAdDescriptionFragment"
+                  android:label="Home"
+                  tools:layout="@layout/fragment_post_ad_description">
         </fragment>
 
 

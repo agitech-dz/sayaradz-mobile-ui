@@ -20,6 +20,7 @@ import android.content.pm.PackageManager
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
 
 
 class PostAdPhotosFragment : Fragment() {
@@ -60,6 +61,13 @@ class PostAdPhotosFragment : Fragment() {
             frag.startActivityForResult(intent, CAMERA_REQUEST_CODE) // REQUEST_IMAGE_CAPTURE = 12345
 
         }
+
+        takePhotoAction.setOnClickListener {
+            val action = PostAdPhotosFragmentDirections.actionPostAdPhotosToPostAdDescriptionFragment()
+            it.findNavController().navigate(action)
+
+        }
+
     }
 
 
