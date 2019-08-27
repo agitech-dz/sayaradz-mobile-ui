@@ -18,5 +18,6 @@
     <string name="post_ad_address">Décrivez au mieux votre annonce</string>
     <string name="post_ad_price">Donner le prix estimé du véhicule</string>
     <string name="post_ad_finish">Votre annonce est mise en ligne avec succès!</string>
+    <string name="post_ad_offer">Proposez une offre !\n seuil minimal: </string>
 
 </resources>

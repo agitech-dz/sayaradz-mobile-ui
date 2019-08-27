@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".Fragments.PostAdOfferFragment">
+    <data>
+        <variable
+                name="viewModel"
+                type="com.example.sayaradz_mobile.viewmodel.AdViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:id="@+id/post_ad_offer"
+                android:layout_width="287dp"
+                android:layout_height="72dp"
+                android:text="@string/post_ad_offer"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/rubik_bold"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="52dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/adDistanceLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Prix proposé en DA"
+                android:layout_margin="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/post_ad_price">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/offeredPrice"
+                    android:inputType="number"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+                android:id="@+id/makeOfferAction"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/offer_button"
+                android:text="Proposer"
+                android:fontFamily="@font/rubik_bold"
+                android:textSize="12sp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.5" android:layout_marginStart="16dp"
+        />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

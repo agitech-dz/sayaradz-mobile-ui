@@ -9,11 +9,10 @@ import android.view.ViewGroup
 import com.example.sayaradz_mobile.R
 
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.sayaradz_mobile.data.Ad
 import com.example.sayaradz_mobile.databinding.FragmentAdDetailsBinding
-import com.example.sayaradz_mobile.databinding.FragmentAdsBinding
 import com.example.sayaradz_mobile.viewmodel.AdViewModel
-import com.example.sayaradz_mobile.viewmodel.AdsListViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 
@@ -23,12 +22,14 @@ import com.ouattararomuald.slider.loaders.picasso.PicassoImageLoaderFactory
 import kotlinx.android.synthetic.main.fragment_ad_details.*
 
 
+
 class AdDetailsFragment : Fragment() {
 
     companion object {
         val instance = AdDetailsFragment()
     }
 
+    private lateinit var ad: Ad //ad
     private lateinit var binding: FragmentAdDetailsBinding
     private lateinit var viewModel: AdViewModel
     private var errorSnackbar: Snackbar? = null
@@ -48,7 +49,7 @@ class AdDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val ad = Ad(
+        ad = Ad(
             AdDetailsFragmentArgs.fromBundle(arguments!!).adId,
             AdDetailsFragmentArgs.fromBundle(arguments!!).adModel,
             AdDetailsFragmentArgs.fromBundle(arguments!!).adVersion,
@@ -90,6 +91,14 @@ class AdDetailsFragment : Fragment() {
         //adPersonsNumber.text
         adDescription.text = ad.description
         adMinPrice.text = ad.minPrice + " DA"
+
+        makeOfferAction.setOnClickListener {
+            val action = AdDetailsFragmentDirections.actionPostAdDetailsToPostAdOfferFragment(
+                ad.minPrice,
+                ad.id
+            )
+            it.findNavController().navigate(action)
+        }
     }
 
 

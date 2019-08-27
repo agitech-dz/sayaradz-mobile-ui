@@ -314,7 +314,7 @@
 
 
             <Button
-                    android:id="@+id/offerButton"
+                    android:id="@+id/makeOfferAction"
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/offer_button"

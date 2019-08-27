@@ -7,6 +7,7 @@ import com.example.sayaradz_mobile.R
 import com.example.sayaradz_mobile.base.BaseViewModel
 import com.example.sayaradz_mobile.data.Ad
 import com.example.sayaradz_mobile.data.AdPost
+import com.example.sayaradz_mobile.data.Offer
 import com.example.sayaradz_mobile.network.AdApi
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -174,6 +175,45 @@ class AdViewModel: BaseViewModel() {
     fun getAdAutomobilistAddress():MutableLiveData<String>{
         return adAutomobilistAddress
     }
+
+
+    fun postOffer(automobilist: String, ad: String, offeredPrice: String){
+        subscription = adApi.postOffer(Offer(
+            offredPrice = offeredPrice,
+            automobilist = automobilist,
+            ad = ad
+        ))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { onPostOfferStart() }
+            .doOnTerminate { onPostOfferFinish() }
+            .subscribe(
+                // Add result
+                { result -> onPostOfferSuccess(result) },
+                { error -> onPostOfferError(error) }
+            )
+    }
+
+
+    private fun onPostOfferStart(){
+        loadingVisibility.value = View.VISIBLE
+        errorMessage.value = null
+    }
+
+    private fun onPostOfferFinish(){
+        loadingVisibility.value = View.GONE
+
+    }
+
+    private fun onPostOfferSuccess(offer :Offer){
+        buttonsVisibility.value = View.VISIBLE
+    }
+
+
+    private fun onPostOfferError(error: Throwable){
+        errorMessage.value = R.string.general_info
+    }
+
 
 
 }
