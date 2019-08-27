@@ -10,7 +10,7 @@ class SpalshActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        val intent = Intent(this, Main2Activity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         Thread.sleep(2000)
         startActivity(intent)
         finish()
