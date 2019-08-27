@@ -23,6 +23,11 @@
         <item name="android:shadowColor">@color/black</item>
     </style>
 
+    <style name="priceTab">
+        <item name="android:textColor">@color/price</item>
+        <item name="android:textSize">@dimen/price_dim</item>
+    </style>
+
 
 
 </resources>
