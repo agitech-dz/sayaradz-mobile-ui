@@ -60,7 +60,7 @@ class PostAdModelFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         selectModelAction.setOnClickListener {
             var selectedModel: Model =  modelSpinner.selectedItem as Model
-            val action = PostAdModelFragmentDirections.actionPostAdModelFragmentToPostAdVersionFragment(selectedModel.id)
+            val action = PostAdModelFragmentDirections.actionPostAdModelFragmentToPostAdVersionFragment(PostAdModelFragmentArgs.fromBundle(arguments!!).manufacturerId, selectedModel.id)
             it.findNavController().navigate(action)
 
         }

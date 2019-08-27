@@ -13,8 +13,7 @@ import androidx.navigation.findNavController
 import com.example.sayaradz_mobile.R
 import com.example.sayaradz_mobile.data.Manufacturer
 import com.example.sayaradz_mobile.databinding.FragmentPostAdDescriptionBinding
-import kotlinx.android.synthetic.main.fragment_post_ad_manufacturer.*
-import kotlinx.android.synthetic.main.fragment_post_ad_photos.*
+import kotlinx.android.synthetic.main.fragment_post_ad_description.*
 
 
 class PostAdDescriptionFragment : Fragment() {
@@ -31,6 +30,24 @@ class PostAdDescriptionFragment : Fragment() {
         )
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        addDescriptionAction.setOnClickListener {
+            val action = PostAdDescriptionFragmentDirections.actionPostAdDescritpionToPostAdPriceFragment(
+                PostAdDescriptionFragmentArgs.fromBundle(arguments!!).manufacturerId,
+                PostAdDescriptionFragmentArgs.fromBundle(arguments!!).modelId,
+                PostAdDescriptionFragmentArgs.fromBundle(arguments!!).versionId,
+                PostAdDescriptionFragmentArgs.fromBundle(arguments!!).year,
+                PostAdDescriptionFragmentArgs.fromBundle(arguments!!).distance,
+                PostAdDescriptionFragmentArgs.fromBundle(arguments!!).nbPersons,
+                PostAdDescriptionFragmentArgs.fromBundle(arguments!!).energy,
+                adDescription.text.toString()
+            )
+            it.findNavController().navigate(action)
+        }
+    }
+
 
 
 

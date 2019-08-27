@@ -1,6 +1,6 @@
 package com.example.sayaradz_mobile.data
 
-data class Ad(val id:String,
+data class Ad(var id:String,
               var model:String,
               var version:String,
               var version_name:String,

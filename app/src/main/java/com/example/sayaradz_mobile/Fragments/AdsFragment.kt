@@ -37,9 +37,11 @@ class AdsFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_ads, container, false)
                 // val view = inflater.inflate(R.layout.fragment_ads, container, false)
         viewModel = ViewModelProviders.of(this).get(AdsListViewModel::class.java)
+        viewModel.loadAds()
         viewModel.errorMessage.observe(this, Observer {
                 errorMessage -> if(errorMessage != null) showError(errorMessage) else hideError()
         })
+
         binding.viewModel = viewModel
 
         //val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)

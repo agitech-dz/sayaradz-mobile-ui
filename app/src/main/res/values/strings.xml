@@ -6,7 +6,6 @@
     <string name="title_profile">Profile</string>
     <string name="title_notifications">Inbox</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="general_info">Informations Générales</string>
     <string name="loading_data_error">Ouups!, Try again!</string>
@@ -17,5 +16,7 @@
     <string name="post_ad_photos">Ajoutez des photos à votre annonce</string>
     <string name="post_ad_description">Décrivez au mieux votre annonce</string>
     <string name="post_ad_address">Décrivez au mieux votre annonce</string>
+    <string name="post_ad_price">Donner le prix estimé du véhicule</string>
+    <string name="post_ad_finish">Votre annonce est mise en ligne avec succès!</string>
 
 </resources>

@@ -2,6 +2,7 @@ package com.example.sayaradz_mobile.injection.component
 
 import com.example.sayaradz_mobile.injection.module.NetworkModule
 import com.example.sayaradz_mobile.viewmodel.AdSpinnersViewModel
+import com.example.sayaradz_mobile.viewmodel.AdViewModel
 import com.example.sayaradz_mobile.viewmodel.AdsListViewModel
 import dagger.Component
 import javax.inject.Singleton
@@ -16,6 +17,8 @@ interface ViewModelInjector {
     fun inject(adsListViewModel: AdsListViewModel)
 
     fun inject(adSpinnersViewModel: AdSpinnersViewModel)
+
+    fun inject(adViewModel: AdViewModel)
 
     @Component.Builder
     interface Builder {

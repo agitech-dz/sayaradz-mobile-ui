@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".Fragments.PostAdDescriptionFragment">
+             xmlns:tools="http://schemas.android.com/tools"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             tools:context=".Fragments.PostAdPriceFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <TextView
-                android:id="@+id/post_ad_description"
+                android:id="@+id/post_ad_price"
                 android:layout_width="287dp"
                 android:layout_height="72dp"
-                android:text="@string/post_ad_description"
+                android:text="@string/post_ad_price"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:fontFamily="@font/rubik_bold"
@@ -25,30 +24,30 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"/>
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/adDescriptionLayout"
+                android:id="@+id/adDistanceLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Description"
+                android:hint="Prix Estimé en DA"
                 android:layout_margin="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/post_ad_description">
+                app:layout_constraintTop_toBottomOf="@id/post_ad_price">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/adDescription"
-                    />
+                    android:id="@+id/adPrice"
+                    android:inputType="number"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
-                android:id="@+id/addDescriptionAction"
+                android:id="@+id/addPriceAction"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/offer_button"
-                android:text="Suivant"
+                android:text="Publier l'annonce"
                 android:fontFamily="@font/rubik_bold"
                 android:textSize="12sp"
                 android:layout_marginBottom="24dp"
@@ -58,6 +57,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintHorizontal_bias="0.5" android:layout_marginStart="16dp"
         />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

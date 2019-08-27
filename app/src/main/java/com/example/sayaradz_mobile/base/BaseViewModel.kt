@@ -5,6 +5,7 @@ import com.example.sayaradz_mobile.injection.component.DaggerViewModelInjector
 import com.example.sayaradz_mobile.injection.component.ViewModelInjector
 import com.example.sayaradz_mobile.injection.module.NetworkModule
 import com.example.sayaradz_mobile.viewmodel.AdSpinnersViewModel
+import com.example.sayaradz_mobile.viewmodel.AdViewModel
 import com.example.sayaradz_mobile.viewmodel.AdsListViewModel
 
 abstract class BaseViewModel: ViewModel() {
@@ -25,6 +26,7 @@ abstract class BaseViewModel: ViewModel() {
         when (this) {
             is AdsListViewModel -> injector.inject(this)
             is AdSpinnersViewModel -> injector.inject(this)
+            is AdViewModel -> injector.inject(this)
         }
     }
 }

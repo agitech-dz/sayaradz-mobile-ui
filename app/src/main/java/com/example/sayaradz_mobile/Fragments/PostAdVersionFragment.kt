@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 
 import com.example.sayaradz_mobile.R
+import com.example.sayaradz_mobile.data.Version
 import com.example.sayaradz_mobile.databinding.FragmentPostAdVersionBinding
 import com.example.sayaradz_mobile.viewmodel.AdSpinnersViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -59,11 +60,13 @@ class PostAdVersionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         selectVersionAction.setOnClickListener {
 
-            val action = PostAdVersionFragmentDirections.actionPostAdVersionFragmentToPostAdExtraInformationsFragment()
+            val action = PostAdVersionFragmentDirections.actionPostAdVersionFragmentToPostAdExtraInformationsFragment(
+                PostAdVersionFragmentArgs.fromBundle(arguments!!).manufacturerId,
+                PostAdVersionFragmentArgs.fromBundle(arguments!!).modelId,
+                (versionSpinner.selectedItem as Version).id
+            )
             it.findNavController().navigate(action)
-
         }
-
     }
 
 }

@@ -10,8 +10,10 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.example.sayaradz_mobile.data.Version
 import com.example.sayaradz_mobile.databinding.FragmentPostAdExtraInformationsBinding
 import kotlinx.android.synthetic.main.fragment_post_ad_extra_informations.*
+import kotlinx.android.synthetic.main.fragment_post_ad_version.*
 import java.util.*
 
 
@@ -68,7 +70,16 @@ class PostAdExtraInformationsFragment : Fragment() {
 
         addExtraInfosAction.setOnClickListener {
 
-            val action = PostAdExtraInformationsFragmentDirections.actionPostAdExtraInfosFragmentToPostAdPhotosFragment()
+            val action = PostAdExtraInformationsFragmentDirections.actionPostAdExtraInfosFragmentToPostAdPhotosFragment(
+                PostAdExtraInformationsFragmentArgs.fromBundle(arguments!!).manufacturerId,
+                PostAdExtraInformationsFragmentArgs.fromBundle(arguments!!).modelId,
+                PostAdExtraInformationsFragmentArgs.fromBundle(arguments!!).versionId,
+                yearsSpinner.selectedItem as String,
+                adDistance.text.toString(),
+                nbPersonsSpinner.selectedItem as String,
+                energySpinner.selectedItem as String
+            )
+
             it.findNavController().navigate(action)
 
         }

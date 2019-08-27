@@ -27,11 +27,22 @@ class AdsListViewModel: BaseViewModel(){
 
     private lateinit var subscription: Disposable
 
-    init{
-        loadAds()
+
+
+    fun searchAds(search: String){
+        subscription = adApi.searchAds(search)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { onRetrieveAdsListStart() }
+            .doOnTerminate { onRetrieveAdsListFinish() }
+            .subscribe(
+                // Add result
+                { result -> onRetrieveAdsListSuccess(result) },
+                { error -> onRetrieveAdsListError(error) }
+            )
     }
 
-    private fun loadAds(){
+    fun loadAds(){
         subscription = adApi.getAds()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -60,13 +71,6 @@ class AdsListViewModel: BaseViewModel(){
     private fun onRetrieveAdsListError(error: Throwable){
         Log.e("throwable", error.localizedMessage)
         errorMessage.value = R.string.general_info
-    }
-
-    private fun handleError(error: Throwable) {
-
-
-
-        //Toast.makeText(this, "Error ${error.localizedMessage}", Toast.LENGTH_SHORT).show()
     }
 
     override fun onCleared() {

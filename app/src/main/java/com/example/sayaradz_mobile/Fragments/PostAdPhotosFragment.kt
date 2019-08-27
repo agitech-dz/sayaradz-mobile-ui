@@ -21,6 +21,7 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
+import kotlinx.android.synthetic.main.fragment_post_ad_extra_informations.*
 
 
 class PostAdPhotosFragment : Fragment() {
@@ -63,7 +64,16 @@ class PostAdPhotosFragment : Fragment() {
         }
 
         takePhotoAction.setOnClickListener {
-            val action = PostAdPhotosFragmentDirections.actionPostAdPhotosToPostAdDescriptionFragment()
+
+            val action = PostAdPhotosFragmentDirections.actionPostAdPhotosToPostAdDescriptionFragment(
+                PostAdPhotosFragmentArgs.fromBundle(arguments!!).manufacturerId,
+                PostAdPhotosFragmentArgs.fromBundle(arguments!!).modelId,
+                PostAdPhotosFragmentArgs.fromBundle(arguments!!).versionId,
+                PostAdPhotosFragmentArgs.fromBundle(arguments!!).year,
+                PostAdPhotosFragmentArgs.fromBundle(arguments!!).distance,
+                PostAdPhotosFragmentArgs.fromBundle(arguments!!).nbPersons,
+                PostAdPhotosFragmentArgs.fromBundle(arguments!!).energy
+            )
             it.findNavController().navigate(action)
 
         }

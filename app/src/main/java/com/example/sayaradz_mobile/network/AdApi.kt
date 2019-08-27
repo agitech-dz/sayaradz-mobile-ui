@@ -1,8 +1,9 @@
 package com.example.sayaradz_mobile.network
 
 import com.example.sayaradz_mobile.data.Ad
-import retrofit2.http.GET
+import com.example.sayaradz_mobile.data.AdPost
 import io.reactivex.Observable
+import retrofit2.http.*
 
 interface AdApi {
     /**
@@ -10,4 +11,19 @@ interface AdApi {
      */
     @GET("/api/automobilist/ads/")
     fun getAds(): Observable<List<Ad>>
+
+
+    /**
+     * Post a new Ad
+     */
+    @Headers("Content-Type: application/json")
+    @POST("/api/automobilist/ads/")
+    fun postAd(@Body body: AdPost): Observable<Ad>
+
+    /**
+     * Post a new Ad
+     */
+    @GET("/api/automobilist/ads-filter")
+    fun searchAds(@Query("search") search: String):  Observable<List<Ad>>
+
 }
