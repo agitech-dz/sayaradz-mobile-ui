@@ -17,7 +17,7 @@ import javax.inject.Inject
 class AdsListViewModel: BaseViewModel(){
 
     val errorMessage:MutableLiveData<Int> = MutableLiveData()
-    val errorClickListener = View.OnClickListener { loadAds() }
+    val errorClickListener = View.OnClickListener {  }
     @Inject
     lateinit var adApi: AdApi
 
@@ -27,6 +27,9 @@ class AdsListViewModel: BaseViewModel(){
 
     private lateinit var subscription: Disposable
 
+    init {
+        loadAds()
+    }
 
 
     fun searchAds(search: String){

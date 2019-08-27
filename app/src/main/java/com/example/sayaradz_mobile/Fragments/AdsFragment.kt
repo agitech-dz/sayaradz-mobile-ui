@@ -1,8 +1,10 @@
 package com.example.sayaradz_mobile.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.annotation.StringRes
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.databinding.DataBindingUtil
@@ -37,7 +39,7 @@ class AdsFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_ads, container, false)
                 // val view = inflater.inflate(R.layout.fragment_ads, container, false)
         viewModel = ViewModelProviders.of(this).get(AdsListViewModel::class.java)
-        viewModel.loadAds()
+
         viewModel.errorMessage.observe(this, Observer {
                 errorMessage -> if(errorMessage != null) showError(errorMessage) else hideError()
         })
@@ -74,6 +76,20 @@ class AdsFragment : Fragment() {
             val action = AdsFragmentDirections.actionAdsFragmentToPostAdManufacturerFragment()
             it.findNavController().navigate(action)
         }
+
+        searchAd.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                viewModel.searchAds(searchAd.query.toString())
+                Log.e("search", searchAd.query.toString())
+                return false
+            }
+
+        })
     }
 
     //RecycleView--------------------------------------------

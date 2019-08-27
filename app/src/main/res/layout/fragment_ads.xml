@@ -27,7 +27,7 @@
                 app:layout_constraintTop_toTopOf="parent" android:id="@+id/constraintLayout">
 
             <TextView
-                    android:text="@string/title_ads"
+                    android:text=""
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -37,12 +37,14 @@
                     android:layout_marginBottom="20dp" app:layout_constraintBottom_toBottomOf="parent"
                     android:textStyle="bold"/>
             <SearchView
+                    android:id="@+id/searchAd"
                     android:layout_width="wrap_content"
                     android:layout_height="52dp"
                     android:layout_marginEnd="16dp"
                     android:searchIcon="@drawable/ic_search_white"
                     android:theme="@style/SearchTheme"
-                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="8dp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
         <ProgressBar
