@@ -1,34 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
-                                             android:layout_height="match_parent">
 
-    <android.support.v7.widget.CardView
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="5dp"
+        app:cardElevation="8dp"
+        android:clickable="true" android:theme="@style/card"
+        app:cardCornerRadius="4dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:id="@+id/itemContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5">
+
+    <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        <ImageView
+                android:layout_width="114dp"
+                android:layout_height="106dp"
+                android:scaleType="fitXY"
+                android:id="@+id/notificationImage" app:srcCompat="@drawable/bmw"/>
         <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <ImageView
-                    android:layout_width="89dp"
-                    android:layout_height="89dp" app:srcCompat="@drawable/bmw" android:id="@+id/imageView4"
-                    android:layout_weight="1"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+        >
             <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
                     android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" android:layout_weight="1">
+            >
                 <TextView
-                        android:text="Commande"
-                        android:layout_width="121dp"
-                        android:layout_height="wrap_content" android:id="@+id/textView13" android:layout_weight="1"
-                        android:textSize="18sp" android:textStyle="bold"/>
-                <TextView
-                        android:text="Votre commande pour la BMW 525 est prête!"
+                        android:id="@+id/notificationTitle"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/textView14" android:layout_weight="1"/>
+                        android:layout_height="wrap_content"
+                        android:text="Command"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" android:fontFamily="@font/rubik_bold"
+                        android:textSize="18sp"/>
+                <TextView
+                        android:id="@+id/notificationDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Your Command for the BMW M525 is Ready!"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" android:fontFamily="@font/rubik_light"
+                        android:textSize="15sp"/>
+
             </LinearLayout>
         </LinearLayout>
-    </android.support.v7.widget.CardView>
-</android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
