@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import com.example.sayaradz_mobile.Fragments.AdsFragment
 import com.example.sayaradz_mobile.Fragments.GarageFragment
@@ -14,6 +15,10 @@ import com.example.sayaradz_mobile.R
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        val instance = MainActivity()
+    }
+
     private val fm = supportFragmentManager
     private val homeFragment = HomeFragment.instance
     private val garageFragment = GarageFragment.instance
@@ -21,6 +26,11 @@ class MainActivity : AppCompatActivity() {
     private val inboxFragment = InboxFragment.instance
     private val profileFragment = ProfileFragment.instance
     private var active:Fragment = homeFragment
+
+    fun getActive() : Fragment {return active}
+    fun setActive(fragment: Fragment){this.active=fragment}
+    fun getFm(): FragmentManager {return fm}
+
     @SuppressLint("RestrictedApi")
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {

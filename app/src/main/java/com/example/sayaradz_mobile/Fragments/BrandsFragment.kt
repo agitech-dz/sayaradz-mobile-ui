@@ -1,43 +1,38 @@
 package com.example.sayaradz_mobile.Fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
-import android.view.*
-import  com.example.sayaradz_mobile.Data.DataUtil
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.TextView
 import com.example.sayaradz.Data.Manufactors
 import com.example.sayaradz.Model.RestService
-import com.example.sayaradz_mobile.Adapters.BrandAdapter
-import com.example.sayaradz_mobile.Adapters.CarAdapter
-import com.example.sayaradz_mobile.Model.Car
+import com.example.sayaradz_mobile.Adapters.ListBrandAdapter
+import com.example.sayaradz_mobile.Data.DataUtil
 import com.example.sayaradz_mobile.R
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.content.Context
+
+import android.view.GestureDetector
+import android.view.MotionEvent
 
 
+class BrandsFragment : Fragment() {
 
-
-
-
-
-
-
-class HomeFragment : Fragment() {
 
     companion object {
-        val instance = HomeFragment()
+        val instance = BrandsFragment()
     }
-    private var idBrandClicked: Int = 0
-    private var carList = ArrayList<Car>()
-    private var brandList = ArrayList<String>()
-    private val dataUtil = DataUtil()
 
+    private var idBrandClicked: Int = 0
+    private var brandList = ArrayList<Manufactors>()
+    private val dataUtil = DataUtil()
 
     fun getIdBrandClicked() : Int {
         return idBrandClicked
@@ -47,65 +42,42 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
-        val AddAllBrands = view.findViewById<TextView>(R.id.seeAllBrands)
-
-        AddAllBrands.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View) {
-
-                val newCase = BrandsFragment.instance
-                val transaction = fragmentManager!!.beginTransaction()
-                transaction.replace(R.id.containFragment, newCase)
-                    .addToBackStack("transaction_name")
-                    .commit()
-            }
-        })
-
-
-        carList.add(Car("BMW 520d", "5.000.000", ""))
-        carList.add(Car("BMW 320d", "3.000.000", ""))
-        carList.add(Car("BMW 320d", "3.000.000", ""))
-        carList.add(Car("BMW 320d", "3.000.000", ""))
-        carList.add(Car("BMW 320d", "3.000.000", ""))
-        carList.add(Car("BMW 320d", "3.000.000", ""))
-
-        Log.d("Start ", "Start the brandlist getting" )
+        val view = inflater.inflate(R.layout.fragment_brands, container, false)
         val service = dataUtil.getRetrofit(getContext()!!).create(RestService::class.java)
 
-        var marks: ArrayList<String>? = arrayListOf()
         val call = service.ListMarque(1, 5)
         call.enqueue(object : Callback<MutableList<Manufactors>> {
             override fun onFailure(call: Call<MutableList<Manufactors>>, t: Throwable) {
                 Log.d("fail ", "you've got it but with a big fail shitty " + t.message)
             }
 
-            override fun onResponse(call: retrofit2.Call<MutableList<Manufactors>>, response: Response<MutableList<Manufactors>>) {
+            override fun onResponse(
+                call: retrofit2.Call<MutableList<Manufactors>>,
+                response: Response<MutableList<Manufactors>>
+            ) {
                 if (response.code() == 200) {
+
                     // Thread.sleep(40000)
                     var MarqueList = response.body()
+                    Log.d("Tmarque ", "here you are you had that option ")
                     if (MarqueList != null) {
-                        var j =0
-                        for(i in MarqueList ){
-                            marks!!.add( i.name)
-                        }
 
-                        brandList.addAll(marks!!)
-                        val recyclerView4 = view.findViewById<RecyclerView>(R.id.recyclerView4)
-                        recyclerView4.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
-                        val brandAdapter = BrandAdapter(brandList)
-                        recyclerView4.adapter = brandAdapter
-
-                        recyclerView4.addOnItemTouchListener(
-                            BrandsFragment.OnClickItem(
+                        brandList.addAll(MarqueList!!)
+                        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewBrands)
+                        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+                        val rvAdapter = ListBrandAdapter(brandList)
+                        recyclerView.adapter = rvAdapter
+                        recyclerView.addOnItemTouchListener(
+                            OnClickItem(
                                 getContext()!!,
-                                recyclerView4,
-                                object : BrandsFragment.OnItemClickListener {
+                                recyclerView,
+                                object : OnItemClickListener {
 
                                     override fun onItemClick(view: View, position: Int) {
-                                        HomeFragment.instance.idBrandClicked = MarqueList.get(position).id
+                                        instance.idBrandClicked = brandList.get(position).id
                                         val newCase = ModelFragment.instance
                                         val transaction = fragmentManager!!.beginTransaction()
-                                        transaction.replace(R.id.containFragment, newCase)
+                                        transaction.replace(R.id.containFragment1, newCase)
                                             .addToBackStack("transaction_name")
                                             .commit()
                                     }
@@ -116,39 +88,13 @@ class HomeFragment : Fragment() {
                                 })
                         )
 
-
-
                     }
                 }
             }
         })
 
-
-
-
-
-
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-        val recyclerView2 = view.findViewById<RecyclerView>(R.id.recyclerView2)
-        val recyclerView3 = view.findViewById<RecyclerView>(R.id.recyclerView3)
-
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
-        recyclerView2.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
-        recyclerView3.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
-
-        val rvAdapter = CarAdapter(carList)
-
-        recyclerView.adapter = rvAdapter
-        recyclerView2.adapter = rvAdapter
-        recyclerView3.adapter = rvAdapter
-
-
-
         return view
     }
-
-
-
 
 
     class OnClickItem(context: Context, recyclerView: RecyclerView, private val mListener: OnItemClickListener?) :
@@ -193,8 +139,4 @@ class HomeFragment : Fragment() {
 
         fun onItemLongClick(view: View?, position: Int)
     }
-
-
-
-
 }
