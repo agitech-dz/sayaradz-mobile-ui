@@ -1,7 +1,7 @@
 package com.example.sayaradz_mobile.Activities
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.sayaradz_mobile.R
 
@@ -10,7 +10,7 @@ class SpalshActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, Main2Activity::class.java)
         Thread.sleep(2000)
         startActivity(intent)
         finish()

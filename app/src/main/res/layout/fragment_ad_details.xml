@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".Fragments.AdDetailsFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingBottom="70dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent">
+
+                <com.ouattararomuald.slider.ImageSlider
+                        android:id="@+id/image_slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
+                        app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+                </com.ouattararomuald.slider.ImageSlider>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/brandAndModelLayout"
+                        android:orientation="vertical"
+                        app:layout_constraintTop_toBottomOf="@+id/image_slider"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginTop="16dp">
+                    <TextView
+                            android:id="@+id/adBrand"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tesla"
+                            android:textStyle="bold"
+                            android:textColor="@color/black" android:fontFamily="@font/rubik_bold"
+                            android:textSize="20sp"/>
+                    <TextView
+                            android:id="@+id/adModelAndVersion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Model 3 Long Range"
+                            android:textStyle="bold"
+                            android:textColor="#202020"
+                            android:fontFamily="@font/rubik_light"
+                            android:textSize="20sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/brandAndModelLayout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_margin="32dp"
+                        android:orientation="vertical"
+                        android:elevation="2dp"
+                        android:id="@+id/generalInfolayout"
+                        android:background="@drawable/rect">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/general_info"
+                            android:textColor="@color/colorPrimary"
+                            android:fontFamily="@font/rubik_bold"
+                            android:textSize="16sp"
+                            android:layout_margin="16dp"/>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginLeft="16dp">
+                        <RelativeLayout
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content">
+                            <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/ic_av_timer_black_24dp"
+                                    android:id="@+id/kilomImage"
+                                    android:layout_centerVertical="true"/>
+                            <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_toRightOf="@id/kilomImage">
+                                <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Kilométrage"
+                                        android:textColor="#4B4A4A"
+                                        android:fontFamily="@font/rubik_light"
+                                        android:textSize="14sp"
+
+
+                                />
+                                <TextView
+                                        android:id="@+id/adKm"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="130 000 km"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/black"
+                                        android:fontFamily="@font/rubik_light"
+                                        android:textSize="14sp"
+                                        android:layout_marginTop="5dp"
+                                />
+                            </LinearLayout>
+
+                        </RelativeLayout>
+                        <RelativeLayout
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp">
+                            <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/ic_date"
+                                    android:id="@+id/yearImage"
+                                    android:layout_centerVertical="true"
+                                    android:tint="@color/black"/>
+                            <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_toRightOf="@id/yearImage">
+                                <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Année"
+                                        android:textColor="#4B4A4A"
+                                        android:fontFamily="@font/rubik_light"
+                                        android:textSize="14sp"/>
+                                <TextView
+                                        android:id="@+id/adYear"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="2018"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/black"
+                                        android:fontFamily="@font/rubik_light"
+                                        android:textSize="14sp"
+                                        android:layout_marginTop="5dp"/>
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="16dp">
+                        <RelativeLayout
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content">
+                            <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/ic_av_timer_black_24dp"
+                                    android:id="@+id/personImage"
+                                    android:layout_centerVertical="true"/>
+                            <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_toRightOf="@id/personImage">
+                                <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Personnes"
+                                        android:textColor="#4B4A4A"
+                                        android:fontFamily="@font/rubik_light"
+                                        android:textSize="14sp"
+                                />
+                                <TextView
+                                        android:id="@+id/adPersonsNumber"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="5"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/black"
+                                        android:fontFamily="@font/rubik_light"
+                                        android:textSize="14sp"
+                                        android:layout_marginTop="5dp"
+
+                                />
+                            </LinearLayout>
+
+                        </RelativeLayout>
+                        <RelativeLayout
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp">
+                            <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/ic_date"
+                                    android:id="@+id/energyImage"
+                                    android:layout_centerVertical="true"
+                                    android:tint="@color/black"/>
+                            <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_toRightOf="@id/energyImage">
+                                <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Energie"
+                                        android:textColor="#4B4A4A"
+                                        android:fontFamily="@font/rubik_light"
+                                        android:textSize="14sp"/>
+                                <TextView
+                                        android:id="@+id/adEnergy"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Electrique"
+                                        android:textColor="@color/black"
+                                        android:fontFamily="@font/rubik_light"
+                                        android:textSize="14sp"
+                                        android:layout_marginTop="5dp"/>
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/generalInfolayout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginRight="32dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical"
+                        android:elevation="2dp"
+                        android:background="@drawable/rect"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Description"
+                            android:textColor="@color/colorPrimary"
+                            android:fontFamily="@font/rubik_bold"
+                            android:textSize="16sp"
+                            android:layout_margin="16dp"/>
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet."
+                            android:textColor="#4B4A4A"
+                            android:fontFamily="@font/rubik_light"
+                            android:textSize="16sp"
+                            android:layout_margin="16dp"/>
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/rect"
+                android:id="@+id/bottomView">
+            <TextView
+
+                    android:id="@+id/adMinPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="800 000 DA"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/rubik_bold"
+                    android:textSize="22sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_margin="16dp"
+                    android:gravity="center_vertical" app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+            <Button
+                    android:id="@+id/offerButton"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/offer_button"
+                    android:text="Make Offer"
+                    android:fontFamily="@font/rubik_bold"
+                    android:textSize="12sp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
