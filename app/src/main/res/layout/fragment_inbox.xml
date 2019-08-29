@@ -31,6 +31,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
             <LinearLayout
                     android:orientation="vertical"
+                    android:background="@color/gray"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                 <ScrollView

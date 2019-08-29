@@ -1,33 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:elevation="5dp"
-        app:cardElevation="8dp"
-        android:clickable="true" android:theme="@style/card"
-        app:cardCornerRadius="4dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
+        android:clickable="true" android:theme="@style/item"
         android:id="@+id/itemContainer"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/gray"
         app:layout_constraintHorizontal_bias="0.5">
 
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="140dp"
+            android:orientation="horizontal" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/background"
+            android:layout_marginBottom="1pt"
+            android:layout_marginLeft="1pt"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <ImageView
-                android:layout_width="114dp"
-                android:layout_height="106dp"
-                android:scaleType="fitXY"
-                android:id="@+id/notificationImage" app:srcCompat="@drawable/bmw"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:layout_width="84dp"
+                    android:layout_height="61dp"
+                    android:scaleType="fitXY"
+                    android:id="@+id/notificationImage" app:srcCompat="@drawable/bmw"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0" android:layout_marginTop="12dp"
+            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,7 +63,7 @@
                         android:id="@+id/notificationDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Your Command for the BMW M525 is Ready!"
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet ante et felis aliquet efficitur eget sollicitudin nisl.,......"
                         android:textStyle="bold"
                         android:textColor="@color/black" android:fontFamily="@font/rubik_light"
                         android:textSize="15sp"/>
@@ -63,5 +72,5 @@
         </LinearLayout>
 
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
