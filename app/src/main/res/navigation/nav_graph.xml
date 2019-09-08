@@ -14,24 +14,37 @@
 
         <fragment android:id="@+id/garageFragment"
                   android:name="com.example.sayaradz_mobile.Fragments.GarageFragment"
-                  android:label="Home"
+                  android:label="Garage"
                   tools:layout="@layout/fragment_garage">
 
         </fragment>
 
         <fragment android:id="@+id/inboxFragment"
                   android:name="com.example.sayaradz_mobile.Fragments.InboxFragment"
-                  android:label="Home"
+                  android:label="Garage"
                   tools:layout="@layout/fragment_inbox">
+            <action android:id="@+id/action_inboxFragment_to_notificationDetailsFragment"
+                    app:destination="@id/notificationDetailsFragment" app:enterAnim="@anim/nav_default_pop_enter_anim"
+                    app:exitAnim="@anim/nav_default_pop_exit_anim"/>
 
+        </fragment>
+
+        <fragment android:id="@+id/notificationDetailsFragment"
+                  android:name="com.example.sayaradz_mobile.Fragments.NotificationDetailsFragment"
+                  android:label="Notification Details"
+                  tools:layout="@layout/fragment_notification_details">
+                <argument android:name="notificationId" app:argType="string"/>
         </fragment>
 
         <fragment android:id="@+id/profileFragment"
                   android:name="com.example.sayaradz_mobile.Fragments.ProfileFragment"
-                  android:label="Home"
+                  android:label="Profile"
                   tools:layout="@layout/fragment_profile">
 
+
         </fragment>
+
+
 
         <fragment android:id="@+id/adsFragment"
                   android:name="com.example.sayaradz_mobile.Fragments.AdsFragment"

@@ -6,7 +6,7 @@
     <string name="title_profile">Profile</string>
     <string name="title_notifications">Inbox</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="general_info">Informations Générales</string>
+    <string name="command_info">Informations Commande</string>
 </resources>

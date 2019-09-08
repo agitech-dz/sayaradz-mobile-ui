@@ -45,8 +45,8 @@ class UsedCarAdapter(var itemList:List<Ad>, val context: Context): RecyclerView.
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val container = itemView.findViewById<View>(R.id.itemContainer)
-        val adBrand = itemView.findViewById<TextView>(R.id.adBrand)
-        val adModelAndVersion = itemView.findViewById<TextView>(R.id.adModelAndVersion)
+        val adBrand = itemView.findViewById<TextView>(R.id.notificationTitle)
+        val adModelAndVersion = itemView.findViewById<TextView>(R.id.notificationDescription)
         val adYearAndDistance = itemView.findViewById<TextView>(R.id.adYearAndDistance)
         val adMinPrice = itemView.findViewById<TextView>(R.id.adMinPrice)
         val adImage = itemView.findViewById<ImageView>(R.id.adImage)

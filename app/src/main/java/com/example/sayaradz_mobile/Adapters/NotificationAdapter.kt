@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sayaradz_mobile.Fragments.InboxFragment
+import com.example.sayaradz_mobile.Fragments.InboxFragmentDirections
 import com.example.sayaradz_mobile.Model.Notification
 import com.example.sayaradz_mobile.R
 
@@ -42,11 +44,11 @@ class NotificationAdapter(var itemList:List<Notification>, val context: Context)
         val notificationDescription = itemView.findViewById<TextView>(R.id.notificationDescription)
     }
 
-    private fun handleClick(view: View, adId: String) {
-//        val action = AdsFragmentDirections.actionAdsFragmentToAdDetailsFragment(adId)
-//        view.setOnClickListener { v: View ->
-//            v.findNavController().navigate(action)
-//        }
+    private fun handleClick(view: View, notificationId: String) {
+        val action = InboxFragmentDirections.actionInboxFragmentToNotificationDetailsFragment(notificationId)
+        view.setOnClickListener { v: View ->
+            v.findNavController().navigate(action)
+        }
 
     }
 

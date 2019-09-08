@@ -43,7 +43,7 @@
                         android:orientation="vertical"
                 >
                     <TextView
-                            android:id="@+id/adBrand"
+                            android:id="@+id/notificationTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Tesla"
@@ -51,7 +51,7 @@
                             android:textColor="@color/black" android:fontFamily="@font/rubik_bold"
                             android:textSize="18sp"/>
                     <TextView
-                            android:id="@+id/adModelAndVersion"
+                            android:id="@+id/notificationDescription"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Model 3 Long Range"
