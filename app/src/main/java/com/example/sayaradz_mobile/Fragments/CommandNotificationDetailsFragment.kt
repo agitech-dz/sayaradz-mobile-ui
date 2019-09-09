@@ -9,30 +9,31 @@ import android.view.ViewGroup
 import com.example.sayaradz_mobile.R
 
 import androidx.databinding.DataBindingUtil
-import com.example.sayaradz_mobile.databinding.FragmentAdDetailsBinding
-import com.example.sayaradz_mobile.databinding.FragmentNotificationDetailsBinding
+import androidx.navigation.fragment.navArgs
+import com.example.sayaradz_mobile.databinding.FragmentCommandNotificationDetailsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-import com.ouattararomuald.slider.ImageSlider
 import com.ouattararomuald.slider.SliderAdapter
 import com.ouattararomuald.slider.loaders.picasso.PicassoImageLoaderFactory
 import kotlinx.android.synthetic.main.fragment_ad_details.*
 
 
-class NotificationDetailsFragment : Fragment() {
+class CommandNotificationDetailsFragment : Fragment() {
 
     companion object {
-        val instance = NotificationDetailsFragment()
+        val instance = CommandNotificationDetailsFragment()
     }
+
+    val args:CommandNotificationDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentNotificationDetailsBinding = DataBindingUtil.inflate(
+        val binding: FragmentCommandNotificationDetailsBinding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_notification_details,
+            R.layout.fragment_command_notification_details,
             container,
             false)
 
@@ -42,11 +43,9 @@ class NotificationDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val imageUrls = arrayListOf(
-            "https://imgd.aeplcdn.com/424x424/cw/ec/26916/Audi-Q3-Front-view-92293.jpg?v=201711021421&q=85",
-            "https://imgd.aeplcdn.com/424x424/cw/ec/26916/Audi-Q3-Front-view-92293.jpg?v=201711021421&q=85",
-            "https://imgd.aeplcdn.com/424x424/cw/ec/26916/Audi-Q3-Front-view-92293.jpg?v=201711021421&q=85"
+            args.notification.photo
         )
-        //var adId = com.example.sayaradz_mobile.Fragments.AdDetailsFragmentArgs.fromBundle(arguments!!).adId
+
         activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.visibility = View.GONE
 
 

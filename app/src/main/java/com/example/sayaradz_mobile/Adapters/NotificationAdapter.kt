@@ -4,10 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.sayaradz_mobile.Fragments.InboxFragment
 import com.example.sayaradz_mobile.Fragments.InboxFragmentDirections
 import com.example.sayaradz_mobile.Model.Notification
@@ -34,7 +37,8 @@ class NotificationAdapter(var itemList:List<Notification>, val context: Context)
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         p0.notificationTitle.text = itemList.get(p1).title
         p0.notificationDescription.text = itemList.get(p1).description
-        handleClick(p0.container, itemList[p1].id.toString())
+        Glide.with(context).load(itemList.get(p1).photo).into(p0.notificationImage)
+        handleClick(p0.container, itemList[p1])
 
     }
 
@@ -42,12 +46,24 @@ class NotificationAdapter(var itemList:List<Notification>, val context: Context)
         val container = itemView.findViewById<View>(R.id.itemContainer)
         val notificationTitle = itemView.findViewById<TextView>(R.id.notificationTitle)
         val notificationDescription = itemView.findViewById<TextView>(R.id.notificationDescription)
+        val notificationImage = itemView.findViewById<ImageView>(R.id.notificationImage)
     }
 
-    private fun handleClick(view: View, notificationId: String) {
-        val action = InboxFragmentDirections.actionInboxFragmentToNotificationDetailsFragment(notificationId)
+    private fun handleClick(view: View, notification: Notification) {
+        var action: NavDirections? = null
+        when(notification.notification_type){
+            "CV" -> {
+                action = InboxFragmentDirections.actionInboxFragmentToCommandNotificationDetailsFragment(notification)
+
+            }
+            "OA" -> {
+                action = InboxFragmentDirections.actionInboxFragmentToOfferNotificationDetailsFragment(notification)
+
+            }
+        }
+
         view.setOnClickListener { v: View ->
-            v.findNavController().navigate(action)
+            v.findNavController().navigate(action!!)
         }
 
     }
