@@ -1,7 +1,7 @@
 package com.example.sayaradz_mobile.Model
 
 data class OfferNotification (
-    override val id: Int,
+    val id: Int,
     val offer: Int,
     val actor: String,
     val actorUserName: String,
@@ -12,5 +12,5 @@ data class OfferNotification (
     val verb: String,
     val timestamp: String,
     val unread: Boolean,
-    override val notification_type: String
-): Notification(id,"Offer", "You have got an offer from $actorUserName",notification_type)
+    val notification_type: String
+): Notification("Offer", "You have got an offer from $actorUserName","https://cdn.motor1.com/images/mgl/OjmPo/s1/tesla-model-s-render.jpg")

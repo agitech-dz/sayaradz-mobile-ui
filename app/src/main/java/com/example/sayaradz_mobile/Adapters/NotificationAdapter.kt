@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sayaradz_mobile.Fragments.InboxFragment
 import com.example.sayaradz_mobile.Fragments.InboxFragmentDirections
+import com.example.sayaradz_mobile.Model.CommandNotification
 import com.example.sayaradz_mobile.Model.Notification
+import com.example.sayaradz_mobile.Model.OfferNotification
 import com.example.sayaradz_mobile.R
 
 class NotificationAdapter(var itemList:List<Notification>, val context: Context): RecyclerView.Adapter<NotificationAdapter.ViewHolder>(){
@@ -51,12 +53,12 @@ class NotificationAdapter(var itemList:List<Notification>, val context: Context)
 
     private fun handleClick(view: View, notification: Notification) {
         var action: NavDirections? = null
-        when(notification.notification_type){
-            "CV" -> {
+        when(notification){
+            is CommandNotification -> {
                 action = InboxFragmentDirections.actionInboxFragmentToCommandNotificationDetailsFragment(notification)
 
             }
-            "OA" -> {
+            is OfferNotification -> {
                 action = InboxFragmentDirections.actionInboxFragmentToOfferNotificationDetailsFragment(notification)
 
             }
