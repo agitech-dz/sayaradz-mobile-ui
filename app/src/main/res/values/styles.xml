@@ -26,6 +26,7 @@
     <style name="priceTab">
         <item name="android:textColor">@color/price</item>
         <item name="android:textSize">@dimen/price_dim</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 

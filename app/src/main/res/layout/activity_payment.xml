@@ -4,16 +4,16 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/backgroundf"
         tools:context=".Activities.PaymentActivity">
 
     <android.support.v7.widget.CardView
-            android:layout_width="280dp"
-            android:layout_height="400dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="32dp"
             app:cardBackgroundColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +31,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:background="@android:color/transparent"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/backarrow" />
@@ -44,7 +44,7 @@
                     android:layout_marginEnd="8dp"
                     android:text="Car Order"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
+                    android:textSize="25sp"
                     app:layout_constraintBottom_toBottomOf="@+id/returnButton"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -65,55 +65,126 @@
                         android:id="@+id/carImage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/bmwcar" />
+                        app:srcCompat="@drawable/imageplaceholder" />
             </android.support.v7.widget.CardView>
 
             <TextView
-                    android:id="@+id/brandModel"
+                    android:id="@+id/brandText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="Brand Model"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/brand"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+            <TextView
+                    android:id="@+id/modelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/model"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/brandText"
+                    app:layout_constraintTop_toBottomOf="@+id/brandText" />
+
+            <TextView
+                    android:id="@+id/versionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/version"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/modelText"
+                    app:layout_constraintTop_toBottomOf="@+id/modelText" />
+
+            <TextView
+                    android:id="@+id/optionsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Options"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/versionText"
+                    app:layout_constraintTop_toBottomOf="@+id/versionText" />
+
+            <TextView
+                    android:id="@+id/brandTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Brand"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/brandText"
+                    app:layout_constraintStart_toStartOf="@+id/versionTxt"
+                    app:layout_constraintTop_toTopOf="@+id/brandText" />
+
+            <TextView
+                    android:id="@+id/modelTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/model"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/modelText"
+                    app:layout_constraintStart_toStartOf="@+id/versionTxt"
+                    app:layout_constraintTop_toTopOf="@+id/modelText" />
 
             <TextView
                     android:id="@+id/versionTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
                     android:text="Version"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="@+id/brandModel"
-                    app:layout_constraintStart_toStartOf="@+id/brandModel"
-                    app:layout_constraintTop_toBottomOf="@+id/brandModel" />
+                    app:layout_constraintBottom_toBottomOf="@+id/versionText"
+                    app:layout_constraintStart_toEndOf="@+id/versionText"
+                    app:layout_constraintTop_toTopOf="@+id/versionText" />
+
+            <ScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toTopOf="@+id/button"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/optionsText"
+                    app:layout_constraintTop_toBottomOf="@+id/optionsText">
+
+                <LinearLayout
+                        android:id="@+id/optionsContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+            </ScrollView>
 
             <TextView
                     android:id="@+id/priceTag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="48dp"
                     android:text="0 USD"
                     android:textColor="@color/price"
-                    android:textSize="17sp"
-                    app:layout_constraintEnd_toEndOf="@+id/versionTxt"
-                    app:layout_constraintStart_toStartOf="@+id/versionTxt"
-                    app:layout_constraintTop_toBottomOf="@+id/versionTxt" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/button" />
 
             <ImageButton
                     android:id="@+id/button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="32dp"
                     android:background="@android:color/transparent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@drawable/paynow" />
+                    app:srcCompat="@drawable/paymentbutton" />
 
         </android.support.constraint.ConstraintLayout>
 

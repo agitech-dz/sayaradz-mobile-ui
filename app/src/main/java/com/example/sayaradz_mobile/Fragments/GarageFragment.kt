@@ -124,12 +124,14 @@ class GarageFragment : Fragment() {
                     //displayMessage("The vehicle exists in the supply")
                     view.findViewById<ConstraintLayout>(R.id.cover).visibility = ConstraintLayout.VISIBLE
                     view.findViewById<ConstraintLayout>(R.id.popupSuccess).visibility = ConstraintLayout.VISIBLE
+                    view.findViewById<ConstraintLayout>(R.id.contentLayout).visibility = ConstraintLayout.INVISIBLE
                 }
                 else {
                     // Popup the proper message when not found
                     //displayMessage("The vehicle does not exist in the supply")
                     view.findViewById<ConstraintLayout>(R.id.cover).visibility = ConstraintLayout.VISIBLE
                     view.findViewById<ConstraintLayout>(R.id.popupFail).visibility = ConstraintLayout.VISIBLE
+                    view.findViewById<ConstraintLayout>(R.id.contentLayout).visibility = ConstraintLayout.INVISIBLE
                 }
             }
         }
@@ -137,20 +139,23 @@ class GarageFragment : Fragment() {
         view.findViewById<ImageView>(R.id.close).setOnClickListener {
             view.findViewById<ConstraintLayout>(R.id.popupFail).visibility = ConstraintLayout.GONE
             view.findViewById<ConstraintLayout>(R.id.cover).visibility = ConstraintLayout.INVISIBLE
+            view.findViewById<ConstraintLayout>(R.id.contentLayout).visibility = ConstraintLayout.VISIBLE
         }
         view.findViewById<ImageView>(R.id.close2).setOnClickListener {
             view.findViewById<ConstraintLayout>(R.id.popupSuccess).visibility = ConstraintLayout.GONE
             view.findViewById<ConstraintLayout>(R.id.cover).visibility = ConstraintLayout.INVISIBLE
+            view.findViewById<ConstraintLayout>(R.id.contentLayout).visibility = ConstraintLayout.VISIBLE
         }
 
         view.findViewById<Button>(R.id.order).setOnClickListener {
-            // TODO : Send to the online payment activity
+            // Send to the online payment activity
             val price : Long = model.price.value as Long
             val intent = Intent(context, PaymentActivity::class.java)
             intent.putExtra("price", price)
             intent.putExtra("brand", model.currentBrand.value?.name as String)
             intent.putExtra("model", model.currentModel.value?.name as String)
             intent.putExtra("version", model.currentVersion.value?.name as String)
+            intent.putExtra("options", selectedOptions)
             startActivity(intent)
         }
 

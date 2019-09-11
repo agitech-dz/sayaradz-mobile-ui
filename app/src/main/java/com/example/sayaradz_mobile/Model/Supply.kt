@@ -11,6 +11,7 @@ class Supply {
         vehicles.add(Vehicle(1, "Renault", "Sandero", "StepWay", "White", op1))
         op2.add("Climatiseur")
         op2.add("Boite Automatique")
+        op2.add("ABS")
         vehicles.add(Vehicle(2, "Audi", "Audi Q5", "Audi Q5 TT", "Blue", op2))
     }
 
