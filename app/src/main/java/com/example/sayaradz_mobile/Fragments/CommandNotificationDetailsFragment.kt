@@ -56,4 +56,9 @@ class CommandNotificationDetailsFragment : Fragment() {
         )
     }
 
+    override fun onPause() {
+        super.onPause()
+        activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.visibility = View.VISIBLE
+    }
+
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -59,8 +60,11 @@ class InboxFragment : Fragment() {
         notificationList.add(Notification("Command", "Your Tesla Model 3 Car is Ready!","https://www.challenges.fr/assets/img/2017/08/07/cover-r4x3w1000-5b1aa348121e9-tesla-model-3-73-jpeg.jpg"))
         notificationList.add(Notification("Offer", "Your Tesla Model 3 Car is Ready!","https://the-drive.imgix.net/http%3A%2F%2Fd254andzyoxz3f.cloudfront.net%2Fcrictics-notebook-tesla-s-p90d-ludicrous-hero.jpg?w=1440&auto=compress%2Cformat&ixlib=js-1.4.1&s=08e88bf9c1aa3e82706feaa8ad106e52"))
 
+
         rootView = binding.root
+
         loadData()
+        setUpNotificationRecyclerView()
 
 
 
@@ -74,12 +78,16 @@ class InboxFragment : Fragment() {
         compositeDisposable?.add(restService.getCommandNotifications(recipient)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe(this::handleCommandNotificationResponse))
+            .subscribe(this::handleCommandNotificationResponse,this::handleError))
         compositeDisposable?.add(restService.getOfferNotifications(recipient)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe(this::handleOfferNotificationResponse))
+            .subscribe(this::handleOfferNotificationResponse,this::handleError))
 
+
+    }
+    private fun handleError(t:Throwable){
+        Toast.makeText(context,t.message,Toast.LENGTH_LONG).show()
 
     }
     private fun handleOfferNotificationResponse(offerNotificationsList: List<OfferNotification>){
@@ -94,7 +102,7 @@ class InboxFragment : Fragment() {
     private fun handleCommandNotificationResponse(commandNotificationList: List<CommandNotification>){
 
         this.notificationList.addAll(commandNotificationList.map { c -> Notification(c) })
-        if (adapter == null) setUpNotificationRecyclerView()
+
 
 
 
@@ -126,7 +134,7 @@ class InboxFragment : Fragment() {
             else -> recyclerView.layoutManager = GridLayoutManager(context, 2)
         }
         recyclerView.setHasFixedSize(true)
-        activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.visibility = View.VISIBLE
+
     }
 
     override fun onDestroy() {

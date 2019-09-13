@@ -23,15 +23,16 @@
                   android:name="com.example.sayaradz_mobile.Fragments.InboxFragment"
                   android:label="Garage"
                   tools:layout="@layout/fragment_inbox">
-
-                <action android:id="@+id/action_inboxFragment_to_commandNotificationDetailsFragment"
-                    app:destination="@id/commandNotificationDetailsFragment" app:enterAnim="@anim/nav_default_pop_enter_anim"
-                    app:exitAnim="@anim/nav_default_pop_exit_anim"/>
-
-                <action android:id="@+id/action_inboxFragment_to_offerNotificationDetailsFragment"
-                        app:destination="@id/offerNotificationDetailsFragment" app:enterAnim="@anim/nav_default_pop_enter_anim"
-                        app:exitAnim="@anim/nav_default_pop_exit_anim"/>
-
+                <action
+                        android:id="@+id/action_inboxFragment_to_commandNotificationDetailsFragment"
+                        app:destination="@id/commandNotificationDetailsFragment"
+                        app:enterAnim="@anim/nav_default_pop_enter_anim"
+                        app:exitAnim="@anim/nav_default_pop_exit_anim" />
+                <action
+                        android:id="@+id/action_inboxFragment_to_offerNotificationDetailsFragment"
+                        app:destination="@id/offerNotificationDetailsFragment"
+                        app:enterAnim="@anim/nav_default_pop_enter_anim"
+                        app:exitAnim="@anim/nav_default_pop_exit_anim" />
         </fragment>
 
         <fragment android:id="@+id/commandNotificationDetailsFragment"
@@ -62,9 +63,11 @@
                   android:name="com.example.sayaradz_mobile.Fragments.AdsFragment"
                   android:label="Ads"
                   tools:layout="@layout/fragment_ads">
-                <action android:id="@+id/action_adsFragment_to_adDetailsFragment"
-                        app:destination="@id/adDetailsFragment" app:enterAnim="@anim/nav_default_pop_enter_anim"
-                        app:exitAnim="@anim/nav_default_pop_exit_anim"/>
+                <action
+                        android:id="@+id/action_adsFragment_to_adDetailsFragment"
+                        app:destination="@id/adDetailsFragment"
+                        app:enterAnim="@anim/nav_default_pop_enter_anim"
+                        app:exitAnim="@anim/nav_default_pop_exit_anim" />
 
         </fragment>
 

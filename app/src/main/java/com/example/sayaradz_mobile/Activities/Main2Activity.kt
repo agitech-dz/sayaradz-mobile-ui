@@ -23,6 +23,7 @@ class Main2Activity : AppCompatActivity() {
 
 
 
+
     }
 
     override fun onSupportNavigateUp() = findNavController(R.id.homeFragment).navigateUp()
