@@ -21,6 +21,8 @@ class Main2Activity : AppCompatActivity() {
         //setupActionBarWithNavController(navController)
         nav_view.setupWithNavController(navController)
 
+
+
     }
 
     override fun onSupportNavigateUp() = findNavController(R.id.homeFragment).navigateUp()

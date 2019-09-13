@@ -21,41 +21,39 @@ import com.facebook.login.LoginResult
 import com.facebook.FacebookCallback
 import com.facebook.login.LoginManager
 import com.facebook.CallbackManager
-
-
-
-
+import com.facebook.AccessToken
+import com.google.android.gms.tasks.OnCompleteListener
 
 
 class LoginActivity : AppCompatActivity() {
+
 
     private lateinit var auth: FirebaseAuth
     // [END declare_auth]
 
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var callbackManager: CallbackManager
+    private lateinit var gso: GoogleSignInOptions
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         // Configure Google Sign In
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
 
-
-        auth = FirebaseAuth.getInstance()
-
-
+        // Configure Facebook Login
         callbackManager = CallbackManager.Factory.create()
 
         LoginManager.getInstance().registerCallback(callbackManager,
             object : FacebookCallback<LoginResult> {
                 override fun onSuccess(loginResult: LoginResult) {
                     Log.i(TAG,loginResult.accessToken.toString())
+                    skipAuthentication()
                 }
 
                 override fun onCancel() {
@@ -70,15 +68,11 @@ class LoginActivity : AppCompatActivity() {
             })
 
 
-
     }
 
     fun onGoogleButtonClick(view: View){
         signIn()
-
-
     }
-
 
 
     fun onFacebookButtonClick(view: View){
@@ -98,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
                 Log.i(TAG,account!!.idToken)
-                firebaseAuthWithGoogle(account!!)
+                firebaseAuthWithGoogle()
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
 
@@ -108,53 +102,63 @@ class LoginActivity : AppCompatActivity() {
             }
         }else{
             callbackManager.onActivityResult(requestCode, resultCode, data)
+
         }
     }
     // [END onactivityresult]
     val TAG = "ACCOUNT"
 
     // [START auth_with_google]
-    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
+    private fun firebaseAuthWithGoogle() {
+        skipAuthentication()
 
-        // [START_EXCLUDE silent]
-
-        // [END_EXCLUDE]
-
-
-
-        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-
-                    val user = auth.currentUser
-                    Toast.makeText(applicationContext,"Bonjour ${user!!.displayName}", Toast.LENGTH_LONG)
-                    val intent: Intent = Intent(this,MainActivity::class.java)
-                    intent.putExtra("displayName", user!!.displayName)
-                    startActivity(intent)
-                    finish()
-
-
-
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(applicationContext,"Sign in Failed", Toast.LENGTH_LONG)
-
-
-
-                }
-
-                // [START_EXCLUDE]
-
-                // [END_EXCLUDE]
-            }
+//        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
+//        auth.signInWithCredential(credential)
+//            .addOnCompleteListener(this) { task ->
+//                if (task.isSuccessful) {
+//                    // Sign in success, update UI with the signed-in user's information
+//                    val user = auth.currentUser
+//                    Toast.makeText(applicationContext,"Bonjour ${user!!.displayName}", Toast.LENGTH_LONG)
+//
+//                } else {
+//                    // If sign in fails, display a message to the user.
+//                    Toast.makeText(applicationContext,"Sign in Failed", Toast.LENGTH_LONG)
+//                }
+//
+//                // [START_EXCLUDE]
+//
+//                // [END_EXCLUDE]
+//            }
     }
 
     fun onSkipButtonClick(view: View){
-        val intent: Intent = Intent(this,MainActivity::class.java)
+        skipAuthentication()
+
+    }
+
+    private fun skipAuthentication(){
+        val intent: Intent = Intent(this,Main2Activity::class.java)
         startActivity(intent)
         finish()
+
+    }
+
+
+    fun logOut(){
+        val accessToken = AccessToken.getCurrentAccessToken()
+        if(accessToken != null && !accessToken.isExpired){
+            LoginManager.getInstance().logOut()
+            Toast.makeText(this,"Sign Out from Facebook account succeded", Toast.LENGTH_LONG).show()
+
+        }
+
+        if((GoogleSignIn.getLastSignedInAccount(this) != null)){
+            googleSignInClient.signOut()
+            Toast.makeText(this,"Sign Out from Google account succeded", Toast.LENGTH_LONG).show()
+        }
+
+        val intent: Intent = Intent(this,LoginActivity::class.java)
+        startActivity(intent)
 
     }
 
@@ -162,4 +166,7 @@ class LoginActivity : AppCompatActivity() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, 99)
     }
+
+
+
 }
