@@ -3,6 +3,7 @@ package com.example.sayaradz_mobile.Activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.sayaradz_mobile.R
@@ -15,6 +16,16 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_login.*
+import com.facebook.FacebookException
+import com.facebook.login.LoginResult
+import com.facebook.FacebookCallback
+import com.facebook.login.LoginManager
+import com.facebook.CallbackManager
+
+
+
+
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -22,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
     // [END declare_auth]
 
     private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var callbackManager: CallbackManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +50,26 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
 
+        callbackManager = CallbackManager.Factory.create()
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+            object : FacebookCallback<LoginResult> {
+                override fun onSuccess(loginResult: LoginResult) {
+                    Log.i(TAG,loginResult.accessToken.toString())
+                }
+
+                override fun onCancel() {
+                    Log.i(TAG,"CANCEL")
+                    // App code
+                }
+
+                override fun onError(exception: FacebookException) {
+                    Log.i(TAG,"ERROR: "+exception.message)
+                    // App code
+                }
+            })
+
+
 
     }
 
@@ -47,12 +79,14 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+
+
     fun onFacebookButtonClick(view: View){
         facebook_login_button.performClick()
 
     }
 
-    val RC_SIGN_IN  = 1
+    val RC_SIGN_IN  = 99
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -63,6 +97,7 @@ class LoginActivity : AppCompatActivity() {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
+                Log.i(TAG,account!!.idToken)
                 firebaseAuthWithGoogle(account!!)
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
@@ -71,6 +106,8 @@ class LoginActivity : AppCompatActivity() {
 
                 // [END_EXCLUDE]
             }
+        }else{
+            callbackManager.onActivityResult(requestCode, resultCode, data)
         }
     }
     // [END onactivityresult]
@@ -123,6 +160,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
+        startActivityForResult(signInIntent, 99)
     }
 }
