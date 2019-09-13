@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
         LoginManager.getInstance().registerCallback(callbackManager,
             object : FacebookCallback<LoginResult> {
                 override fun onSuccess(loginResult: LoginResult) {
-                    Log.i(TAG,loginResult.accessToken.toString())
+                    Log.i(TAG,loginResult.accessToken.token)
                     skipAuthentication()
                 }
 

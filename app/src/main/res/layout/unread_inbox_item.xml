@@ -10,7 +10,7 @@
         android:clickable="true" android:theme="@style/item"
         android:id="@+id/itemContainer"
         app:layout_constraintEnd_toEndOf="parent"
-
+        android:background="@color/gray"
         app:layout_constraintHorizontal_bias="0.5">
 
     <LinearLayout
@@ -19,7 +19,7 @@
             android:layout_height="120dp"
             android:orientation="horizontal" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/background"
+            android:background="@drawable/gray_background"
             android:layout_marginBottom="1pt"
             android:layout_marginLeft="1pt"
             app:layout_constraintBottom_toBottomOf="parent">
@@ -44,8 +44,10 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
+                android:background="@color/gray"
         >
             <LinearLayout
+                    android:background="@color/gray"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -57,12 +59,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/rubik_bold"
+                        android:background="@color/gray"
                         android:text="Command"
                         android:textColor="@color/colorPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                 <TextView
+                        android:background="@color/gray"
                         android:id="@+id/notificationDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -74,6 +78,7 @@
 
                 <TextView
                         android:id="@+id/notificationDate"
+                        android:background="@color/gray"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
