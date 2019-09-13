@@ -9,4 +9,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="general_info">Informations Générales</string>
     <string name="command_info">Informations Commande</string>
+
+    <string name="facebook_app_id">1127379627651688</string> <string name="fb_login_protocol_scheme">fb1127379627651688</string>
+
 </resources>

@@ -1,79 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        tools:context=".Activities.LoginActivity"
         android:layout_height="match_parent"
-        tools:context=".Activities.LoginActivity">
+        >
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
-    <ImageView
-            android:id="@+id/logo"
 
-            android:layout_width="286dp"
-            android:layout_height="122dp"
-            android:layout_marginTop="44dp"
-            android:background="@drawable/skip_button"
-            app:layout_constraintEnd_toStartOf="@+id/rightgl"
-            app:layout_constraintHorizontal_bias="0.546"
-            app:layout_constraintStart_toStartOf="@+id/leftgl"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/ic_launcher_foreground" />
+        <ImageView
+                android:id="@+id/logo"
 
-    <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/leftgl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="68dp" />
+                android:layout_width="286dp"
+                android:layout_height="122dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/skip_button"
+                app:layout_constraintEnd_toStartOf="@+id/rightgl"
+                app:layout_constraintHorizontal_bias="0.481"
+                app:layout_constraintStart_toStartOf="@+id/leftgl"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_launcher_foreground" />
 
-    <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/rightgl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="355dp" />
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/leftgl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="68dp" />
 
-    <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="24dp"
-            android:text="Find your new car faster and easier"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintEnd_toStartOf="@+id/rightgl"
-            app:layout_constraintHorizontal_bias="0.81"
-            app:layout_constraintStart_toStartOf="@+id/leftgl"
-            app:layout_constraintTop_toBottomOf="@+id/logo" />
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/rightgl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="58dp" />
 
-    <TextView
-            android:id="@+id/textView14"
-            android:layout_width="90dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="72dp"
-            android:text="Sayara DZ"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/rightgl"
-            app:layout_constraintHorizontal_bias="0.52"
-            app:layout_constraintStart_toStartOf="@+id/leftgl"
-            app:layout_constraintTop_toTopOf="@+id/logo" />
+        <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="176dp"
+                android:layout_marginEnd="24dp"
+                android:text="Find your new car faster and easier"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/rightgl"
+                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintStart_toStartOf="@+id/leftgl"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-            android:id="@+id/skipButton"
-            android:layout_width="289dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="337dp"
-            android:layout_marginBottom="98dp"
-            android:background="@drawable/skip_button"
-            android:elevation="5dp"
-            android:text="Skip"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/rightgl"
-            app:layout_constraintStart_toStartOf="@+id/leftgl"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+                android:id="@+id/textView14"
+                android:layout_width="90dp"
+                android:layout_height="27dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="72dp"
+                android:text="Sayara DZ"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/rightgl"
+                app:layout_constraintHorizontal_bias="0.488"
+                app:layout_constraintStart_toStartOf="@+id/leftgl"
+                app:layout_constraintTop_toTopOf="@+id/logo" />
+
+        <FrameLayout
+                android:id="@+id/FrameLayout1"
+                android:layout_width="285dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="90dp"
+                app:layout_constraintEnd_toStartOf="@+id/rightgl"
+                app:layout_constraintStart_toStartOf="@+id/leftgl"
+                app:layout_constraintTop_toBottomOf="@+id/textView13">
+
+            <com.google.android.gms.common.SignInButton
+                    android:id="@+id/google_login_button"
+                    android:layout_width="285dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="60dp"
+                    android:visibility="gone" />
+
+            <Button
+                    android:id="@+id/gm"
+                    android:onClick="onGoogleButtonClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/skip_button"
+                    android:text="Sign up with Google"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+        </FrameLayout>
+
+        <FrameLayout
+                android:id="@+id/FrameLayout2"
+                android:layout_width="285dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/skipButton"
+                app:layout_constraintEnd_toStartOf="@+id/rightgl"
+                app:layout_constraintStart_toStartOf="@+id/leftgl"
+                app:layout_constraintTop_toBottomOf="@+id/FrameLayout1"
+                app:layout_constraintVertical_bias="0.05">
+
+            <com.facebook.login.widget.LoginButton
+                    android:id="@+id/facebook_login_button"
+                    android:layout_width="285dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="40dp"
+                    android:elevation="5dp"
+                    android:visibility="gone" />
+
+            <Button
+                    android:id="@+id/fb"
+                    android:onClick="onFacebookButtonClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/skip_button"
+                    android:text="Sign up with Facebook"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+        </FrameLayout>
+
+
+
+
+
+
+
+
+        <Button
+                android:id="@+id/skipButton"
+                android:layout_width="286dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="337dp"
+                android:layout_marginBottom="98dp"
+                android:background="@drawable/skip_button"
+                android:elevation="5dp"
+                android:text="Skip"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/rightgl"
+                app:layout_constraintStart_toStartOf="@+id/leftgl"
+                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
