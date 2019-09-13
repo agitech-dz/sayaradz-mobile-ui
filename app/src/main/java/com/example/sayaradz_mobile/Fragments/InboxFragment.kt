@@ -15,6 +15,7 @@ import com.example.sayaradz_mobile.HttpRequests.RestService
 import com.example.sayaradz_mobile.HttpRequests.Retrofit
 import com.example.sayaradz_mobile.Model.CommandNotification
 import com.example.sayaradz_mobile.Model.Notification
+import com.example.sayaradz_mobile.Model.OfferNotification
 import com.example.sayaradz_mobile.R
 import com.example.sayaradz_mobile.databinding.FragmentInboxBinding
 
@@ -31,6 +32,7 @@ class InboxFragment : Fragment() {
 
     private var notificationList = ArrayList<Notification>()
     private var compositeDisposable: CompositeDisposable? = null
+    private var adapter: NotificationAdapter? = null
     private val recipient = 3
     private var rootView: View? = null
 
@@ -72,23 +74,32 @@ class InboxFragment : Fragment() {
         compositeDisposable?.add(restService.getCommandNotifications(recipient)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe(this::handleResponse))
+            .subscribe(this::handleCommandNotificationResponse))
         compositeDisposable?.add(restService.getOfferNotifications(recipient)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe(this::handleResponse))
+            .subscribe(this::handleOfferNotificationResponse))
+
+
+    }
+    private fun handleOfferNotificationResponse(offerNotificationsList: List<OfferNotification>){
+
+        this.notificationList.addAll(offerNotificationsList.map { o -> Notification(o) })
+        if (adapter == null) setUpNotificationRecyclerView()
+
 
 
     }
 
-    private fun handleResponse(notificationList: List<Notification>){
+    private fun handleCommandNotificationResponse(commandNotificationList: List<CommandNotification>){
 
-        this.notificationList.addAll(notificationList)
-        setUpNotificationRecyclerView()
+        this.notificationList.addAll(commandNotificationList.map { c -> Notification(c) })
+        if (adapter == null) setUpNotificationRecyclerView()
 
 
 
     }
+
 
     //RecycleView--------------------------------------------
     private fun setUpNotificationRecyclerView() {
@@ -97,13 +108,12 @@ class InboxFragment : Fragment() {
 
         var recyclerView = rootView!!.findViewById<RecyclerView>(R.id.recyclerView)
 
-        //realtime list change
-        Log.i("notifications", notificationList.toString())
-        var adapter = NotificationAdapter(notificationList, context!!)
-        adapter.itemChanged.observe(this, Observer { state ->
+
+        adapter = NotificationAdapter(notificationList, context!!)
+        adapter!!.itemChanged.observe(this, Observer { state ->
             if (state) {
-                adapter.notifyDataSetChanged()
-                adapter.itemChanged.value = false
+                adapter!!.notifyDataSetChanged()
+                adapter!!.itemChanged.value = false
             }
         })
         recyclerView.adapter = adapter

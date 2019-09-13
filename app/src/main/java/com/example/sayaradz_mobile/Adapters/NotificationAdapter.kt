@@ -53,7 +53,7 @@ class NotificationAdapter(var itemList:List<Notification>, val context: Context)
 
     private fun handleClick(view: View, notification: Notification) {
         var action: NavDirections? = null
-        when(notification){
+        when(notification.body){
             is CommandNotification -> {
                 action = InboxFragmentDirections.actionInboxFragmentToCommandNotificationDetailsFragment(notification)
 

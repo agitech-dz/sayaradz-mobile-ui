@@ -13,4 +13,4 @@ data class OfferNotification (
     val timestamp: String,
     val unread: Boolean,
     val notification_type: String
-): Notification("Offer", "You have got an offer from $actorUserName","https://cdn.motor1.com/images/mgl/OjmPo/s1/tesla-model-s-render.jpg")
+): Notification()
