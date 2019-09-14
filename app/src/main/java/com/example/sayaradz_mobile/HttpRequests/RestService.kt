@@ -1,7 +1,7 @@
 package com.example.sayaradz_mobile.HttpRequests
 
 import com.example.sayaradz_mobile.Model.CommandNotification
-import com.example.sayaradz_mobile.Model.OfferNotification
+import com.example.sayaradz_mobile.Model.NotificationBody
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.PUT
@@ -9,15 +9,12 @@ import retrofit2.http.Path
 
 interface RestService {
 
-    @GET("automobilist/offers-notifications/{recipient}")
-    fun getOfferNotifications(
+    @GET("automobilist/notifications/{recipient}")
+    fun getNotifications(
         @Path("recipient") recipient: Int
-    ) : Observable<List<OfferNotification>>
+    ) : Observable<List<NotificationBody>>
 
-    @GET("automobilist/commands-notifications/{recipient}")
-    fun getCommandNotifications(
-        @Path("recipient") recipient: Int
-    ) : Observable<List<CommandNotification>>
+
 
     @PUT("/api/automobilist/accept-offer/{id}")
     fun acceptOffer(

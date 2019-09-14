@@ -1,8 +1,7 @@
 package com.example.sayaradz_mobile.Model
 
-data class OfferNotification (
+data class NotificationBody (
     val id: Int,
-    val offer: Int,
     val actor: String,
     val actorUserName: String,
     val actorEmail: String,
@@ -12,5 +11,6 @@ data class OfferNotification (
     val verb: String,
     val timestamp: String,
     val unread: Boolean,
-    val notification_type: String
-): Notification()
+    val notification_type: String,
+    val image: String
+)

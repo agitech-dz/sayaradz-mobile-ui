@@ -11,4 +11,4 @@ data class CommandNotification(
     val timestamp: String,
     val unread: Boolean,
     val notification_type: String
-) : Notification()
+)
