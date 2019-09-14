@@ -22,7 +22,8 @@ class FichTechFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_fiche_technique, container, false)
-        val version = VersionFragment.instance.getVersion()
+        var version = VersionFragment.instance.getVersion()
+        if (version == null) version = HomeFragment.instance.getVersion()!!
         view.findViewById<TextView>(R.id.VersionName).text = version.name
         view.findViewById<TextView>(R.id.ModelName).text = version.model
         view.findViewById<TextView>(R.id.TarifPrice).text = version.tarif_price.toString()

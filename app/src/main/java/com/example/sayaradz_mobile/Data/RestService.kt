@@ -6,6 +6,12 @@ import retrofit2.http.*
 
 interface RestService {
 
+    @GET("newcars")
+    fun ListNewCars(
+        @Query("page") page : Int,
+        @Query("page_size") page_size : Int
+    ) : Call<NewCarList>
+
 
     @GET("automobilist/manufacturers")
     fun ListMarque(

@@ -11,10 +11,13 @@ import  com.example.sayaradz_mobile.Data.DataUtil
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.sayaradz.Data.Manufactors
+import com.example.sayaradz.Data.NewCarList
+import com.example.sayaradz.Data.Version
 import com.example.sayaradz.Model.RestService
 import com.example.sayaradz_mobile.Adapters.BrandAdapter
 import com.example.sayaradz_mobile.Adapters.CarAdapter
-import com.example.sayaradz_mobile.Model.Car
+import com.example.sayaradz_mobile.Adapters.VersionAdapters
+import com.example.sayaradz_mobile.Data.NewCars
 import com.example.sayaradz_mobile.R
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,8 +36,10 @@ class HomeFragment : Fragment() {
     companion object {
         val instance = HomeFragment()
     }
+    private var VersionList = ArrayList<Version>()
+    private var ChoosedVersion : Version? = null
     private var idBrandClicked: Int = 0
-    private var carList = ArrayList<Car>()
+    private var carList = ArrayList<NewCars>()
     private var brandList = ArrayList<String>()
     private val dataUtil = DataUtil()
 
@@ -43,6 +48,9 @@ class HomeFragment : Fragment() {
         return idBrandClicked
     }
 
+    fun getVersion (): Version? {
+        return ChoosedVersion
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,17 +69,8 @@ class HomeFragment : Fragment() {
             }
         })
 
-
-        carList.add(Car("BMW 520d", "5.000.000", ""))
-        carList.add(Car("BMW 320d", "3.000.000", ""))
-        carList.add(Car("BMW 320d", "3.000.000", ""))
-        carList.add(Car("BMW 320d", "3.000.000", ""))
-        carList.add(Car("BMW 320d", "3.000.000", ""))
-        carList.add(Car("BMW 320d", "3.000.000", ""))
-
-        Log.d("Start ", "Start the brandlist getting" )
         val service = dataUtil.getRetrofit(getContext()!!).create(RestService::class.java)
-
+          //get brands from the api !
         var marks: ArrayList<String>? = arrayListOf()
         val call = service.ListMarque(1, 5)
         call.enqueue(object : Callback<MutableList<Manufactors>> {
@@ -124,24 +123,92 @@ class HomeFragment : Fragment() {
         })
 
 
+        //get New cars :
+        val idModel = "m1"
+        val appel = service.ListVersion(idModel,1, 5)
+        appel.enqueue(object : Callback<MutableList<Version>> {
+            override fun onFailure(call: Call<MutableList<Version>>, t: Throwable) {
+                Log.d("fail ", "you've got it but with a big fail shitty " + t.message)
+            }
+
+            override fun onResponse(
+                call: retrofit2.Call<MutableList<Version>>,
+                response: Response<MutableList<Version>>
+            ) {
+
+                if (response.code() == 200) {
+                    var MarqueList = response.body()
+                    if (MarqueList != null) {
+                        Log.d("okiiiiiiiiiiiii ", "it's workiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiing " )
+
+                        VersionList.addAll(MarqueList!!)
+                        val recyclerView2 = view.findViewById<RecyclerView>(R.id.recyclerView2)
+                        recyclerView2.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+                        val rvAdapter = VersionAdapters(VersionList)
+                        recyclerView2.adapter = rvAdapter
+
+                        recyclerView2.addOnItemTouchListener(
+                            VersionFragment.OnClickItem(
+                                getContext()!!,
+                                recyclerView2,
+                                object : VersionFragment.OnItemClickListener {
+
+                                    override fun onItemClick(view: View, position: Int) {
+                                        HomeFragment.instance.ChoosedVersion = VersionList.get(position)
+                                        val newCase = FichTechFragment.instance
+                                        val transaction = fragmentManager!!.beginTransaction()
+                                        transaction.replace(R.id.containuerVersion, newCase)
+                                            .addToBackStack("transaction_name")
+                                            .commit()
+
+                                    }
+
+                                    override fun onItemLongClick(view: View?, position: Int) {
+                                        TODO("do nothing")
+                                    }
+                                })
+                        )
+
+                    }
+                }
+            }
+        })
 
 
 
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-        val recyclerView2 = view.findViewById<RecyclerView>(R.id.recyclerView2)
-        val recyclerView3 = view.findViewById<RecyclerView>(R.id.recyclerView3)
+        //get newcars :
 
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
-        recyclerView2.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
-        recyclerView3.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
 
-        val rvAdapter = CarAdapter(carList)
+        val use = service.ListNewCars(1, 5)
+        use.enqueue(object : Callback<NewCarList> {
+            override fun onFailure(call: Call<NewCarList>, t: Throwable) {
+                Log.d("fail ", "you've got it but with a big fail shitty " + t.message)
+            }
 
-        recyclerView.adapter = rvAdapter
-        recyclerView2.adapter = rvAdapter
-        recyclerView3.adapter = rvAdapter
+            override fun onResponse(
+                call: retrofit2.Call<NewCarList>,
+                response: Response<NewCarList>
+            ) {
+                if (response.code() == 200) {
 
+                    // Thread.sleep(40000)
+                    var MarqueList = response.body()
+                    Log.d("Tmarque ", "here you are you had that option ")
+                    if (MarqueList != null) {
+
+                        carList.addAll(MarqueList.getNewCars()!!)
+                        val recyclerView3 = view.findViewById<RecyclerView>(R.id.recyclerView3)
+                        recyclerView3.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+                        val rvAdapter = CarAdapter(carList)
+                        recyclerView3.adapter = rvAdapter
+
+
+
+                    }
+                }
+            }
+        })
 
 
         return view
