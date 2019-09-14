@@ -10,30 +10,34 @@ import com.example.sayaradz_mobile.R
 
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
-import com.example.sayaradz_mobile.databinding.FragmentCommandNotificationDetailsBinding
+import com.bumptech.glide.Glide
+import com.example.sayaradz_mobile.Model.Notification
+import com.example.sayaradz_mobile.databinding.FragmentPostOfferNotificationBinding
+
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 import com.ouattararomuald.slider.SliderAdapter
 import com.ouattararomuald.slider.loaders.picasso.PicassoImageLoaderFactory
-import kotlinx.android.synthetic.main.fragment_ad_details.*
+import kotlinx.android.synthetic.main.fragment_ad_details.image_slider
+import kotlinx.android.synthetic.main.fragment_ad_details.notificationDescription
+import kotlinx.android.synthetic.main.fragment_ad_details.notificationTitle
+import kotlinx.android.synthetic.main.fragment_post_offer_notification.*
 
 
-class CommandNotificationDetailsFragment : Fragment() {
+class PostOfferNotificationFragment : Fragment() {
 
-    companion object {
-        val instance = CommandNotificationDetailsFragment()
-    }
-
-    val args:CommandNotificationDetailsFragmentArgs by navArgs()
+    val args:PostOfferNotificationFragmentArgs by navArgs()
+    private lateinit var notification:Notification
 
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentCommandNotificationDetailsBinding = DataBindingUtil.inflate(
+        notification = args.notification
+        val binding: FragmentPostOfferNotificationBinding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_command_notification_details,
+            R.layout.fragment_post_offer_notification,
             container,
             false)
 
@@ -45,6 +49,17 @@ class CommandNotificationDetailsFragment : Fragment() {
         val imageUrls = arrayListOf(
             args.notification.photo
         )
+        notificationTitle.text = notification.title
+        notificationDescription.text = args.notification.description
+        offerId.text = notification.body!!.id.toString()
+        actorName.text = notification.body!!.actorUserName
+        actorEmail.text = notification.body!!.actorEmail
+        actorTel.text = notification.body!!.actorTelephone
+        offerTotal.text = notification.body!!.verb + " DZD"
+        offerDate.text = notification.date
+        Glide.with(this).load(notification.body!!.image).into(notificationImage)
+
+
 
         activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.visibility = View.GONE
 
@@ -55,7 +70,6 @@ class CommandNotificationDetailsFragment : Fragment() {
             imageUrls = imageUrls
         )
     }
-
     override fun onDestroy() {
         super.onDestroy()
         activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.visibility = View.VISIBLE

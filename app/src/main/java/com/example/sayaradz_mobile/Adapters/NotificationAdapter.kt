@@ -12,9 +12,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sayaradz_mobile.Fragments.InboxFragmentDirections
-import com.example.sayaradz_mobile.Model.CommandNotification
 import com.example.sayaradz_mobile.Model.Notification
-import com.example.sayaradz_mobile.Model.NotificationBody
 import com.example.sayaradz_mobile.R
 
 class NotificationAdapter(var itemList:List<Notification>, val context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
@@ -26,8 +24,8 @@ class NotificationAdapter(var itemList:List<Notification>, val context: Context)
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (itemList.get(position).isRead) return 0
-        return 1
+        if (itemList.get(position).unread) return 1
+        return 0
     }
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): RecyclerView.ViewHolder {
@@ -97,22 +95,32 @@ class NotificationAdapter(var itemList:List<Notification>, val context: Context)
     }
 
     private fun handleClick(view: View, notification: Notification) {
+
         var action: NavDirections? = null
         when(notification.body!!.notification_type){
-             "CA" -> {
-                action = InboxFragmentDirections.actionInboxFragmentToCommandNotificationDetailsFragment(notification)
+             "CV" -> {
+                action = InboxFragmentDirections.actionInboxFragmentToCommandValidationNotificationFragment(notification)
 
             }
-             "PO" -> {
-                action = InboxFragmentDirections.actionInboxFragmentToOfferNotificationDetailsFragment(notification)
+             "MC" -> {
+                action = InboxFragmentDirections.actionInboxFragmentToFollowedModelChangeNotificationFragment(notification)
 
             }
-            else -> action = InboxFragmentDirections.actionInboxFragmentToOfferNotificationDetailsFragment(notification)
+            "VC"->{
+                action = InboxFragmentDirections.actionInboxFragmentToFollowedVersionChangeNotificationFragment(notification)
+
+            }
+            "OA"->{
+                action = InboxFragmentDirections.actionInboxFragmentToAcceptOfferNotificationFragment(notification)
+
+            }
+            "PO" -> action = InboxFragmentDirections.actionInboxFragmentToPostOfferNotificationFragment(notification)
         }
 
-        action = InboxFragmentDirections.actionInboxFragmentToOfferNotificationDetailsFragment(notification)
 
         view.setOnClickListener { v: View ->
+            notification.unread = false
+            //TODO Update notification in backend
             v.findNavController().navigate(action!!)
         }
 

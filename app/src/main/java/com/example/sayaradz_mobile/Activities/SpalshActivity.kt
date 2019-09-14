@@ -15,7 +15,7 @@ class SpalshActivity : AppCompatActivity() {
         val accessToken = AccessToken.getCurrentAccessToken()
         val isLoggedIn = (accessToken != null && !accessToken.isExpired) || (GoogleSignIn.getLastSignedInAccount(this) != null)
         if(isLoggedIn){
-            val intent = Intent(this, Main2Activity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
 

@@ -2,7 +2,6 @@ package com.example.sayaradz_mobile.Model
 
 import java.io.Serializable
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 
 val monthHashMap = arrayOf("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Décembre")
 
@@ -11,14 +10,14 @@ open class Notification : Serializable{
      var description:String = ""
      var photo: String = ""
      var body : NotificationBody? = null
-     var isRead: Boolean = false
+     var unread: Boolean = false
      var date:String = ""
 
 
      constructor(notificationBody: NotificationBody)  {
          photo = notificationBody.image
          body = notificationBody
-         isRead = notificationBody.unread
+         unread = notificationBody.unread
          val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
          val formatter = SimpleDateFormat("yyyy HH:mm")
          val monthFormatter = SimpleDateFormat("MM")

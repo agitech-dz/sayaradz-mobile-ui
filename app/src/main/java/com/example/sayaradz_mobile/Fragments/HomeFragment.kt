@@ -18,9 +18,7 @@ import com.example.sayaradz_mobile.R
 
 class HomeFragment : Fragment() {
 
-    companion object {
-        val instance = HomeFragment()
-    }
+
     private var carList = ArrayList<Car>()
     private var brandList = ArrayList<Brand>()
     override fun onCreateView(

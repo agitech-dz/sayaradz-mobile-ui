@@ -10,9 +10,6 @@ import com.example.sayaradz_mobile.R
 
 class GarageFragment : Fragment() {
 
-    companion object {
-        val instance = GarageFragment()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -10,9 +10,7 @@ import com.example.sayaradz_mobile.R
 
 class ProfileFragment : Fragment() {
 
-    companion object {
-        val instance = ProfileFragment()
-    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

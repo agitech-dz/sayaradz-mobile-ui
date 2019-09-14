@@ -20,9 +20,7 @@ import kotlinx.android.synthetic.main.fragment_ad_details.*
 
 class AdDetailsFragment : Fragment() {
 
-    companion object {
-        val instance = AdDetailsFragment()
-    }
+
 
     override fun onCreateView(
 

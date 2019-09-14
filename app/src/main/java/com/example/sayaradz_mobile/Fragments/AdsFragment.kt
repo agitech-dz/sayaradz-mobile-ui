@@ -17,9 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class AdsFragment : Fragment() {
 
-    companion object {
-        val instance = AdsFragment()
-    }
+
 
     private var adsList = ArrayList<Ad>()
     override fun onCreateView(

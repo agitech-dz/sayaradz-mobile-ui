@@ -11,6 +11,7 @@
     <string name="command_info">Informations de la commande</string>
     <string name="offer_info">Informations de l\'offre</string>
 
-    <string name="facebook_app_id">1127379627651688</string> <string name="fb_login_protocol_scheme">fb1127379627651688</string>
+    <string name="facebook_app_id">1127379627651688</string>
+    <string name="fb_login_protocol_scheme">fb1127379627651688</string>
 
 </resources>

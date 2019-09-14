@@ -24,29 +24,71 @@
                   android:label="Garage"
                   tools:layout="@layout/fragment_inbox">
                 <action
-                        android:id="@+id/action_inboxFragment_to_commandNotificationDetailsFragment"
-                        app:destination="@id/commandNotificationDetailsFragment"
+                        android:id="@+id/action_inboxFragment_to_postOfferNotificationFragment"
+                        app:destination="@id/postOfferNotificationFragment"
                         app:enterAnim="@anim/nav_default_pop_enter_anim"
                         app:exitAnim="@anim/nav_default_pop_exit_anim" />
                 <action
-                        android:id="@+id/action_inboxFragment_to_offerNotificationDetailsFragment"
-                        app:destination="@id/offerNotificationDetailsFragment"
+                        android:id="@+id/action_inboxFragment_to_followedModelChangeNotificationFragment"
+                        app:destination="@id/followedModelChangeNotificationFragment"
                         app:enterAnim="@anim/nav_default_pop_enter_anim"
-                        app:exitAnim="@anim/nav_default_pop_exit_anim" />
+                        app:exitAnim="@anim/nav_default_pop_exit_anim"/>
+                <action
+                        android:id="@+id/action_inboxFragment_to_followedVersionChangeNotificationFragment"
+                        app:destination="@id/followedVersionChangeNotificationFragment"
+                        app:enterAnim="@anim/nav_default_pop_enter_anim"
+                        app:exitAnim="@anim/nav_default_pop_exit_anim"/>
+                <action
+                        android:id="@+id/action_inboxFragment_to_commandValidationNotificationFragment"
+                        app:destination="@id/commandValidationNotificationFragment"
+                        app:enterAnim="@anim/nav_default_pop_enter_anim"
+                        app:exitAnim="@anim/nav_default_pop_exit_anim"/>
+                <action
+                        android:id="@+id/action_inboxFragment_to_acceptOfferNotificationFragment"
+                        app:destination="@id/acceptOfferNotificationFragment"
+                        app:enterAnim="@anim/nav_default_pop_enter_anim"
+                        app:exitAnim="@anim/nav_default_pop_exit_anim"/>
         </fragment>
 
-        <fragment android:id="@+id/commandNotificationDetailsFragment"
-                  android:name="com.example.sayaradz_mobile.Fragments.CommandNotificationDetailsFragment"
+        <fragment android:id="@+id/postOfferNotificationFragment"
+                  android:name="com.example.sayaradz_mobile.Fragments.PostOfferNotificationFragment"
                   android:label="Notification Details"
-                  tools:layout="@layout/fragment_command_notification_details">
+                  tools:layout="@layout/fragment_post_offer_notification">
                 <argument android:name="notification" app:argType="com.example.sayaradz_mobile.Model.Notification"/>
         </fragment>
 
-        <fragment android:id="@+id/offerNotificationDetailsFragment"
-                  android:name="com.example.sayaradz_mobile.Fragments.OfferNotificationDetailsFragment"
-                  android:label="Notification Details"
-                  tools:layout="@layout/fragment_offer_notification_details">
+        <fragment android:id="@+id/followedVersionChangeNotificationFragment"
+                android:name="com.example.sayaradz_mobile.Fragments.FollowedVersionChangeNotificationFragment"
+                android:label="Profile"
+                tools:layout="@layout/fragment_followed_version_change_notification">
                 <argument android:name="notification" app:argType="com.example.sayaradz_mobile.Model.Notification"/>
+
+
+        </fragment>
+
+        <fragment android:id="@+id/followedModelChangeNotificationFragment"
+                android:name="com.example.sayaradz_mobile.Fragments.FollowedModelChangeNotificationFragment"
+                android:label="Profile"
+                tools:layout="@layout/fragment_followed_model_change_notification">
+                <argument android:name="notification" app:argType="com.example.sayaradz_mobile.Model.Notification"/>
+
+
+        </fragment>
+
+        <fragment android:id="@+id/commandValidationNotificationFragment"
+                android:name="com.example.sayaradz_mobile.Fragments.CommandValidationNotificationFragment"
+                android:label="Profile"
+                tools:layout="@layout/fragment_command_validation_notification">
+                <argument android:name="notification" app:argType="com.example.sayaradz_mobile.Model.Notification"/>
+
+        </fragment>
+
+        <fragment android:id="@+id/acceptOfferNotificationFragment"
+                android:name="com.example.sayaradz_mobile.Fragments.AcceptOfferNotificationFragment"
+                android:label="Profile"
+                tools:layout="@layout/fragment_command_validation_notification">
+                <argument android:name="notification" app:argType="com.example.sayaradz_mobile.Model.Notification"/>
+
         </fragment>
 
         <fragment android:id="@+id/profileFragment"

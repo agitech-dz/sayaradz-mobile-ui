@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                 xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-                 android:layout_width="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <FrameLayout
+            android:layout_width="match_parent"
                  android:layout_height="match_parent"
                  tools:context=".Fragments.InboxFragment">
         <LinearLayout
@@ -29,9 +30,16 @@
                         android:layout_marginBottom="20dp" app:layout_constraintBottom_toBottomOf="parent"
                         android:textStyle="bold"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp" />
+
             <LinearLayout
                     android:orientation="vertical"
-                    android:background="@color/gray"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                 <ScrollView

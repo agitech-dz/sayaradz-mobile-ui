@@ -28,7 +28,6 @@
         <activity android:name=".Activities.LoginActivity">
 
         </activity>
-        <activity android:name=".Activities.Main2Activity"></activity>
         <activity
                 android:name=".Activities.SpalshActivity"
                 android:theme="@style/SplashTheme">

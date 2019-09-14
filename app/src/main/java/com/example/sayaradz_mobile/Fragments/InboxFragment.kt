@@ -3,6 +3,7 @@ package com.example.sayaradz_mobile.Fragments
 import android.content.Context
 import android.os.Bundle
 import android.view.*
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -22,12 +23,10 @@ import com.example.sayaradz_mobile.databinding.FragmentInboxBinding
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.fragment_inbox.*
 
 class InboxFragment : Fragment() {
 
-    companion object {
-        val instance = InboxFragment()
-    }
 
     private var notificationList = ArrayList<Notification>()
     private var compositeDisposable: CompositeDisposable? = null
@@ -42,17 +41,23 @@ class InboxFragment : Fragment() {
 
         val binding: FragmentInboxBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_inbox, container, false)
-        compositeDisposable = CompositeDisposable()
-
         rootView = binding.root
-
-        loadData()
+        if(notificationList.count() > 0){
+            val progressBar = rootView!!.findViewById<ProgressBar>(R.id.progressBar)
+            progressBar.visibility = View.GONE
+        }
         setUpNotificationRecyclerView()
 
-
-
-
         return rootView
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        compositeDisposable = CompositeDisposable()
+
+        loadData()
+
+
     }
 
     private fun loadData(){
@@ -73,6 +78,8 @@ class InboxFragment : Fragment() {
 
 
         Toast.makeText(context,offerNotificationsList.count().toString(),Toast.LENGTH_LONG).show()
+        val progressBar = rootView!!.findViewById<ProgressBar>(R.id.progressBar)
+        progressBar.visibility = View.GONE
         this.notificationList.addAll(offerNotificationsList.map { o -> Notification(o) })
         setUpNotificationRecyclerView()
 
