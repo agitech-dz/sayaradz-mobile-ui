@@ -65,9 +65,8 @@
                         android:id="@+id/generalInfolayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="32dp"
+                        android:layout_margin="20dp"
                         android:layout_marginBottom="10dp"
-                        android:background="@drawable/rect"
                         android:elevation="2dp"
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -87,23 +86,22 @@
                     <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
                             android:layout_marginLeft="16dp"
-                            android:layout_marginTop="16dp"
                             android:layout_marginBottom="16dp"
                             android:orientation="vertical">
 
                         <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:padding="5dp">
 
                             <TextView
 
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/rubik_light"
-                                    android:text="Command  : "
+                                    android:text="Offre :"
                                     android:textColor="#4B4A4A"
                                     android:textSize="14sp"
 
@@ -111,12 +109,12 @@
                                     />
 
                             <TextView
-                                    android:id="@+id/commandId"
+                                    android:id="@+id/offerId"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
                                     android:fontFamily="@font/rubik_light"
-                                    android:text="CMD000005"
+                                    android:text="OF000005"
                                     android:textColor="@color/black"
                                     android:textSize="14sp"
                                     android:textStyle="bold" />
@@ -125,14 +123,15 @@
                         <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:padding="5dp">
 
                             <TextView
 
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/rubik_light"
-                                    android:text="Manufacturer : "
+                                    android:text="Offrant :"
                                     android:textColor="#4B4A4A"
                                     android:textSize="14sp"
 
@@ -140,12 +139,12 @@
                                     />
 
                             <TextView
-                                    android:id="@+id/manufacturer"
+                                    android:id="@+id/actorName"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
                                     android:fontFamily="@font/rubik_light"
-                                    android:text="Tesla"
+                                    android:text="Amine"
                                     android:textColor="@color/black"
                                     android:textSize="14sp"
                                     android:textStyle="bold" />
@@ -154,14 +153,15 @@
                         <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:padding="5dp">
 
                             <TextView
 
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/rubik_light"
-                                    android:text="Car : "
+                                    android:text="Email de l'offrant: "
                                     android:textColor="#4B4A4A"
                                     android:textSize="14sp"
 
@@ -169,12 +169,12 @@
                                     />
 
                             <TextView
-                                    android:id="@+id/commandCar"
+                                    android:id="@+id/actorEmail"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
                                     android:fontFamily="@font/rubik_light"
-                                    android:text="Model S"
+                                    android:text="fm_guerras@esi.dz"
                                     android:textColor="@color/black"
                                     android:textSize="14sp"
                                     android:textStyle="bold" />
@@ -183,14 +183,15 @@
                         <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:padding="5dp">
 
                             <TextView
 
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/rubik_light"
-                                    android:text="Command date : "
+                                    android:text="Numéro tel de l'offrant : "
                                     android:textColor="#4B4A4A"
                                     android:textSize="14sp"
 
@@ -198,12 +199,12 @@
                                     />
 
                             <TextView
-                                    android:id="@+id/commandDate"
+                                    android:id="@+id/actorTel"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
                                     android:fontFamily="@font/rubik_light"
-                                    android:text="08/08/2019"
+                                    android:text="999 354 78"
                                     android:textColor="@color/black"
                                     android:textSize="14sp"
                                     android:textStyle="bold" />
@@ -212,14 +213,15 @@
                         <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:padding="5dp">
 
                             <TextView
 
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/rubik_light"
-                                    android:text="Command Total :"
+                                    android:text="Total de l'offre :"
                                     android:textColor="#4B4A4A"
                                     android:textSize="14sp"
 
@@ -227,12 +229,42 @@
                                     />
 
                             <TextView
-                                    android:id="@+id/commandTotal"
+                                    android:id="@+id/offerTotal"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
                                     android:fontFamily="@font/rubik_light"
                                     android:text="70,000 $"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="5dp">
+
+                            <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/rubik_light"
+                                    android:text="Date de l'offre : "
+                                    android:textColor="#4B4A4A"
+                                    android:textSize="14sp"
+
+
+                                    />
+
+                            <TextView
+                                    android:id="@+id/offerDate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:fontFamily="@font/rubik_light"
+                                    android:text="14/09/2019 10:03"
                                     android:textColor="@color/black"
                                     android:textSize="14sp"
                                     android:textStyle="bold" />
@@ -251,6 +283,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="161dp"
+                android:layout_marginTop="124dp"
                 android:layout_marginEnd="162dp"
                 android:background="@drawable/skip_button"
                 android:elevation="5dp"
@@ -259,7 +292,6 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.398"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scrollView" />
 
