@@ -1,9 +1,6 @@
 package com.example.sayaradz_mobile.HttpRequests
 
-import com.example.sayaradz_mobile.Model.AuthResponse
-import com.example.sayaradz_mobile.Model.Automobilist
-import com.example.sayaradz_mobile.Model.CommandNotification
-import com.example.sayaradz_mobile.Model.NotificationBody
+import com.example.sayaradz_mobile.Model.*
 import com.google.gson.JsonObject
 import io.reactivex.Observable
 import retrofit2.Call
@@ -39,7 +36,6 @@ interface RestService {
     ) : Observable<Void>
 
 
-
     @PUT("automobilist/accept-offer/{id}")
     fun acceptOffer(
         @Path("id") id : Int,
@@ -48,5 +44,63 @@ interface RestService {
         @Body automobilist : Int,
         @Body isAccepted : Boolean
     ) : Observable<Void>
+
+    //Home
+
+
+    @GET("automobilist/manufacturers")
+    fun ListMarque(
+        @Query("page") page : Int,
+        @Query("page_size") page_size : Int
+    ) : Call<MutableList<Manufacturer>>
+
+    @GET("automobilist/manufacturers")
+    fun getManufacturers(
+        @Query("page") page : Int,
+        @Query("page_size") page_size : Int
+    ) : Observable<List<Manufacturer>>
+
+    @GET("automobilist/{manufacturer}/models")
+    fun ListModel(
+        @Path("manufacturer") manufacturer : Int,
+        @Query("page") page : Int,
+        @Query("page_size") page_size : Int
+    ) : Call<MutableList<Model>>
+
+
+    @GET("automobilist/all-models")
+    fun ListModel(
+        @Query("page") page : Int,
+        @Query("page_size") page_size : Int
+    ) : Call<MutableList<Model>>
+
+    @GET("automobilist/all-models")
+    fun getModels(
+        @Query("page") page : Int,
+        @Query("page_size") page_size : Int
+    ) : Observable<List<Model>>
+
+    @GET("automobilist/all-versions")
+    fun ListVersion(
+        @Query("page") page : Int,
+        @Query("page_size") page_size : Int
+    ) : Call<MutableList<Version>>
+
+    @GET("automobilist/all-versions")
+    fun getVersions(
+        @Query("page") page : Int,
+        @Query("page_size") page_size : Int
+    ) : Observable<List<Version>>
+
+
+    @GET("automobilist/{model}/versions")
+    fun ListVersion(
+        @Path("model") model : String,
+        @Query("page") page : Int,
+        @Query("page_size") page_size : Int
+    ) : Call<MutableList<Version>>
+
+
+
 
 }

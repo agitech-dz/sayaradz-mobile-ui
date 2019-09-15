@@ -10,6 +10,21 @@
                   android:label="Home"
                   tools:layout="@layout/fragment_home">
 
+                <action
+                        android:id="@+id/action_homeFragment_to_modelFragment"
+                        app:enterAnim="@anim/nav_default_pop_enter_anim"
+                        app:exitAnim="@anim/nav_default_pop_exit_anim"
+                        app:destination="@id/modelFragment" />
+                <action
+                        android:id="@+id/action_homeFragment_to_manufacturerFragment"
+                        app:enterAnim="@anim/nav_default_pop_enter_anim"
+                        app:exitAnim="@anim/nav_default_pop_exit_anim"
+                        app:destination="@id/manufacturerFragment" />
+                <action
+                        android:id="@+id/action_homeFragment_to_versionFragment"
+                        app:enterAnim="@anim/nav_default_pop_enter_anim"
+                        app:exitAnim="@anim/nav_default_pop_exit_anim"
+                        app:destination="@id/versionFragment" />
         </fragment>
 
         <fragment android:id="@+id/garageFragment"
@@ -21,7 +36,7 @@
 
         <fragment android:id="@+id/inboxFragment"
                   android:name="com.example.sayaradz_mobile.Fragments.InboxFragment"
-                  android:label="Garage"
+                  android:label="Inbox"
                   tools:layout="@layout/fragment_inbox">
                 <action
                         android:id="@+id/action_inboxFragment_to_postOfferNotificationFragment"
@@ -119,6 +134,21 @@
                   tools:layout="@layout/fragment_ad_details">
                 <argument android:name="adId" app:argType="string"/>
         </fragment>
+        <fragment
+                android:id="@+id/manufacturerFragment"
+                android:name="com.example.sayaradz_mobile.Fragments.ManufacturerFragment"
+                android:label="ManufacturerFragment"
+                tools:layout="@layout/fragment_manufacturer"/>
+        <fragment
+                android:id="@+id/modelFragment"
+                android:name="com.example.sayaradz_mobile.Fragments.ModelFragment"
+                android:label="ModelFragment"
+                tools:layout="@layout/fragment_model"/>
+        <fragment
+                android:id="@+id/versionFragment"
+                android:name="com.example.sayaradz_mobile.Fragments.VersionFragment"
+                android:label="VersionFragment"
+                tools:layout="@layout/fragment_version"/>
 
 
 </navigation>

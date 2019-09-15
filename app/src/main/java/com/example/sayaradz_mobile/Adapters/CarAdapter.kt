@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.sayaradz_mobile.Model.Car
 import com.example.sayaradz_mobile.R
@@ -20,15 +21,16 @@ class CarAdapter(var itemList:List<Car>): RecyclerView.Adapter<CarAdapter.ViewHo
     }
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        p0.carName.text = itemList.get(p1).carName
-        p0.carPrice.text = itemList.get(p1).carPrice
+
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val carName = itemView.findViewById<TextView>(R.id.carName)
 
-        val carPrice = itemView.findViewById<TextView>(R.id.carPrice)
+        val model = itemView.findViewById<TextView>(R.id.model)
+        val year = itemView.findViewById<TextView>(R.id.yearAndDistance)
+        val image = itemView.findViewById<ImageView>(R.id.image)
+        val price = itemView.findViewById<TextView>(R.id.price)
     }
 
 

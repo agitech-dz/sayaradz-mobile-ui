@@ -42,11 +42,12 @@
 
         <TextView
                 android:id="@+id/textView13"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="176dp"
                 android:layout_marginEnd="24dp"
-                android:text="Find your new car faster and easier"
+                android:text="Trouvez votre nouvelle voiture  rapidement et facilement"
+                android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/rightgl"
@@ -87,11 +88,11 @@
 
             <Button
                     android:id="@+id/gm"
-                    android:onClick="onGoogleButtonClick"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/skip_button"
-                    android:text="Sign up with Google"
+                    android:onClick="onGoogleButtonClick"
+                    android:text="Se connecter avec Google"
                     android:textAllCaps="false"
                     android:textColor="#ffffff"
                     android:textSize="18sp" />
@@ -119,11 +120,11 @@
 
             <Button
                     android:id="@+id/fb"
-                    android:onClick="onFacebookButtonClick"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/skip_button"
-                    android:text="Sign up with Facebook"
+                    android:onClick="onFacebookButtonClick"
+                    android:text="Se connecter avec Facebook"
                     android:textAllCaps="false"
                     android:textColor="#ffffff"
                     android:textSize="18sp" />
@@ -139,7 +140,7 @@
                 android:background="@drawable/skip_button"
                 android:elevation="5dp"
                 android:onClick="onSkipButtonClick"
-                android:text="Skip"
+                android:text="Passer"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"

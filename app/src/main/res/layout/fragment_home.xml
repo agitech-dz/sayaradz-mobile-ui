@@ -26,209 +26,258 @@
                     android:layout_marginTop="67dp"
                     app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="34dp"
                     app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="1.0"/>
+
             <EditText
+                    android:id="@+id/editText"
                     android:layout_width="307dp"
                     android:layout_height="50dp"
-                    android:padding="5dp"
-                    android:elevation="5dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginBottom="34dp"
                     android:background="@color/white"
-                    android:inputType="textPersonName"
+                    android:elevation="5dp"
                     android:ems="10"
-                    android:id="@+id/editText"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton" app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="70dp" android:layout_marginTop="70dp"
-                    app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="34dp"
-                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintVertical_bias="1.0" android:hint="Find your dream car"/>
+                    android:hint="Trouvez la voiture de vos rêves"
+                    android:inputType="textPersonName"
+                    android:padding="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
             <ImageView
                     android:src="@mipmap/ic_sayaradz_logo_round"
                     android:layout_width="69dp"
                     android:layout_height="62dp"
                     android:id="@+id/imageView" app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
+
             <TextView
-                    android:text="Hello,"
+                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView" android:textColor="#fff"
-                    android:textSize="18sp" android:textStyle="bold" app:layout_constraintStart_toEndOf="@+id/imageView"
+                    android:layout_marginStart="12dp"
                     android:layout_marginTop="24dp"
-                    app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="12dp"/>
+                    android:text="Bonjour,"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:id="@+id/lower_section">
 
             <ScrollView
+                    android:id="@+id/scrollView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:alwaysDrawnWithCache="false"
+                    android:clipToPadding="false"
+                    android:fillViewport="false"
                     android:orientation="vertical"
-                    android:layout_marginBottom="50dp"
-                    android:id="@+id/scrollView" android:fillViewport="false" android:alwaysDrawnWithCache="false"
-                    android:scrollbars="none" android:clipToPadding="false"
-                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent">
+                    android:scrollbars="none"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/versions_section"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginTop="10dp"
-                            android:id="@+id/hot_deals_section">
+                            android:layout_marginBottom="10dp">
 
                         <TextView
-                                android:text="Hot Deals"
+                                android:id="@+id/textView5"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:id="@+id/textView3"
-                                android:textSize="18sp" android:textStyle="bold"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:layout_marginStart="28dp" android:layout_marginTop="16dp"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintEnd_toStartOf="@+id/textView4"
-                                android:layout_marginEnd="227dp" android:layout_marginBottom="8dp"
-                                app:layout_constraintBottom_toTopOf="@+id/recyclerView"/>
-                        <TextView
-                                android:text="See all"
-                                android:layout_width="wrap_content"
-                                android:layout_height="16dp"
-                                android:id="@+id/textView4"
-                                android:textColor="@color/colorPrimary" android:textStyle="bold"
-                                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="35dp"
-                                android:layout_marginTop="20dp" app:layout_constraintTop_toTopOf="parent"
-                                android:layout_marginBottom="9dp"
-                                app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-                                android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="0.0"
-                                android:clickable="true" android:linksClickable="true"/>
-                        <androidx.recyclerview.widget.RecyclerView
-                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-                                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView3"
-                                android:scrollbars="none" android:orientation="horizontal"
-                                android:id="@+id/recyclerView"/>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:id="@+id/latest_cars_section"
-                    >
-
-                        <TextView
-                                android:text="Latest Cars"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:id="@+id/textView5"
-                                android:textSize="18sp" android:textStyle="bold"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:layout_marginStart="28dp" android:layout_marginTop="16dp"
-                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginStart="28dp"
+                                android:layout_marginTop="16dp"
                                 android:layout_marginBottom="8dp"
-                                app:layout_constraintBottom_toTopOf="@+id/recyclerView2"/>
-                        <TextView
-                                android:text="See all"
-                                android:layout_width="wrap_content"
-                                android:layout_height="16dp"
-                                android:id="@+id/textView6"
-                                android:textColor="@color/colorPrimary" android:textStyle="bold"
-                                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="35dp"
-                                android:layout_marginTop="20dp" app:layout_constraintTop_toTopOf="parent"
-                                android:layout_marginBottom="9dp"
-                                app:layout_constraintBottom_toTopOf="@+id/recyclerView2"
-                                android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="0.0"
-                                android:clickable="true" android:linksClickable="true"/>
-                        <androidx.recyclerview.widget.RecyclerView
-                                android:layout_width="0dp"
+                                android:text="Versions"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/recyclerViewVersion"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        <ProgressBar
+                                android:id="@+id/progressBarVersion"
+                                style="?android:attr/progressBarStyle"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-                                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView5"
-                                android:scrollbars="none" android:orientation="horizontal"
-                                android:id="@+id/recyclerView2"/>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:id="@+id/most_popular_section"
-                    >
+                                android:layout_margin="20dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/recyclerViewVersion" />
 
                         <TextView
-                                android:text="Most popular"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:id="@+id/textView7"
-                                android:textSize="18sp" android:textStyle="bold"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:layout_marginStart="28dp" android:layout_marginTop="16dp"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:layout_marginBottom="8dp"
-                                app:layout_constraintBottom_toTopOf="@+id/recyclerView3"/>
-                        <TextView
-                                android:text="See all"
+                                android:id="@+id/tvVersion"
                                 android:layout_width="wrap_content"
                                 android:layout_height="16dp"
-                                android:id="@+id/textView8"
-                                android:textColor="@color/colorPrimary" android:textStyle="bold"
-                                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="35dp"
-                                android:layout_marginTop="20dp" app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginEnd="35dp"
                                 android:layout_marginBottom="9dp"
-                                app:layout_constraintBottom_toTopOf="@+id/recyclerView3"
-                                android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="0.0"
-                                android:clickable="true" android:linksClickable="true"/>
+                                android:clickable="true"
+                                android:linksClickable="true"
+                                android:text="Voir tout"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/recyclerViewVersion"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.0" />
+
                         <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewVersion"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-                                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView7"
-                                android:scrollbars="none" android:orientation="horizontal"
-                                android:id="@+id/recyclerView3"/>
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:orientation="horizontal"
+                                android:scrollbars="none"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView5" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
                     <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/models_section"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="50dp"
-                            android:id="@+id/car_brands_section"
-                    >
+                            android:layout_marginBottom="10dp">
 
                         <TextView
-                                android:text="Brands"
+                                android:id="@+id/textView7"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:id="@+id/textView9"
-                                android:textSize="18sp" android:textStyle="bold"
-                                app:layout_constraintStart_toStartOf="parent"
-                                android:layout_marginStart="28dp" android:layout_marginTop="16dp"
-                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="28dp"
+                                android:layout_marginTop="16dp"
                                 android:layout_marginBottom="8dp"
-                                app:layout_constraintBottom_toTopOf="@+id/recyclerView4"/>
+                                android:text="Modèles"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/recyclerViewModel"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        <ProgressBar
+                                android:id="@+id/progressBarModels"
+                                style="?android:attr/progressBarStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="20dp"
+                                app:layout_constraintEnd_toStartOf="@+id/recyclerViewModel"
+                                app:layout_constraintStart_toEndOf="@+id/recyclerViewModel"
+                                app:layout_constraintTop_toTopOf="@+id/recyclerViewModel" />
+
                         <TextView
-                                android:text="See all"
+                                android:id="@+id/tvModel"
                                 android:layout_width="wrap_content"
                                 android:layout_height="16dp"
-                                android:id="@+id/textView10"
-                                android:textColor="@color/colorPrimary" android:textStyle="bold"
-                                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="35dp"
-                                android:layout_marginTop="20dp" app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginEnd="35dp"
                                 android:layout_marginBottom="9dp"
-                                app:layout_constraintBottom_toTopOf="@+id/recyclerView4"
-                                android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="0.0"
-                                android:clickable="true" android:linksClickable="true"/>
+                                android:clickable="true"
+                                android:linksClickable="true"
+                                android:text="Voir tout"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/recyclerViewModel"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.0" />
+
                         <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewModel"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-                                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView9"
-                                android:scrollbars="none" android:orientation="horizontal"
-                                android:id="@+id/recyclerView4"/>
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:orientation="horizontal"
+                                android:scrollbars="none"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/manufacturers_section"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:id="@+id/textView9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="28dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginBottom="8dp"
+                                android:text="Marques"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/recyclerViewManufacturer"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        <ProgressBar
+                                android:id="@+id/progressBarManufacturers"
+                                style="?android:attr/progressBarStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="20dp"
+                                app:layout_constraintEnd_toStartOf="@+id/recyclerViewManufacturer"
+                                app:layout_constraintStart_toEndOf="@+id/recyclerViewManufacturer"
+                                app:layout_constraintTop_toTopOf="@+id/recyclerViewManufacturer" />
+
+                        <TextView
+                                android:id="@+id/tvManufacturer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginEnd="35dp"
+                                android:layout_marginBottom="9dp"
+                                android:clickable="true"
+                                android:linksClickable="true"
+                                android:text="Voir tout"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/recyclerViewManufacturer"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.0" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewManufacturer"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:orientation="horizontal"
+                                android:scrollbars="none"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView9" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
             </ScrollView>
