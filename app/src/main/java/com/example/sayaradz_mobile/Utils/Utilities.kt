@@ -1,8 +1,11 @@
 package com.example.sayaradz_mobile.Utils
 
+import android.app.Activity
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import com.example.sayaradz_mobile.Model.AuthResponse
+import com.google.gson.Gson
 import kotlin.random.Random
 
 object Utilities {
@@ -18,6 +21,20 @@ object Utilities {
             isConnected = true
         return isConnected
     }
+
+
+    fun retrieveAuthResponse(context:Context):AuthResponse{
+        val gson = Gson()
+        val sharedPref = context.getSharedPreferences(
+            "com.example.sayaradz_mobile.AUTH_RESPONSE", Context.MODE_PRIVATE)
+        val authResponseString = sharedPref.getString("authResponse","")
+
+        return  gson.fromJson(authResponseString,AuthResponse::class.java)
+    }
+
+
+
+
 
     fun getPhotoUrl(): String{
         val photoUrls: ArrayList<String> = arrayListOf(
