@@ -1,19 +1,27 @@
 package com.example.sayaradz_mobile.Adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sayaradz_mobile.Fragments.InboxFragmentDirections
+import com.example.sayaradz_mobile.HttpRequests.RestService
+import com.example.sayaradz_mobile.HttpRequests.Retrofit
 import com.example.sayaradz_mobile.Model.Notification
 import com.example.sayaradz_mobile.R
+import com.example.sayaradz_mobile.Utils.Utilities
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 
 class NotificationAdapter(var itemList:List<Notification>, val context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
@@ -120,10 +128,24 @@ class NotificationAdapter(var itemList:List<Notification>, val context: Context)
 
         view.setOnClickListener { v: View ->
             notification.unread = false
-            //TODO Update notification in backend
+            notification.body!!.unread = false
+            val compositeDisposable = CompositeDisposable()
+            val restService = Retrofit.getRetrofit().create(RestService::class.java)
+            compositeDisposable.add(restService.setNotificationAsRead(notification.body!!.id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleResponse,this::handleError))
+
+
             v.findNavController().navigate(action!!)
         }
 
+    }
+    private fun handleResponse(void: Void){
+
+    }
+    private fun handleError(t:Throwable){
+        Log.e("ERROR",t.message)
     }
 
 }

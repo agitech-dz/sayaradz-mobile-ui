@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.example.sayaradz_mobile.R
 
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.sayaradz_mobile.HttpRequests.RestService
@@ -77,7 +78,7 @@ class PostOfferNotificationFragment : Fragment() {
             val compositeDisposable = CompositeDisposable()
             val restService = Retrofit.getRetrofit().create(RestService::class.java)
             compositeDisposable.add(restService.acceptOffer(notification.body!!.actorTarget.toInt(),notification.body!!.actorTarget.toInt(),
-                notification.body!!.verb.toInt(),notification.body!!.recipient,true)
+                notification.body!!.verb.toDouble().toInt(),notification.body!!.recipient,true)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handleResponse,this::handleError))
@@ -90,6 +91,7 @@ class PostOfferNotificationFragment : Fragment() {
     }
     private fun handleResponse(void: Void){
         Toast.makeText(context,"Offre accepté avec succès !", Toast.LENGTH_LONG).show()
+        view!!.findNavController().navigateUp()
 
     }
     private fun handleError(t:Throwable){

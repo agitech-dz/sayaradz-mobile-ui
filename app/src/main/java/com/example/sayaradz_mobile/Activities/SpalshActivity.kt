@@ -11,6 +11,7 @@ class SpalshActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Thread.sleep(500)
         setContentView(R.layout.activity_splash)
         val accessToken = AccessToken.getCurrentAccessToken()
         val isLoggedIn = (accessToken != null && !accessToken.isExpired) || (GoogleSignIn.getLastSignedInAccount(this) != null)

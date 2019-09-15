@@ -13,9 +13,14 @@ interface RestService {
         @Path("recipient") recipient: Int
     ) : Observable<List<NotificationBody>>
 
+    @PUT("automobilist/notifications/{id}")
+    fun setNotificationAsRead(
+        @Path("id") id: Int
+    ) : Observable<Void>
 
 
-    @PUT("/api/automobilist/accept-offer/{id}")
+    @FormUrlEncoded
+    @PUT("automobilist/accept-offer/{id}")
     fun acceptOffer(
         @Path("id") id : Int,
         @Field("ad") ad : Int,

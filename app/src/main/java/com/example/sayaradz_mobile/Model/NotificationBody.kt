@@ -10,7 +10,7 @@ data class NotificationBody (
     val recipient: Int,
     val verb: String,
     val timestamp: String,
-    val unread: Boolean,
+    var unread: Boolean,
     val notification_type: String,
     val image: String
 )
