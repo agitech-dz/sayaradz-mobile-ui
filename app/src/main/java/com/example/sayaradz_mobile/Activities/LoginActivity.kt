@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.example.sayaradz_mobile.HttpRequests.RestService
 import com.example.sayaradz_mobile.HttpRequests.Retrofit
 import com.example.sayaradz_mobile.Model.AuthResponse
+import com.example.sayaradz_mobile.Model.Automobilist
 import com.example.sayaradz_mobile.R
 import com.example.sayaradz_mobile.Utils.Utilities
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -76,8 +77,25 @@ class LoginActivity : AppCompatActivity() {
 
                 private fun handleResponse(authResponse: AuthResponse){
                     storeAuthResponse(authResponse)
-                    skipAuthentication()
+                    if(authResponse.new_automobilist){
+                        val restService = Retrofit.getRetrofit().create(RestService::class.java)
+                        compositeDisposable = CompositeDisposable()
+                        compositeDisposable?.add(restService.getAutomobilist(authResponse.automobilist_id)
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribeOn(Schedulers.io())
+                            .subscribe(this::handleAutomobilistResponse,this::handleError))
 
+                    }else{
+                        skipAuthentication()
+                    }
+
+
+
+
+                }
+                fun handleAutomobilistResponse(automobilist: Automobilist){
+                    Toast.makeText(applicationContext,"Bienvenue "+automobilist.first_name,Toast.LENGTH_LONG).show()
+                    skipAuthentication()
 
                 }
                 private fun handleError(t:Throwable){
@@ -175,8 +193,25 @@ class LoginActivity : AppCompatActivity() {
     }
     private fun handleResponse(authResponse: AuthResponse){
         storeAuthResponse(authResponse)
-        skipAuthentication()
+        if(authResponse.new_automobilist){
+            val restService = Retrofit.getRetrofit().create(RestService::class.java)
+            compositeDisposable = CompositeDisposable()
+            compositeDisposable?.add(restService.getAutomobilist(authResponse.automobilist_id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleAutomobilistResponse,this::handleError))
 
+        }else{
+            skipAuthentication()
+        }
+
+
+
+
+    }
+    fun handleAutomobilistResponse(automobilist: Automobilist){
+        Toast.makeText(applicationContext,"Bienvenue "+automobilist.first_name,Toast.LENGTH_LONG).show()
+        skipAuthentication()
 
     }
     private fun handleError(t:Throwable){
