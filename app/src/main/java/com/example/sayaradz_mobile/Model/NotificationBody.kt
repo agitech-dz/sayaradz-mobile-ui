@@ -12,5 +12,6 @@ data class NotificationBody (
     val timestamp: String,
     var unread: Boolean,
     val notification_type: String,
-    val image: String
+    val image: String,
+    val actionObject:String
 )

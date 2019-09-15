@@ -77,7 +77,7 @@ class PostOfferNotificationFragment : Fragment() {
         if (Utilities.hasNetwork(context!!)){
             val compositeDisposable = CompositeDisposable()
             val restService = Retrofit.getRetrofit().create(RestService::class.java)
-            compositeDisposable.add(restService.acceptOffer(notification.body!!.actorTarget.toInt(),notification.body!!.actorTarget.toInt(),
+            compositeDisposable.add(restService.acceptOffer(notification.body!!.actionObject.toInt(),notification.body!!.actorTarget.toInt(),
                 notification.body!!.verb.toDouble().toInt(),notification.body!!.recipient,true)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
