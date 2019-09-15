@@ -35,7 +35,9 @@ class AdViewModel: BaseViewModel() {
             ad.distance,
             ad.description,
             ad.automobilist,
-            ad.minPrice
+            ad.minPrice,
+            ad.energy,
+            ad.personsNumber.toInt()
         ))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -91,6 +93,9 @@ class AdViewModel: BaseViewModel() {
     private val adYear = MutableLiveData<String>()
     private val adYearAndDistance = MutableLiveData<String>()
     private val adModelAndVersion = MutableLiveData<String>()
+    private val adEnergy = MutableLiveData<String>()
+    private val adPersonsNumber = MutableLiveData<String>()
+
 
     fun bind(ad: Ad){
         adId.value = ad.id
@@ -109,6 +114,8 @@ class AdViewModel: BaseViewModel() {
         adYear.value = ad.year
         adYearAndDistance.value = ad.year + " | " + ad.distance + " km"
         adModelAndVersion.value = ad.model + " " + ad.version_name
+        adEnergy.value = ad.energy
+        adPersonsNumber.value = ad.personsNumber.toString()
     }
 
     fun getAdId():MutableLiveData<String>{
@@ -174,6 +181,14 @@ class AdViewModel: BaseViewModel() {
 
     fun getAdAutomobilistAddress():MutableLiveData<String>{
         return adAutomobilistAddress
+    }
+
+    fun getAdEnergy():MutableLiveData<String>{
+        return adEnergy
+    }
+
+    fun getAdPersonsNumber():MutableLiveData<String>{
+        return adPersonsNumber
     }
 
 

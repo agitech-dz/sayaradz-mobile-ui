@@ -47,14 +47,17 @@ class PostAdFinishFragment : Fragment() {
                 PostAdFinishFragmentArgs.fromBundle(arguments!!).year,
                 PostAdFinishFragmentArgs.fromBundle(arguments!!).distance,
                 PostAdFinishFragmentArgs.fromBundle(arguments!!).description,
-                "2",
-            "Hanene",
-            "BBA",
+                "8",
+            "",
+            "",
             "",
                 PostAdFinishFragmentArgs.fromBundle(arguments!!).price,
             "",
             "",
-            ""
+            "",
+
+                PostAdFinishFragmentArgs.fromBundle(arguments!!).nbPersons,
+                PostAdFinishFragmentArgs.fromBundle(arguments!!).energy
         )
         )
         viewModel.errorMessage.observe(this, Observer {
@@ -106,7 +109,10 @@ class PostAdFinishFragment : Fragment() {
                 "",
                 viewModel.newAd.value!!.automobilist,
                 viewModel.newAd.value!!.automobilist_username,
-                viewModel.newAd.value!!.automobilist_address
+                viewModel.newAd.value!!.automobilist_address,
+
+                viewModel.newAd.value!!.personsNumber,
+                viewModel.newAd.value!!.energy
             )
         view.setOnClickListener { v: View ->
             v.findNavController().navigate(action)

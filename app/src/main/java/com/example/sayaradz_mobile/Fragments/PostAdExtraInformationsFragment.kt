@@ -2,6 +2,7 @@ package com.example.sayaradz_mobile.Fragments
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -69,7 +70,7 @@ class PostAdExtraInformationsFragment : Fragment() {
         nbPersonsSpinner.adapter = nbpersonsArrayAdapter
 
         addExtraInfosAction.setOnClickListener {
-
+            Log.e("tag", nbPersonsSpinner.selectedItem as String)
             val action = PostAdExtraInformationsFragmentDirections.actionPostAdExtraInfosFragmentToPostAdPhotosFragment(
                 PostAdExtraInformationsFragmentArgs.fromBundle(arguments!!).manufacturerId,
                 PostAdExtraInformationsFragmentArgs.fromBundle(arguments!!).modelId,
@@ -79,6 +80,7 @@ class PostAdExtraInformationsFragment : Fragment() {
                 nbPersonsSpinner.selectedItem as String,
                 energySpinner.selectedItem as String
             )
+
 
             it.findNavController().navigate(action)
 

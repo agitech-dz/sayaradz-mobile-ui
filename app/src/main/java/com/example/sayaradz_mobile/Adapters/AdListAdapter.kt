@@ -73,7 +73,9 @@ class AdListAdapter : RecyclerView.Adapter<AdListAdapter.ViewHolder>() {
                 "",
                 ad.automobilist,
                 ad.automobilist_username,
-                ad.automobilist_address
+                ad.automobilist_address,
+                ad.energy,
+                ad.personsNumber
             )
         view.setOnClickListener { v: View ->
             v.findNavController().navigate(action)

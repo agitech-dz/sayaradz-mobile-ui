@@ -66,7 +66,9 @@ class AdDetailsFragment : Fragment() {
             AdDetailsFragmentArgs.fromBundle(arguments!!).adMinPrice,
             AdDetailsFragmentArgs.fromBundle(arguments!!).adPhoto1,
             AdDetailsFragmentArgs.fromBundle(arguments!!).adPhoto2,
-            AdDetailsFragmentArgs.fromBundle(arguments!!).adPhoto3
+            AdDetailsFragmentArgs.fromBundle(arguments!!).adPhoto3,
+            AdDetailsFragmentArgs.fromBundle(arguments!!).adNbPersons,
+            AdDetailsFragmentArgs.fromBundle(arguments!!).adEnergy
         )
         val imageUrls = arrayListOf(
             "https://imgd.aeplcdn.com/424x424/cw/ec/26916/Audi-Q3-Front-view-92293.jpg?v=201711021421&q=85",
@@ -87,8 +89,8 @@ class AdDetailsFragment : Fragment() {
         adModelAndVersion.text = ad.model + " " + ad.version_name
         adYear.text = ad.year
         adKm.text = ad.distance + " km"
-        //adEnergy.text
-        //adPersonsNumber.text
+        adEnergy.text = ad.energy
+        adPersonsNumber.text = ad.personsNumber.toString()
         adDescription.text = ad.description
         adMinPrice.text = ad.minPrice + " DA"
 

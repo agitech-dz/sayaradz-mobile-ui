@@ -68,6 +68,8 @@
                 <argument android:name="adAutomobilist" app:argType="string"/>
                 <argument android:name="adAutomobilistUserName" app:argType="string"/>
                 <argument android:name="adAutomobilistAddress" app:argType="string"/>
+                <argument android:name="adEnergy" app:argType="string"/>
+                <argument android:name="adNbPersons" app:argType="string"/>
 
                 <action android:id="@+id/action_postAdDetails_to_PostAdOfferFragment"
                         app:destination="@id/postAdOfferFragment"

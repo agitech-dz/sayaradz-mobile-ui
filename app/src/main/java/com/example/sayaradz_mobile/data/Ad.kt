@@ -16,5 +16,7 @@ data class Ad(var id:String,
               var minPrice: String,
               var photo1: String,
               var photo2: String,
-              var photo3: String
+              var photo3: String,
+              var personsNumber: String,
+              var energy: String
 )
