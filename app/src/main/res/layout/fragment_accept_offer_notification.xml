@@ -132,7 +132,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/rubik_light"
-                                    android:text="Offrant :"
+                                    android:text="Annonceur : "
                                     android:textColor="#4B4A4A"
                                     android:textSize="14sp"
 
@@ -146,66 +146,6 @@
                                     android:layout_marginLeft="5dp"
                                     android:fontFamily="@font/rubik_light"
                                     android:text="Amine"
-                                    android:textColor="@color/black"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                android:padding="5dp">
-
-                            <TextView
-
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/rubik_light"
-                                    android:text="Email de l'offrant: "
-                                    android:textColor="#4B4A4A"
-                                    android:textSize="14sp"
-
-
-                                    />
-
-                            <TextView
-                                    android:id="@+id/actorEmail"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:fontFamily="@font/rubik_light"
-                                    android:text="fm_guerras@esi.dz"
-                                    android:textColor="@color/black"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:padding="5dp">
-
-                            <TextView
-
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/rubik_light"
-                                    android:text="Numéro tel de l'offrant : "
-                                    android:textColor="#4B4A4A"
-                                    android:textSize="14sp"
-
-
-                                    />
-
-                            <TextView
-                                    android:id="@+id/actorTel"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:fontFamily="@font/rubik_light"
-                                    android:text="999 354 78"
                                     android:textColor="@color/black"
                                     android:textSize="14sp"
                                     android:textStyle="bold" />
@@ -252,7 +192,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/rubik_light"
-                                    android:text="Date de l'offre : "
+                                    android:text="Date :"
                                     android:textColor="#4B4A4A"
                                     android:textSize="14sp"
 
@@ -278,23 +218,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
-
-        <Button
-                android:id="@+id/acceptOfferButton"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="161dp"
-                android:layout_marginTop="124dp"
-                android:layout_marginEnd="162dp"
-                android:background="@drawable/skip_button"
-                android:elevation="5dp"
-                android:text="Accepter l'offre"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/scrollView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

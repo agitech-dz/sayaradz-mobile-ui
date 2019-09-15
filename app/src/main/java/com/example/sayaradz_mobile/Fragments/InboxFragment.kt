@@ -18,12 +18,14 @@ import com.example.sayaradz_mobile.Model.CommandNotification
 import com.example.sayaradz_mobile.Model.Notification
 import com.example.sayaradz_mobile.Model.NotificationBody
 import com.example.sayaradz_mobile.R
+import com.example.sayaradz_mobile.Utils.Utilities
 import com.example.sayaradz_mobile.databinding.FragmentInboxBinding
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_inbox.*
+import okhttp3.internal.Util
 
 class InboxFragment : Fragment() {
 
@@ -42,7 +44,7 @@ class InboxFragment : Fragment() {
         val binding: FragmentInboxBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_inbox, container, false)
         rootView = binding.root
-        if(notificationList.count() > 0){
+        if(notificationList.count() > 0 || !Utilities.hasNetwork(context!!)){
             val progressBar = rootView!!.findViewById<ProgressBar>(R.id.progressBar)
             progressBar.visibility = View.GONE
         }
@@ -63,10 +65,18 @@ class InboxFragment : Fragment() {
     private fun loadData(){
 
         val restService = Retrofit.getRetrofit().create(RestService::class.java)
-        compositeDisposable?.add(restService.getNotifications(recipient)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribe(this::handleNotificationsResponse,this::handleError))
+        if (Utilities.hasNetwork(context!!)){
+            compositeDisposable?.add(restService.getNotifications(recipient)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleNotificationsResponse,this::handleError))
+
+        }else{
+            Toast.makeText(context,"Connexion Internet Impossible",Toast.LENGTH_LONG).show()
+
+
+        }
+
 
 
     }
@@ -76,8 +86,6 @@ class InboxFragment : Fragment() {
     }
     private fun handleNotificationsResponse(offerNotificationsList: List<NotificationBody>){
 
-
-        Toast.makeText(context,offerNotificationsList.count().toString(),Toast.LENGTH_LONG).show()
         val progressBar = rootView!!.findViewById<ProgressBar>(R.id.progressBar)
         progressBar.visibility = View.GONE
         this.notificationList.addAll(offerNotificationsList.map { o -> Notification(o) })

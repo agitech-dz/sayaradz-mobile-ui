@@ -47,27 +47,16 @@ class FollowedModelChangeNotificationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val imageUrls = arrayListOf(
-            args.notification.photo
-        )
+
         notificationTitle.text = args.notification.title
         notificationDescription.text = args.notification.description
-        offerId.text = notification.body!!.id.toString()
         actorName.text = notification.body!!.actorUserName
-        actorEmail.text = notification.body!!.actorEmail
-        actorTel.text = notification.body!!.actorTelephone
-        offerTotal.text = notification.body!!.verb + " DZD"
+        offerTotal.text = notification.body!!.verb
         offerDate.text = notification.date
-        Glide.with(this).load(notification.body!!.image).into(notificationImage)
+        Glide.with(this).load(notification.photo).into(notificationImage)
 
         activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.visibility = View.GONE
 
-
-        image_slider?.adapter = SliderAdapter(
-            view!!.context,
-            PicassoImageLoaderFactory(),
-            imageUrls = imageUrls
-        )
     }
     override fun onDestroy() {
         super.onDestroy()

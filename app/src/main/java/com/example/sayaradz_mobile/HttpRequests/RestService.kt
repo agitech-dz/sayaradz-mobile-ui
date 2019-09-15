@@ -3,9 +3,8 @@ package com.example.sayaradz_mobile.HttpRequests
 import com.example.sayaradz_mobile.Model.CommandNotification
 import com.example.sayaradz_mobile.Model.NotificationBody
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.PUT
-import retrofit2.http.Path
+import retrofit2.Call
+import retrofit2.http.*
 
 interface RestService {
 
@@ -18,6 +17,11 @@ interface RestService {
 
     @PUT("/api/automobilist/accept-offer/{id}")
     fun acceptOffer(
-        @Path("id") id : Int
+        @Path("id") id : Int,
+        @Field("ad") ad : Int,
+        @Field("OfferedPrice") offeredPrice : Int,
+        @Field("automobilist") automobilist : Int,
+        @Field("isAccepted") isAccepted : Boolean
     ) : Observable<Void>
+
 }

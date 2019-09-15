@@ -1,9 +1,9 @@
 package com.example.sayaradz_mobile.Model
 
+import com.example.sayaradz_mobile.Utils.Utilities
 import java.io.Serializable
 import java.text.SimpleDateFormat
 
-val monthHashMap = arrayOf("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Décembre")
 
 open class Notification : Serializable{
      var title:String = ""
@@ -15,7 +15,12 @@ open class Notification : Serializable{
 
 
      constructor(notificationBody: NotificationBody)  {
-         photo = notificationBody.image
+         if (notificationBody.image != null && notificationBody.image != ""){
+             photo = notificationBody.image
+         }else{
+             photo = Utilities.getPhotoUrl()
+         }
+
          body = notificationBody
          unread = notificationBody.unread
          val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
@@ -23,7 +28,7 @@ open class Notification : Serializable{
          val monthFormatter = SimpleDateFormat("MM")
          val dayFormatter = SimpleDateFormat("MM")
          date = dayFormatter.format(parser.parse(notificationBody.timestamp))+ " " +
-                 monthHashMap[(monthFormatter.format(parser.parse(notificationBody.timestamp)).toInt()-1) % 12]+ " " +
+                 Utilities.monthHashMap[(monthFormatter.format(parser.parse(notificationBody.timestamp)).toInt()-1) % 12]+ " " +
                  formatter.format(parser.parse(notificationBody.timestamp))
          when(notificationBody.notification_type){
              "OA"->{

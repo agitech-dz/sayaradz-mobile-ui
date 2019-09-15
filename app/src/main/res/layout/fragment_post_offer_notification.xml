@@ -192,36 +192,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/rubik_light"
-                                    android:text="Numéro tel de l'offrant : "
-                                    android:textColor="#4B4A4A"
-                                    android:textSize="14sp"
-
-
-                                    />
-
-                            <TextView
-                                    android:id="@+id/actorTel"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:fontFamily="@font/rubik_light"
-                                    android:text="999 354 78"
-                                    android:textColor="@color/black"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:padding="5dp">
-
-                            <TextView
-
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/rubik_light"
                                     android:text="Total de l'offre :"
                                     android:textColor="#4B4A4A"
                                     android:textSize="14sp"
@@ -288,6 +258,7 @@
                 android:layout_marginEnd="162dp"
                 android:background="@drawable/skip_button"
                 android:elevation="5dp"
+                android:onClick="onAcceptClick"
                 android:text="Accepter l'offre"
                 android:textColor="@color/white"
                 android:textSize="18sp"
