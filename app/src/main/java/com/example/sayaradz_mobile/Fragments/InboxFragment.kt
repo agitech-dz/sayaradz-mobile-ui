@@ -33,7 +33,7 @@ class InboxFragment : Fragment() {
     private var notificationList = ArrayList<Notification>()
     private var compositeDisposable: CompositeDisposable? = null
     private var adapter: NotificationAdapter? = null
-    private val recipient = 8
+    private var recipient = 8
     private var rootView: View? = null
 
     override fun onCreateView(
@@ -65,6 +65,7 @@ class InboxFragment : Fragment() {
     private fun loadData(){
 
         val restService = Retrofit.getRetrofit().create(RestService::class.java)
+        recipient = Utilities.retrieveAuthResponse(context!!).automobilist_id
         if (Utilities.hasNetwork(context!!)){
             compositeDisposable?.add(restService.getNotifications(recipient)
                 .observeOn(AndroidSchedulers.mainThread())

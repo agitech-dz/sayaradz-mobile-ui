@@ -205,15 +205,14 @@ class LoginActivity : AppCompatActivity() {
             skipAuthentication()
         }
 
-
-
-
     }
+
     fun handleAutomobilistResponse(automobilist: Automobilist){
         Toast.makeText(applicationContext,"Bienvenue "+automobilist.first_name,Toast.LENGTH_LONG).show()
         skipAuthentication()
 
     }
+
     private fun handleError(t:Throwable){
         Log.e("ERROR",t.message)
     }
