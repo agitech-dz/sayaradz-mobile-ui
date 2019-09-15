@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.sayaradz_mobile.R
+import com.example.sayaradz_mobile.Utils.Utilities
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -67,12 +68,21 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun onGoogleButtonClick(view: View){
-        signIn()
+        if(Utilities.hasNetwork(this)){
+            signIn()
+        }else{
+            Toast.makeText(this,"Connexion Internet Impossible",Toast.LENGTH_LONG).show()
+        }
     }
 
 
     fun onFacebookButtonClick(view: View){
-        facebook_login_button.performClick()
+        if(Utilities.hasNetwork(this)){
+            facebook_login_button.performClick()
+        }else{
+            Toast.makeText(this,"Connexion Internet Impossible",Toast.LENGTH_LONG).show()
+        }
+
 
     }
 
