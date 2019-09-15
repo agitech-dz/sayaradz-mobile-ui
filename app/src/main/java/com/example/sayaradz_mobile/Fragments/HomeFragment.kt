@@ -47,14 +47,29 @@ class HomeFragment : Fragment() {
             progressBarManufacturers.visibility = View.GONE
         }else{
             if(manufacturerList.count()>0){
+                val progressBarManufacturers = view.findViewById<ProgressBar>(R.id.progressBarManufacturers)
                 progressBarManufacturers.visibility = View.GONE
+                val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewManufacturer)
+                recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                val manufacturerAdapter = ManufacturerAdapter(manufacturerList,context!!)
+                recyclerView.adapter = manufacturerAdapter
 
             }
             if(ModelList.count()>0){
+                val progressBarModels = view.findViewById<ProgressBar>(R.id.progressBarModels)
                 progressBarModels.visibility = View.GONE
+                val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewModel)
+                recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                val rvAdapter = ModelAdapter(ModelList,context!!)
+                recyclerView.adapter = rvAdapter
             }
             if(VersionList.count()>0){
+                val progressBarVersion = view.findViewById<ProgressBar>(R.id.progressBarVersion)
                 progressBarVersion.visibility = View.GONE
+                val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewVersion)
+                recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                val rvAdapter = VersionAdapter(VersionList,context!!)
+                recyclerView.adapter = rvAdapter
             }
         }
 
@@ -74,7 +89,7 @@ class HomeFragment : Fragment() {
         var call = service.ListMarque(1, 5)
         call.enqueue(object : Callback<MutableList<Manufacturer>> {
             override fun onFailure(call: Call<MutableList<Manufacturer>>, t: Throwable) {
-                progressBarManufacturers.visibility = View.GONE
+                progressBarManufacturers!!.visibility = View.GONE
                 Log.d("fail ", "you've got it but with a big fail shitty " + t.message)
             }
 
@@ -122,7 +137,7 @@ class HomeFragment : Fragment() {
         val modelCall = service.ListModel(1, 5)
         modelCall.enqueue(object : Callback<MutableList<Model>> {
             override fun onFailure(call: Call<MutableList<Model>>, t: Throwable) {
-                progressBarModels.visibility = View.GONE
+                progressBarModels!!.visibility = View.GONE
                 Log.d("fail ", "you've got it but with a big fail shitty " + t.message)
             }
 
@@ -172,7 +187,7 @@ class HomeFragment : Fragment() {
         val versionCall = service.ListVersion(1, 5)
         versionCall.enqueue(object : Callback<MutableList<Version>> {
             override fun onFailure(call: Call<MutableList<Version>>, t: Throwable) {
-                progressBarVersion.visibility = View.GONE
+                progressBarVersion!!.visibility = View.GONE
                 Log.d("fail ", "you've got it but with a big fail shitty " + t.message)
             }
 
@@ -180,7 +195,7 @@ class HomeFragment : Fragment() {
                 call: retrofit2.Call<MutableList<Version>>,
                 response: Response<MutableList<Version>>
             ) {
-                progressBarVersion.visibility = View.GONE
+                progressBarVersion!!.visibility = View.GONE
                 if (response.code() == 200) {
 
                     // Thread.sleep(40000)
