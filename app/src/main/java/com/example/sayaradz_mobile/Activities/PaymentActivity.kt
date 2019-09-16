@@ -19,7 +19,7 @@ import java.math.BigDecimal
 class PaymentActivity : AppCompatActivity() {
 
     //Paypal intent request code to track onActivityResult method
-    val PAYPAL_REQUEST_CODE : Int = 101
+    val PAYPAL_REQUEST_CODE : Int = 548
 
     //Payment Amount
     var price: Long = 0
@@ -38,8 +38,8 @@ class PaymentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment)
 
-        // Getting the price from previous activity
-        price = intent.getLongExtra("price", 0) / 100 /** Make the price smaller to have healthy balance **/
+        // Getting the data from previous activity
+        price = intent.getLongExtra("price", 0) / 1000 /** Make the price smaller to have healthy balance **/
         brand = intent.getStringExtra("brand")
         model = intent.getStringExtra("model")
         version = intent.getStringExtra("version")

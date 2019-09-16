@@ -2,6 +2,6 @@ package com.example.sayaradz_mobile.Model
 
 class PayPalConfig {
 
-    val PAYPAL_CLIENT_ID : String = "ASNckk2UQG3C1jxsCpgI50B66GLCrde9WhH-Q4udmDWBJA6CbQaHCw8Se2aTUB2Rbu0lvIvvfkDkV6PD"
+    val PAYPAL_CLIENT_ID : String = "AbBDfZ_-EJdNd8wqlNcROs_zoEk308evlvbKphnUFCF0JJQNWvM0cEVmg-rtbibF8bTJqRMlXkwL0Qr7"
 
 }

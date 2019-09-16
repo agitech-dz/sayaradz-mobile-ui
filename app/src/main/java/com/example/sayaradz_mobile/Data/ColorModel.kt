@@ -1,0 +1,9 @@
+package com.example.sayaradz_mobile.Data
+
+import com.google.gson.annotations.SerializedName
+
+class ColorModel (val id: String,
+                  val name: String,
+                  val model: String,
+                  @SerializedName("tarif_id") val tarifId: Int,
+                  @SerializedName("tarif_price") val tarifPrice: Long)

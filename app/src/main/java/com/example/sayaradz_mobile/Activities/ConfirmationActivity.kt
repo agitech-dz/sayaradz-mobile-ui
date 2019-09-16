@@ -3,7 +3,6 @@ package com.example.sayaradz_mobile.Activities
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.example.sayaradz_mobile.R
 import kotlinx.android.synthetic.main.activity_confirmation.*
 import org.json.JSONException
@@ -20,7 +19,7 @@ class ConfirmationActivity : AppCompatActivity() {
             showDetails(jsonDetails.getJSONObject("response"), intent.getLongExtra("PaymentAmount", 0).toString())
         }
         catch (e: JSONException) {
-            Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+            e.printStackTrace()
         }
 
         goBack.setOnClickListener {

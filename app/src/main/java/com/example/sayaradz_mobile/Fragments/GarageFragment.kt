@@ -11,11 +11,29 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.sayaradz_mobile.Activities.PaymentActivity
+import com.example.sayaradz_mobile.Data.*
+import com.example.sayaradz_mobile.Interface.GetData
 import com.example.sayaradz_mobile.Model.*
 import com.example.sayaradz_mobile.R
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class GarageFragment : Fragment() {
+
+    // The API Data
+    private val BASE_URL = "http://sayaradz-back-end.herokuapp.com/"
+    private var compositeDisposable: CompositeDisposable? = null
+
+    var brandsList: ArrayList<BrandModel>? = null
+    var modelsList: ArrayList<ModelModel>? = null
+    var versionsList: ArrayList<VersionModel>? = null
+    var colorsList: ArrayList<ColorModel>? = null
+    var optionsList: ArrayList<OptionModel>? = null
 
     companion object {
         val instance = GarageFragment()
@@ -23,7 +41,6 @@ class GarageFragment : Fragment() {
 
     lateinit var model : CurrentData // ViewModel to hold the current choices made by the user
     val selectedOptions : ArrayList<String?> = ArrayList() // Add Selected Options List
-    val supply = Supply() // The supply that contains the vehicles
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,46 +50,46 @@ class GarageFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_garage, container, false)
 
-        val manager = DataManager.instance
-        /** Generate some data **/
-        manager.init()
-        supply.fillSupply()
-
         model = ViewModelProviders.of(this).get(CurrentData::class.java)
-        model.setVersionPrice(0)
-        model.setColorPrice(0)
-        model.setOptionsPrice(0)
+
+        view.findViewById<ProgressBar>(R.id.progressBar).visibility = View.GONE
 
         /***** Implement Observers *****/
-        val brandObserver = Observer<CarBrand?> {newBrand ->
-            var models = arrayOf<String?>()
+        val brandObserver = Observer<BrandModel?> {newBrand ->
             if (newBrand != null) {
-                models = newBrand.modelsList()
+                loadModels()
+                enableDisplay(2)
             }
-            adaptSpinner(view, view.findViewById(R.id.model), models, "Model")
+            else {
+                disableDisplay(2)
+            }
         }
 
-        val modelObserver = Observer<Model?> {newModel ->
-            var versions = arrayOf<String?>()
+        val modelObserver = Observer<ModelModel?> {newModel ->
             if (newModel != null) {
-                versions = newModel.versionsList()
+                loadVersions()
+                enableDisplay(1)
             }
-            adaptSpinner(view, view.findViewById(R.id.versionTxt), versions, "Version")
+            else {
+                disableDisplay(1)
+            }
         }
 
-        val versionObserver = Observer<Version?> {newVersion ->
-            var colors = arrayOf<String?>()
+        val versionObserver = Observer<VersionModel?> {newVersion ->
             if (newVersion != null) {
-                colors = manager.colorsList()
-                fillOptions(view.findViewById(R.id.options), newVersion.optionsList())
-                model.setVersionPrice(newVersion.price)
+                loadColors()
+                loadOptions()
+                model.setVersionPrice(newVersion.tarifPrice)
+                enableDisplay(0)
             }
-            adaptSpinner(view, view.findViewById(R.id.color), colors, "Color")
+            else {
+                disableDisplay(0)
+            }
         }
 
-        val colorObserver = Observer<Color?> {newColor ->
+        val colorObserver = Observer<ColorModel?> {newColor ->
             if (newColor != null) {
-                model.setColorPrice(newColor.price)
+                model.setColorPrice(newColor.tarifPrice)
             }
         }
 
@@ -96,9 +113,6 @@ class GarageFragment : Fragment() {
         model.colorPrice.observe(this, vcoPriceObserver)
         model.optionsPrice.observe(this, vcoPriceObserver)
 
-        val marques = manager.brandsList()
-        adaptSpinner(view, view.findViewById(R.id.marque), marques, "Brand")
-
         view.findViewById<ImageButton>(R.id.checkButton).setOnClickListener {
             if (model.currentBrand.value == null) {
                 displayMessage("Please select a brand first")
@@ -114,36 +128,22 @@ class GarageFragment : Fragment() {
             }
             else {
                 // Search the vehicle
-                val res = supply.findVehicle(model.currentBrand.value?.name,
-                                             model.currentModel.value?.name,
-                                             model.currentVersion.value?.name,
-                                             model.currentColor.value?.name,
-                                             selectedOptions)
-                if (res) {
-                    // Popup the proper message when found
-                    //displayMessage("The vehicle exists in the supply")
-                    view.findViewById<ConstraintLayout>(R.id.cover).visibility = ConstraintLayout.VISIBLE
-                    view.findViewById<ConstraintLayout>(R.id.popupSuccess).visibility = ConstraintLayout.VISIBLE
-                    view.findViewById<ConstraintLayout>(R.id.contentLayout).visibility = ConstraintLayout.INVISIBLE
-                }
-                else {
-                    // Popup the proper message when not found
-                    //displayMessage("The vehicle does not exist in the supply")
-                    view.findViewById<ConstraintLayout>(R.id.cover).visibility = ConstraintLayout.VISIBLE
-                    view.findViewById<ConstraintLayout>(R.id.popupFail).visibility = ConstraintLayout.VISIBLE
-                    view.findViewById<ConstraintLayout>(R.id.contentLayout).visibility = ConstraintLayout.INVISIBLE
-                }
+                search()
+                // Display Progressbar
+                view.findViewById<ConstraintLayout>(R.id.contentLayout).visibility = ConstraintLayout.INVISIBLE
+                view.findViewById<ConstraintLayout>(R.id.cover).visibility = ConstraintLayout.VISIBLE
+                view.findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
             }
         }
 
         view.findViewById<ImageView>(R.id.close).setOnClickListener {
             view.findViewById<ConstraintLayout>(R.id.popupFail).visibility = ConstraintLayout.GONE
-            view.findViewById<ConstraintLayout>(R.id.cover).visibility = ConstraintLayout.INVISIBLE
+            view.findViewById<ConstraintLayout>(R.id.cover).visibility = ConstraintLayout.GONE
             view.findViewById<ConstraintLayout>(R.id.contentLayout).visibility = ConstraintLayout.VISIBLE
         }
         view.findViewById<ImageView>(R.id.close2).setOnClickListener {
             view.findViewById<ConstraintLayout>(R.id.popupSuccess).visibility = ConstraintLayout.GONE
-            view.findViewById<ConstraintLayout>(R.id.cover).visibility = ConstraintLayout.INVISIBLE
+            view.findViewById<ConstraintLayout>(R.id.cover).visibility = ConstraintLayout.GONE
             view.findViewById<ConstraintLayout>(R.id.contentLayout).visibility = ConstraintLayout.VISIBLE
         }
 
@@ -159,7 +159,14 @@ class GarageFragment : Fragment() {
             startActivity(intent)
         }
 
+        loadBrands()
+
         return view
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable?.clear()
     }
 
     fun adaptSpinner(container: View, spinner : Spinner, list : Array<String?>, placeholder : String?) {
@@ -167,7 +174,7 @@ class GarageFragment : Fragment() {
         for (element in list) {
             array = array.plus(element)
         }
-        val adapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, array)
+        val adapter = ArrayAdapter(context!!, android.R.layout.simple_spinner_item, array)
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
         spinner.adapter = adapter
         spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
@@ -196,16 +203,16 @@ class GarageFragment : Fragment() {
                 else {
                     //Toast.makeText(context, item, Toast.LENGTH_SHORT).show()
                     if (placeholder.equals("Brand")) {
-                        model.setBrand(DataManager.instance.findBrand(item))
+                        model.setBrand(DataManager.instance.searchBrand(brandsList, item))
                     }
                     else if (placeholder.equals("Model")) {
-                        model.setModel(model.currentBrand.value?.findModel(item))
+                        model.setModel(DataManager.instance.searchModel(modelsList, item))
                     }
                     else if (placeholder.equals("Version")) {
-                        model.setVersion(model.currentModel.value?.findVersion(item))
+                        model.setVersion(DataManager.instance.searchVersion(versionsList, item))
                     }
                     else if (placeholder.equals("Color")) {
-                        model.setColor(DataManager.instance.findColor(item))
+                        model.setColor(DataManager.instance.searchColor(colorsList, item))
                     }
                 }
             }
@@ -225,14 +232,14 @@ class GarageFragment : Fragment() {
             parent.addView(checkBox)
             checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
-                    val pr = model.currentVersion.value?.findOption(element)?.price
+                    val pr = DataManager.instance.searchOption(optionsList, element!!)?.tarifPrice
                     if (pr != null) {
                         model.setOptionsPrice(model.optionsPrice.value?.plus(pr))
                     }
                     selectedOptions.add(element)
                 }
                 else {
-                    val pr = model.currentVersion.value?.findOption(element)?.price
+                    val pr = DataManager.instance.searchOption(optionsList, element!!)?.tarifPrice
                     if (pr != null) {
                         model.setOptionsPrice(model.optionsPrice.value?.minus(pr))
                     }
@@ -273,4 +280,158 @@ class GarageFragment : Fragment() {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
 
+    fun loadBrands() {
+        compositeDisposable = CompositeDisposable()
+        val requestInterface = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build().create(GetData::class.java)
+        compositeDisposable?.add(requestInterface.getBrands()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleBrandResponse))
+    }
+
+    fun handleBrandResponse(listOfBrands: List<BrandModel>) {
+        brandsList = ArrayList(listOfBrands)
+        adaptSpinner(view!!,
+                view!!.findViewById(R.id.marque),
+                DataManager.instance.convertBrandsToArray(brandsList),
+                "Brand")
+    }
+
+    fun loadModels() {
+        compositeDisposable = CompositeDisposable()
+        val requestInterface = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build().create(GetData::class.java)
+        compositeDisposable?.add(requestInterface.getModels(model.currentBrand.value!!.id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleModelResponse))
+    }
+
+    fun handleModelResponse(listOfModels: List<ModelModel>) {
+        modelsList = ArrayList(listOfModels)
+        adaptSpinner(view!!,
+                view!!.findViewById(R.id.model),
+                DataManager.instance.convertModelsToArray(modelsList),
+                "Model")
+    }
+
+    fun loadVersions() {
+        compositeDisposable = CompositeDisposable()
+        val requestInterface = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build().create(GetData::class.java)
+        compositeDisposable?.add(requestInterface.getVersions(model.currentModel.value!!.id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleVersionResponse))
+    }
+
+    fun handleVersionResponse(listOfVersions: List<VersionModel>) {
+        versionsList = ArrayList(listOfVersions)
+        adaptSpinner(view!!,
+                view!!.findViewById(R.id.versionTxt),
+                DataManager.instance.convertVersionsToArray(versionsList),
+                "Version")
+    }
+
+    fun loadColors() {
+        compositeDisposable = CompositeDisposable()
+        val requestInterface = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build().create(GetData::class.java)
+        compositeDisposable?.add(requestInterface.getColors()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleColorsResponse))
+    }
+
+    fun handleColorsResponse(listOfColors: List<ColorModel>) {
+        colorsList = ArrayList(listOfColors)
+        adaptSpinner(view!!,
+                view!!.findViewById(R.id.color),
+                DataManager.instance.convertColorsToArray(colorsList),
+                "Color")
+    }
+
+    fun loadOptions() {
+        compositeDisposable = CompositeDisposable()
+        val requestInterface = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build().create(GetData::class.java)
+        compositeDisposable?.add(requestInterface.getOptions()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleOptionsResponse))
+    }
+
+    fun handleOptionsResponse(listOfOptions: List<OptionModel>) {
+        optionsList = ArrayList(listOfOptions)
+        fillOptions(view!!.findViewById(R.id.options), DataManager.instance.convertOptionsToArray(optionsList))
+    }
+
+    fun disableDisplay(level: Int) {
+        view!!.findViewById<Spinner>(R.id.color).isEnabled = false
+        if (level > 0) {
+            view!!.findViewById<Spinner>(R.id.versionTxt).isEnabled = false
+            if (level > 1) {
+                view!!.findViewById<Spinner>(R.id.model).isEnabled = false
+            }
+        }
+    }
+
+    fun enableDisplay(level: Int) {
+        when (level) {
+            0 -> {
+                view!!.findViewById<Spinner>(R.id.color).isEnabled = true
+            }
+            1 -> {
+                view!!.findViewById<Spinner>(R.id.versionTxt).isEnabled = true
+            }
+            2 -> {
+                view!!.findViewById<Spinner>(R.id.model).isEnabled = true
+            }
+        }
+    }
+
+    fun search() {
+        val obj = SearchInput(model.currentVersion.value!!.id,
+                model.currentColor.value!!.id,
+                DataManager.instance.getOptionsIds(optionsList, selectedOptions))
+        compositeDisposable = CompositeDisposable()
+        val requestInterface = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build().create(GetData::class.java)
+        compositeDisposable?.add(requestInterface.searchVehicle(obj)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::searchResult))
+    }
+
+    fun searchResult(result: SearchOutput) {
+        view!!.findViewById<ProgressBar>(R.id.progressBar).visibility = View.GONE
+        if (result.countFound > 0) {
+            view!!.findViewById<ConstraintLayout>(R.id.popupSuccess).visibility = ConstraintLayout.VISIBLE
+        }
+        else {
+            view!!.findViewById<ConstraintLayout>(R.id.popupFail).visibility = ConstraintLayout.VISIBLE
+        }
+    }
+
 }
+
+

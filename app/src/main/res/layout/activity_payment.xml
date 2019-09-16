@@ -62,10 +62,10 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView26">
 
                 <ImageView
-                        android:id="@+id/carImage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/imageplaceholder" />
+                    android:id="@+id/carImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/imageplaceholder" />
             </android.support.v7.widget.CardView>
 
             <TextView
