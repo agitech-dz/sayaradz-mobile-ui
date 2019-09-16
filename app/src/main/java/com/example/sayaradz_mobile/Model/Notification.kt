@@ -1,6 +1,6 @@
 package com.example.sayaradz_mobile.Model
 
-import com.example.sayaradz_mobile.Utils.Utilities
+import com.example.sayaradz_mobile.Utilities.Utilities
 import java.io.Serializable
 import java.text.SimpleDateFormat
 

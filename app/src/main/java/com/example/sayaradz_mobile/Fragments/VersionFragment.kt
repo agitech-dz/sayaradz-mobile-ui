@@ -11,14 +11,12 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sayaradz_mobile.Adapters.ModelListAdapter
 import com.example.sayaradz_mobile.Adapters.VersionListAdapter
 import com.example.sayaradz_mobile.HttpRequests.RestService
 import com.example.sayaradz_mobile.HttpRequests.Retrofit
 import com.example.sayaradz_mobile.Model.Version
 import com.example.sayaradz_mobile.R
-import com.example.sayaradz_mobile.Utils.Utilities
-import com.example.sayaradz_mobile.databinding.FragmentModelBinding
+import com.example.sayaradz_mobile.Utilities.Utilities
 import com.example.sayaradz_mobile.databinding.FragmentVersionBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

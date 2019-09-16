@@ -14,18 +14,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sayaradz_mobile.Adapters.NotificationAdapter
 import com.example.sayaradz_mobile.HttpRequests.RestService
 import com.example.sayaradz_mobile.HttpRequests.Retrofit
-import com.example.sayaradz_mobile.Model.CommandNotification
 import com.example.sayaradz_mobile.Model.Notification
 import com.example.sayaradz_mobile.Model.NotificationBody
 import com.example.sayaradz_mobile.R
-import com.example.sayaradz_mobile.Utils.Utilities
+import com.example.sayaradz_mobile.Utilities.Utilities
 import com.example.sayaradz_mobile.databinding.FragmentInboxBinding
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_inbox.*
-import okhttp3.internal.Util
 
 class InboxFragment : Fragment() {
 

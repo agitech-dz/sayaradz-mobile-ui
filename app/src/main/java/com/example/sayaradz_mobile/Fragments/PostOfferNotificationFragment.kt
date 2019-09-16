@@ -16,17 +16,14 @@ import com.bumptech.glide.Glide
 import com.example.sayaradz_mobile.HttpRequests.RestService
 import com.example.sayaradz_mobile.HttpRequests.Retrofit
 import com.example.sayaradz_mobile.Model.Notification
-import com.example.sayaradz_mobile.Utils.Utilities
+import com.example.sayaradz_mobile.Utilities.Utilities
 import com.example.sayaradz_mobile.databinding.FragmentPostOfferNotificationBinding
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-import com.ouattararomuald.slider.SliderAdapter
-import com.ouattararomuald.slider.loaders.picasso.PicassoImageLoaderFactory
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_ad_details.image_slider
 import kotlinx.android.synthetic.main.fragment_ad_details.notificationDescription
 import kotlinx.android.synthetic.main.fragment_ad_details.notificationTitle
 import kotlinx.android.synthetic.main.fragment_post_offer_notification.*

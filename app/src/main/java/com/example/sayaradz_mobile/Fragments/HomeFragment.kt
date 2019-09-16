@@ -13,12 +13,11 @@ import com.example.sayaradz_mobile.Adapters.ModelAdapter
 import com.example.sayaradz_mobile.Adapters.VersionAdapter
 import com.example.sayaradz_mobile.HttpRequests.RestService
 import com.example.sayaradz_mobile.HttpRequests.Retrofit
-import com.example.sayaradz_mobile.Model.Car
 import com.example.sayaradz_mobile.Model.Manufacturer
 import com.example.sayaradz_mobile.Model.Model
 import com.example.sayaradz_mobile.Model.Version
 import com.example.sayaradz_mobile.R
-import com.example.sayaradz_mobile.Utils.Utilities
+import com.example.sayaradz_mobile.Utilities.Utilities
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback

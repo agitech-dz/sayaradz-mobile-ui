@@ -12,7 +12,7 @@ import com.example.sayaradz_mobile.HttpRequests.Retrofit
 import com.example.sayaradz_mobile.Model.AuthResponse
 import com.example.sayaradz_mobile.Model.Automobilist
 import com.example.sayaradz_mobile.R
-import com.example.sayaradz_mobile.Utils.Utilities
+import com.example.sayaradz_mobile.Utilities.Utilities
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions

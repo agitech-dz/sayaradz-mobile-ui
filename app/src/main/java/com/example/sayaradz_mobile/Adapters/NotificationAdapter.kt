@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
@@ -18,7 +17,6 @@ import com.example.sayaradz_mobile.HttpRequests.RestService
 import com.example.sayaradz_mobile.HttpRequests.Retrofit
 import com.example.sayaradz_mobile.Model.Notification
 import com.example.sayaradz_mobile.R
-import com.example.sayaradz_mobile.Utils.Utilities
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
