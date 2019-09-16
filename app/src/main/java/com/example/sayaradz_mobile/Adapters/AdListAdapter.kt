@@ -47,8 +47,14 @@ class AdListAdapter : RecyclerView.Adapter<AdListAdapter.ViewHolder>() {
         val adImage: ImageView = binding.adImage
 
         fun bind(ad: Ad) {
+            if(ad.photo1!=null){
 
+                Glide.with(container)
+                    .load(ad.photo1)
+                    .into(adImage)
+            }
             viewModel.bind(ad)
+
             binding.viewModel = viewModel
         }
 
@@ -57,25 +63,25 @@ class AdListAdapter : RecyclerView.Adapter<AdListAdapter.ViewHolder>() {
     private fun handleClick(view: View, ad: Ad) {
         val action = AdsFragmentDirections
             .actionAdsFragmentToAdDetailsFragment(
-                ad.id,
-                ad.manufacturer,
-                ad.manufacturer_name,
-                ad.model,
-                ad.version,
-                ad.version_name,
-                ad.year,
-                ad.minPrice,
-                ad.distance,
-                ad.date,
-                ad.description,
-                "",
-                "",
-                "",
-                ad.automobilist,
-                ad.automobilist_username,
-                ad.automobilist_address,
-                ad.energy,
-                ad.personsNumber
+                adId = ad.id,
+                adManufacturer = ad.manufacturer,
+                adManufacturerName = ad.manufacturer_name,
+                adModel = ad.model,
+                adVersion = ad.version,
+                adVersionName = ad.version_name,
+                adYear = ad.year,
+                adMinPrice = ad.minPrice,
+                adDistance = ad.distance,
+                adDate = ad.date,
+                adDescription = ad.description,
+                adPhoto1 = if(ad.photo1!=null) ad.photo1 else "",
+                adPhoto2 = if(ad.photo2!=null) ad.photo2 else "",
+                adPhoto3 = if(ad.photo3!=null) ad.photo3 else "",
+                adAutomobilist = ad.automobilist,
+                adAutomobilistUserName = ad.automobilist_username,
+                adAutomobilistAddress = ad.automobilist_address,
+                adEnergy = ad.energy,
+                adNbPersons = ad.personsNumber
             )
         view.setOnClickListener { v: View ->
             v.findNavController().navigate(action)

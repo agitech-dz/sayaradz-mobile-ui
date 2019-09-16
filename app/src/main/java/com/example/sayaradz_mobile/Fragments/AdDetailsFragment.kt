@@ -70,11 +70,26 @@ class AdDetailsFragment : Fragment() {
             AdDetailsFragmentArgs.fromBundle(arguments!!).adNbPersons,
             AdDetailsFragmentArgs.fromBundle(arguments!!).adEnergy
         )
+
+        var photo1 = "https://imgd.aeplcdn.com/424x424/cw/ec/26916/Audi-Q3-Front-view-92293.jpg?v=201711021421&q=85"
+        var photo2 = "https://imgd.aeplcdn.com/424x424/cw/ec/26916/Audi-Q3-Front-view-92293.jpg?v=201711021421&q=85"
+        var photo3 = "https://imgd.aeplcdn.com/424x424/cw/ec/26916/Audi-Q3-Front-view-92293.jpg?v=201711021421&q=85"
+        if(ad.photo1!=""){
+            photo1 = ad.photo1
+        }
+        if(ad.photo2!=""){
+            photo2 = ad.photo2
+        }
+        if(ad.photo3!=""){
+            photo3 = ad.photo3
+        }
+
         val imageUrls = arrayListOf(
-            "https://imgd.aeplcdn.com/424x424/cw/ec/26916/Audi-Q3-Front-view-92293.jpg?v=201711021421&q=85",
-            "https://imgd.aeplcdn.com/424x424/cw/ec/26916/Audi-Q3-Front-view-92293.jpg?v=201711021421&q=85",
-            "https://imgd.aeplcdn.com/424x424/cw/ec/26916/Audi-Q3-Front-view-92293.jpg?v=201711021421&q=85"
+            photo1,
+            photo2,
+            photo3
         )
+
         //var adId = com.example.sayaradz_mobile.Fragments.AdDetailsFragmentArgs.fromBundle(arguments!!).adId
         activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.visibility = View.GONE
 
