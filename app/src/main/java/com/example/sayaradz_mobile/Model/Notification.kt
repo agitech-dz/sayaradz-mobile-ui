@@ -33,7 +33,7 @@ open class Notification : Serializable{
          when(notificationBody.notification_type){
              "OA"->{
                  //offer accepted
-                 title = "Offre Accepté"
+                 title = "Offre Acceptée"
                  description = "Votre offre a été accepté par ${notificationBody.actorUserName}"
 
 
@@ -59,8 +59,8 @@ open class Notification : Serializable{
              }
              "OP"->{
                  // offer posted
-                 title = "Offre Reçu"
-                 description = "Vous avez reçu un offre de ${notificationBody.verb} DZD de la part de ${notificationBody.actorUserName}"
+                 title = "Offre Reçue"
+                 description = "Vous avez reçu une offre de ${notificationBody.verb} DZD de la part de ${notificationBody.actorUserName}"
 
 
              }
